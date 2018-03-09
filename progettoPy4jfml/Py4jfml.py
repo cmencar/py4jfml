@@ -2,6 +2,25 @@ from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 from py4j.java_collections import ListConverter
 
+class PY4JFML:
+    def __init__(self):
+        self.JFML = gateway.entry_point.createJFML()
+
+    @staticmethod
+    def load(xml):
+        PY4JFML.JFML.load(xml)
+        return PY4JFML.JFML.load(xml)
+
+    @staticmethod
+    def writeFSTtoXML(fuzzySystemType, output):
+        PY4JFML.JFML.writeFSTtoXML(fuzzySystemType.java_FuzzySystemType, output)
+
+class FuzzySystemType:
+    def __init__(self):
+        self.java_FuzzySystemType = gateway.entry_point.createFuzzySystemType()
+
+
+
 class FuzzyTerm:
     TYPE_rightLinearShape = 0
     TYPE_leftLinearShape = 1
@@ -89,12 +108,19 @@ class AntecedentType:
     def __init__(self):
         self.java_at= gateway.entry_point.createAntecedentType()
     #forse bisogna aggiungere nuovi oggetti vedere in java
-    def addClause(self,variable,term):
-        self.java_at.addClause(variable.java_kb,term.ftt)
+    def addClause(self,clauseType):
+        self.java_at.addClause(clauseType.java_clauseT)
 
 class ConsequentType:
     def __init__(self):
         self.java_ct = gateway.entry_point.createConsequentType()
 
-    def addThenClause(self,variable,term):
-        self.java_ct.addThenClause(variable.java_kb,term.java_ftt)
+    def addThenClause(self,clauseType):
+        self.java_ct.addThenClause(clauseType.java_clauseT)
+
+class ClauseType:
+    def __init__(self,variable,term):
+        self.java_clauseT = gateway.entry_point.createClauseType(variable.java_fvt, term.java_ftt)
+
+    def __init__(self, variable, term, modifier):
+        self.java_clauseT = gateway.entry_point.createClauseType(variable.java_fvt, term.java_ftt, modifier)

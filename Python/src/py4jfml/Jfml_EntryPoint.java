@@ -3,9 +3,12 @@ package py4jfml;
 import java.util.ArrayList;
 
 import jfml.FuzzyInferenceSystem;
+import jfml.JFML;
+import jfml.jaxb.FuzzySystemType;
 import jfml.knowledgebase.KnowledgeBaseType;
 import jfml.knowledgebase.variable.FuzzyVariableType;
 import jfml.rule.AntecedentType;
+import jfml.rule.ClauseType;
 import jfml.rule.ConsequentType;
 import jfml.rule.FuzzyRuleType;
 import jfml.rulebase.MamdaniRuleBaseType;
@@ -76,8 +79,31 @@ public class Jfml_EntryPoint {
 	}
 
 	// fine ConsequentType
-	
-	//avvio server
+
+	// inizio ClauseType
+	public ClauseType createClauseType(Object variable, Object term) {
+		return new ClauseType(variable, term);
+	}
+
+	public ClauseType createClauseType(Object variable, Object term, String modifier) {
+		return new ClauseType(variable, term, modifier);
+	}
+
+	// fine ClauseType
+
+	// inizio JFML
+	public JFML createJFML() {
+		return new JFML();
+	}
+	// fine JFML
+
+	// inizio FuzzySystemType
+	public FuzzySystemType createFuzzySystemType() {
+		return new FuzzySystemType();
+	}
+	// fine FuzzySystemType
+
+	// avvio server
 	public static void main(String[] args) {
 		Jfml_EntryPoint jf = new Jfml_EntryPoint();
 		GatewayServer gatewayServer = new GatewayServer(jf);
