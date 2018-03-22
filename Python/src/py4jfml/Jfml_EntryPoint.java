@@ -24,20 +24,22 @@ public class Jfml_EntryPoint {
 	public FuzzyInferenceSystem createFuzzyInferenceSystem(String name) {
 		return new FuzzyInferenceSystem(name);
 	}
+
+	public FuzzyInferenceSystem createFuzzyInferenceSystem(FuzzySystemType fst) {
+		return new FuzzyInferenceSystem(fst);
+	}
 	// fine FuzzyInferenceSystem
 
 	// KnowledgeBaseType
 	public KnowledgeBaseType createKnowledgeBaseType() {
 		return new KnowledgeBaseType();
 	}
-
 	// fine KnowledgeBaseType
 
 	// FuzzyVariableType
 	public FuzzyVariableType createFuzzyVariableType(String name, float domainLeft, float domainRight) {
 		return new FuzzyVariableType(name, domainLeft, domainRight);
 	}
-
 	// fine FuzzyVariableType
 
 	// FuzzyTermType
@@ -77,7 +79,6 @@ public class Jfml_EntryPoint {
 	public ConsequentType createConsequentType() {
 		return new ConsequentType();
 	}
-
 	// fine ConsequentType
 
 	// inizio ClauseType
@@ -88,20 +89,14 @@ public class Jfml_EntryPoint {
 	public ClauseType createClauseType(Object variable, Object term, String modifier) {
 		return new ClauseType(variable, term, modifier);
 	}
-
 	// fine ClauseType
 
 	// inizio JFML
 	public JFML createJFML() {
 		return new JFML();
 	}
-	// fine JFML
 
-	// inizio FuzzySystemType
-	public FuzzySystemType createFuzzySystemType() {
-		return new FuzzySystemType();
-	}
-	// fine FuzzySystemType
+	// fine JFML
 
 	// avvio server
 	public static void main(String[] args) {

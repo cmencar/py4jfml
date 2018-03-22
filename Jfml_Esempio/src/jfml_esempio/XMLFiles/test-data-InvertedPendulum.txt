@@ -1,0 +1,5 @@
+Force
+Angle;ChangeAngle
+10;10
+125;125
+250;250
