@@ -68,7 +68,7 @@ public class Test_IrisMamdani2 {
 		sw.addFuzzyTerm(sw_not_high);
 
 		kb.addVariable(sw);
-		
+
 		// FUZZY VARIABLE PetalLength
 		FuzzyVariableType pl = new FuzzyVariableType("PetalLength", 1f, 6.9f);
 
