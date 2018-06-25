@@ -1,4 +1,4 @@
-package py4jfml;
+package entry_point;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -101,17 +101,6 @@ public class Jfml_EntryPoint {
 
 	// avvio server
 	public static void main(String[] args) {
-		// chiedere conferma al professore
-		 if (args.length == 0) {  
-	            try {  
-	                // re-launch the app itselft with VM option passed  
-	                Runtime.getRuntime().exec(new String[] {"java", "-Xmx1024m", "-jar", "Jfml_EntryPoint.jar", "test"});  
-	            } catch (IOException ioe) {  
-	                ioe.printStackTrace();  
-	            }  
-	           // System.exit(0);  
-	        }  
-		//fine
 		Jfml_EntryPoint jf = new Jfml_EntryPoint();
 		GatewayServer gatewayServer = new GatewayServer(jf);
 		gatewayServer.start();
