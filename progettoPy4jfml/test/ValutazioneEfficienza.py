@@ -1,4 +1,4 @@
-import progettoPy4jfml.Py4jfml as fml
+import py4jfml.Py4jfml as fml
 import cProfile
 
 
