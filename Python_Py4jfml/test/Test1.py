@@ -1,11 +1,13 @@
-import progettoPy4jfml.Py4jfml as fml
+import os
+import py4jfml.Py4jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
 
 #caricamento Mamdani
-str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\TipperMamdani1.xml"
+upperDir = os.path.dirname(os.getcwd())
+str_xml = upperDir+"/XMLFiles/TipperMamdani1.xml"
 tipper = fml.PY4JFML.load(str_xml)
 
 #imposto i valori di input

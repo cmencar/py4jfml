@@ -1,3 +1,5 @@
+import os
+
 import py4jfml.Py4jfml as fml
 from py4j.java_gateway import JavaGateway
 
@@ -91,7 +93,8 @@ rb.addRule(r3)
 iris.addRuleBase(rb)
 
 #WRITTING IRIS EXAMPLE INTO AN XML FILE
-str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\IrisMamdani1.xml"
+upperDir = os.path.dirname(os.getcwd())
+str_xml = upperDir+"/XMLFiles/IrisMamdani1.xml"
 fml.PY4JFML.writeFSTtoXML(iris,str_xml)
 
 

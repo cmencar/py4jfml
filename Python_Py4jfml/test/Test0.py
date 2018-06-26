@@ -1,8 +1,7 @@
+import os
+
 import py4jfml.Py4jfml as fml
 from py4j.java_gateway import JavaGateway
-import subprocess
-
-#subprocess.run(["java","C:\\Users\\andrea\\Desktop\\Tesi\\Server1.jar"])
 
 gateway = JavaGateway()
 
@@ -117,9 +116,10 @@ rule1.setConsequent(con1)
 rbMam.addRule(rule1)
 
 # lettura file
-str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\TipperMamdani1.xml"
+upperDir = os.path.dirname(os.getcwd())
+str_xml = upperDir+"/XMLFiles/TipperMamdani1.xml"
 tipper1 = fml.PY4JFML.load(str_xml)
 
 #scrittura file
-str_xmlOutput = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\ourFS.xml"
+str_xmlOutput = upperDir+"/XMLFiles/ourFS.xml"
 fml.PY4JFML.writeFSTtoXML(tipper, str_xmlOutput)

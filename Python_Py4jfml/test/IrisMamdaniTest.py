@@ -1,3 +1,5 @@
+import os
+
 import py4jfml.Py4jfml as fml
 from py4j.java_gateway import JavaGateway
 
@@ -92,7 +94,8 @@ class IrisMamdaniTest1:
     iris.addRuleBase(rb)
 
     #WRITTING IRIS EXAMPLE INTO AN XML FILE
-    str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\IrisMamdani1.xml"
+    upperDir = os.path.dirname(os.getcwd())
+    str_xml = upperDir+"/XMLFiles/IrisMamdani1.xml"
     fml.PY4JFML.writeFSTtoXML(iris,str_xml)
 
 class IrisMamdaniTest2:
@@ -242,7 +245,8 @@ class IrisMamdaniTest2:
     iris.addRuleBase(rb)
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
-    str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\IrisMamdani2.xml"
+    upperDir = os.path.dirname(os.getcwd())
+    str_xml = upperDir+"/XMLFiles/IrisMamdani2.xml"
     fml.PY4JFML.writeFSTtoXML(iris, str_xml)
 
 
@@ -487,5 +491,6 @@ class IrisMamdaniTest3:
     iris.addRuleBase(rb)
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
-    str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\IrisMamdani3.xml"
+    upperDir = os.path.dirname(os.getcwd())
+    str_xml = upperDir+"/XMLFiles/IrisMamdani3.xml"
     fml.PY4JFML.writeFSTtoXML(iris, str_xml)

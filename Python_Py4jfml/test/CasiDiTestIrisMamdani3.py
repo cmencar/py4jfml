@@ -1,10 +1,13 @@
+import os
+
 import py4jfml.Py4jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
 #percorso del file xml da valutare
-str_xml = "C:\\Users\\andrea\\PycharmProjects\\untitled\\Python_Py4jfml\\XMLFiles\\IrisMamdani3.xml"
+upperDir = os.path.dirname(os.getcwd())
+str_xml = upperDir+"/XMLFiles/IrisMamdani3.xml"
 
 #creazione sistema fuzzy
 fs1 = fml.PY4JFML.load(str_xml)
