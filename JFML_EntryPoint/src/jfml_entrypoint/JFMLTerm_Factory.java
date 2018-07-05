@@ -12,7 +12,6 @@ import jfml.membershipfunction.PointSetShapeType;
 import jfml.membershipfunction.PointType;
 import jfml.term.AggregatedFuzzyTermType;
 import jfml.term.CircularTermType;
-import jfml.term.FuzzyTerm;
 import jfml.term.FuzzyTermType;
 import jfml.term.TskTermType;
 import jfml.term.TsukamotoTermType;
