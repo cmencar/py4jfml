@@ -6,8 +6,7 @@ from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 
 #percorso del file xml da valutare
-upperDir = os.path.dirname(os.getcwd())
-str_xml = upperDir+"/XMLFiles/IrisMamdani2.xml"
+str_xml = "XMLFiles/IrisMamdani2.xml"
 
 
 #Sistema fuzzy

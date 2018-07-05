@@ -116,10 +116,9 @@ rule1.setConsequent(con1)
 rbMam.addRule(rule1)
 
 # lettura file
-upperDir = os.path.dirname(os.getcwd())
-str_xml = upperDir+"/XMLFiles/TipperMamdani1.xml"
+str_xml = "XMLFiles/TipperMamdani1.xml"
 tipper1 = fml.PY4JFML.load(str_xml)
 
 #scrittura file
-str_xmlOutput = upperDir+"/XMLFiles/ourFS.xml"
+str_xmlOutput = "XMLFiles/ourFS.xml"
 fml.PY4JFML.writeFSTtoXML(tipper, str_xmlOutput)

@@ -151,6 +151,5 @@ rb.addRule(r3)
 iris.addRuleBase(rb)
 
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
-upperDir = os.path.dirname(os.getcwd())
-str_xml = upperDir+"/XMLFiles/IrisMamdani2.xml"
+str_xml = "XMLFiles/IrisMamdani2.xml"
 fml.PY4JFML.writeFSTtoXML(iris, str_xml)

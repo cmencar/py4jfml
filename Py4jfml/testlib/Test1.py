@@ -6,8 +6,7 @@ gateway = JavaGateway()
 
 
 #caricamento Mamdani
-upperDir = os.path.dirname(os.getcwd())
-str_xml = upperDir+"/XMLFiles/TipperMamdani1.xml"
+str_xml = "XMLFiles/TipperMamdani1.xml"
 tipper = fml.PY4JFML.load(str_xml)
 
 #imposto i valori di input
