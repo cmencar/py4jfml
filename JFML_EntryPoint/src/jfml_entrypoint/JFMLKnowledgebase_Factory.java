@@ -1,5 +1,11 @@
 package jfml_entrypoint;
 
-public class JFMLKnowledgebase_Factory {
+import jfml.knowledgebase.KnowledgeBaseType;
 
+public class JFMLKnowledgebase_Factory 
+{
+	public KnowledgeBaseType createKnowledgeBaseType()
+	{
+		return new KnowledgeBaseType();
+	}
 }
