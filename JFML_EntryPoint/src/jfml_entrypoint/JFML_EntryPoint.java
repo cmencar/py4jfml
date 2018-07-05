@@ -1,6 +1,5 @@
-package entry_point;
+package jfml_entrypoint;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import jfml.FuzzyInferenceSystem;
@@ -16,7 +15,7 @@ import jfml.rulebase.MamdaniRuleBaseType;
 import jfml.term.FuzzyTermType;
 import py4j.GatewayServer;
 
-public class Jfml_EntryPoint {
+public class JFML_EntryPoint {
 	// FuzzyInferenceSystem
 	public FuzzyInferenceSystem createFuzzyInferenceSystem() {
 		return new FuzzyInferenceSystem();
@@ -101,7 +100,7 @@ public class Jfml_EntryPoint {
 
 	// avvio server
 	public static void main(String[] args) {
-		Jfml_EntryPoint jf = new Jfml_EntryPoint();
+		JFML_EntryPoint jf = new JFML_EntryPoint();
 		GatewayServer gatewayServer = new GatewayServer(jf);
 		gatewayServer.start();
 		System.out.println("Gateway Server Started!");
