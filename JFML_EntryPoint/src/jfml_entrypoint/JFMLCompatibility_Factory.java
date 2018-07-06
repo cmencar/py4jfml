@@ -9,8 +9,8 @@ import jfml.compatibility.ImportPMML;
 import jfml.compatibility.SuppCollection;
 import jfml.compatibility.pmmlReader;
 
-public class JFMLCompatibility_Factory 
-{
+public class JFMLCompatibility_Factory {
+	
 	public ExportFCL createExportFCL()
 	{
 		return new ExportFCL();

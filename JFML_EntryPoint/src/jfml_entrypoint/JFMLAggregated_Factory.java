@@ -4,8 +4,8 @@ import jfml.aggregated.AndAggregatedType;
 import jfml.aggregated.OrAggregatedType;
 import jfml.rule.ClauseType;
 
-public class JFMLAggregated_Factory 
-{
+public class JFMLAggregated_Factory {
+	
 	public AndAggregatedType createAndAggregatedType()
 	{
 		return new AndAggregatedType();

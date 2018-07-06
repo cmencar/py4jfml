@@ -10,8 +10,8 @@ import jfml.defuzzifier.DefuzzifierMeanMax;
 import jfml.defuzzifier.DefuzzifierRightMostMax;
 import jfml.term.FuzzyTermType;
 
-public class JFMLDefuzzifier_Factory 
-{
+public class JFMLDefuzzifier_Factory {
+	
 	public DefuzzifierCenterOfArea createDefuzzifierCenterOfArea(float domainleft, float domainright, List<FuzzyTermType> terms)
 	{
 		return new DefuzzifierCenterOfArea(domainleft,domainright,terms);

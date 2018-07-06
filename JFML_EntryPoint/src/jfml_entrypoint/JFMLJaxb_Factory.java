@@ -6,8 +6,8 @@ import jfml.jaxb.FuzzySystemType;
 import jfml.jaxb.ObjectFactory;
 import jfml.knowledgebase.KnowledgeBaseType;
 
-public class JFMLJaxb_Factory 
-{
+public class JFMLJaxb_Factory {
+	
 	public FuzzySystemType createFuzzySystemType()
 	{
 		return new FuzzySystemType();
