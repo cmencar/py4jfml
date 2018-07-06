@@ -1,6 +1,6 @@
 import os
 
-import py4jfml.Py4jfml as fml
+import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -247,4 +247,4 @@ iris.addRuleBase(rb)
 
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
 str_xml = "XMLFiles/IrisMamdani3.xml"
-fml.PY4JFML.writeFSTtoXML(iris, str_xml)
+fml.Py4jfml.writeFSTtoXML(iris, str_xml)

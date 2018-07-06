@@ -1,6 +1,6 @@
 import os
 
-import py4jfml.Py4jfml as fml
+import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -117,8 +117,8 @@ rbMam.addRule(rule1)
 
 # lettura file
 str_xml = "XMLFiles/TipperMamdani1.xml"
-tipper1 = fml.PY4JFML.load(str_xml)
+tipper1 = fml.Py4jfml.load(str_xml)
 
 #scrittura file
 str_xmlOutput = "XMLFiles/ourFS.xml"
-fml.PY4JFML.writeFSTtoXML(tipper, str_xmlOutput)
+fml.Py4jfml.writeFSTtoXML(tipper, str_xmlOutput)

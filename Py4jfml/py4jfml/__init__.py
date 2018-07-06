@@ -10,8 +10,8 @@ class Java_EntryPointThread(Thread):
 
     def run(self):
         upperDir = os.path.dirname(os.getcwd())
-        subprocess.call(['java', '-jar', upperDir+'/jar_files/Java_EntryPoint.jar'])
+        subprocess.call(['java', '-jar', upperDir+'/jar_files/JFML_EntryPoint.jar'])
 
-EntryPointThread = Java_EntryPointThread()
-EntryPointThread.start()
+entryPointThread = Java_EntryPointThread()
+entryPointThread.start()
 time.sleep(1)

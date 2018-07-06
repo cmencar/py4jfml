@@ -1,5 +1,5 @@
 import os
-import py4jfml.Py4jfml as fml
+import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -7,7 +7,7 @@ gateway = JavaGateway()
 
 #caricamento Mamdani
 str_xml = "XMLFiles/TipperMamdani1.xml"
-tipper = fml.PY4JFML.load(str_xml)
+tipper = fml.Py4jfml.load(str_xml)
 
 #imposto i valori di input
 food = tipper.getVariable("food")

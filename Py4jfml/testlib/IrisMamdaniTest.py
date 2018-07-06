@@ -1,6 +1,6 @@
 import os
 
-import py4jfml.Py4jfml as fml
+import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -95,7 +95,7 @@ class IrisMamdaniTest1:
 
     #WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani1.xml"
-    fml.PY4JFML.writeFSTtoXML(iris,str_xml)
+    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
 
 class IrisMamdaniTest2:
     # FuzzyInference
@@ -245,7 +245,7 @@ class IrisMamdaniTest2:
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani2.xml"
-    fml.PY4JFML.writeFSTtoXML(iris, str_xml)
+    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
 
 
 class IrisMamdaniTest3:
@@ -490,4 +490,4 @@ class IrisMamdaniTest3:
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani3.xml"
-    fml.PY4JFML.writeFSTtoXML(iris, str_xml)
+    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
