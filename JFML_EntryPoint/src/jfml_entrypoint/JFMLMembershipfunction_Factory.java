@@ -28,7 +28,7 @@ import jfml.operator.OrLogicalType;
 import jfml.parameter.Parameter;
 import jfml.parameter.TwoParamType;
 
-public class JFMLMembershipfunction {
+public class JFMLMembershipfunction_Factory {
 
 	public CircularDefinitionType createCircularDefinitionType()
 	{

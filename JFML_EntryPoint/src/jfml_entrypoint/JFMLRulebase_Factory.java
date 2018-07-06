@@ -6,7 +6,7 @@ import jfml.rulebase.RuleBaseType;
 import jfml.rulebase.TskRuleBaseType;
 import jfml.rulebase.TsukamotoRuleBaseType;
 
-public class JFMLAnYaRuleBaseType_Factory {
+public class JFMLRulebase_Factory {
 
 	public AnYaRuleBaseType createAnYaRuleBaseType()
 	{
