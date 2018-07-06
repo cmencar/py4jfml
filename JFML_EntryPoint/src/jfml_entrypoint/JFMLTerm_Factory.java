@@ -1,5 +1,6 @@
 package jfml_entrypoint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jfml.aggregated.AggregatedType;
@@ -63,9 +64,13 @@ public class JFMLTerm_Factory {
 		return new FuzzyTermType(name,c);
 	}
 	
-	public FuzzyTermType createFuzzyTermType(String name, int type, float[] param)
+	public FuzzyTermType createFuzzyTermType(String name, int type, ArrayList<Double> param)
 	{
-		return new FuzzyTermType(name,type,param);
+		float[] arFloat = new float[param.size()];
+		for (int i = 0; i < param.size(); i++) {
+			arFloat[i] = param.get(i).floatValue();
+		}
+		return new FuzzyTermType(name,type,arFloat);
 	}
 	
 	public FuzzyTermType createFuzzyTermType(String name, int type, List<PointType> points)
@@ -93,9 +98,13 @@ public class JFMLTerm_Factory {
 		return new TskTermType();
 	}
 	
-	public TskTermType createTskTermType(String name, int order, float[] coeff)
+	public TskTermType createTskTermType(String name, int order, ArrayList<Double> coeff)
 	{
-		return new TskTermType(name,order,coeff);
+		float[] arFloat = new float[coeff.size()];
+		for (int i = 0; i < coeff.size(); i++) {
+			arFloat[i] = coeff.get(i).floatValue();
+		}
+		return new TskTermType(name,order,arFloat);
 	}
 	
 	public TsukamotoTermType createTsukamotoTermType()
@@ -103,9 +112,13 @@ public class JFMLTerm_Factory {
 		return new TsukamotoTermType();
 	}
 	
-	public TsukamotoTermType createTsukamotoTermType(String name, int type, float[] param)
+	public TsukamotoTermType createTsukamotoTermType(String name, int type, ArrayList<Double> param)
 	{
-		return new TsukamotoTermType(name,type,param);
+		float[] arFloat = new float[param.size()];
+		for (int i = 0; i < param.size(); i++) {
+			arFloat[i] = param.get(i).floatValue();
+		}
+		return new TsukamotoTermType(name,type,arFloat);
 	}
 	
 	public TsukamotoTermType createTsukamotoTermType(String name, int type, List<PointType> param)
