@@ -2,6 +2,7 @@ import subprocess
 from threading import Thread
 import time
 import os
+import platform
 
 #definizione thread per avviare il server py4j
 class Java_EntryPointThread(Thread):
@@ -10,7 +11,12 @@ class Java_EntryPointThread(Thread):
 
     def run(self):
         upperDir = os.path.dirname(os.getcwd())
-        subprocess.call(['java', '-jar', upperDir+'/jar_files/JFML_EntryPoint.jar'])
+        if(platform.system()=='Linux'):
+            subprocess.call(['java', '-jar', upperDir + '/jar_files/JFML_EntryPoint.jar'])
+        #da testare in ambiente Windows
+        if(platform.system()=='Windows'):
+            subprocess.call(['java', '-jar', upperDir + '\jar_files\JFML_EntryPoint.jar'])
+
 
 entryPointThread = Java_EntryPointThread()
 entryPointThread.start()

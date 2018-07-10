@@ -1,114 +1,122 @@
-import os
-
+from py4j.java_gateway import JavaGateway
+from py4jfml.FuzzyInferenceSystem import *
+from py4jfml.KnowledgeBaseType import *
+from py4jfml.FuzzyVariableType import *
+from py4jfml.FuzzyTermType import *
+from py4jfml.FuzzyTerm import *
+from py4jfml.MamdaniRuleBaseType import *
+from py4jfml.ClauseType import *
+from py4jfml.ConsequentType import *
 import py4jfml.Py4Jfml as fml
+
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
 #Creazione oggetto tipper
-tipper = fml.FuzzyInferenceSystem("tipper")
+tipper = FuzzyInferenceSystem("tipper")
 
 #creazione dell'oggetto kb e aggiunta all'insieme di conoscenza fuzzy
-kb = fml.KnowledgeBaseType()
+kb = KnowledgeBaseType()
 tipper.setKnowledgeBase(kb)
 
 # creazione variabile tip con nome service dominio sinistro 0 e dominion destro 10
-tip = fml.FuzzyVariableType("tip", 0., 10.)
+tip = FuzzyVariableType("tip", 0., 10.)
 kb.addVariable(tip)
 
 # creazione leftLinear con coordinate 0 e 1 e aggiunta all'insieme di conoscenza
-cheap = fml.FuzzyTermType("cheap", fml.FuzzyTerm.TYPE_leftLinearShape, [0., 1.])
+cheap = FuzzyTermType("cheap", FuzzyTerm.TYPE_leftLinearShape, [0., 1.])
 
 # creazione triangolarShape con coordinate 1,2 e 3 e aggiunta all'insieme di conoscenza
-poor = fml.FuzzyTermType("cheap", fml.FuzzyTerm.TYPE_triangularShape, [1., 2., 3.])
+poor = FuzzyTermType("cheap", FuzzyTerm.TYPE_triangularShape, [1., 2., 3.])
 
 tip.addFuzzyTerm(poor)
 
 #creazione variabile service con nome service dominio sinistro 0 e dominion destro 10
-service = fml.FuzzyVariableType("service", 0., 10.)
+service = FuzzyVariableType("service", 0., 10.)
 kb.addVariable(service)
 
 # creazione leftLinear con coordinate 0 e 1 e aggiunta all'insieme di conoscenza
-poor = fml.FuzzyTermType("poor", fml.FuzzyTerm.TYPE_leftLinearShape, [0., 1.])
+poor = FuzzyTermType("poor", FuzzyTerm.TYPE_leftLinearShape, [0., 1.])
 
 #creazione triangolarShape con coordinate 1,2 e 3 e aggiunta all'insieme di conoscenza
-poor = fml.FuzzyTermType("poor", fml.FuzzyTerm.TYPE_triangularShape, [1., 2., 3.])
+poor = FuzzyTermType("poor", FuzzyTerm.TYPE_triangularShape, [1., 2., 3.])
 
 service.addFuzzyTerm(poor)
 
 # creazione variabile food con nome food dominio sinistro 0 e dominio destro 10 e aggiunta all'insieme di conoscenza
-food = fml.FuzzyVariableType("food", 0.0, 10.0)
+food = FuzzyVariableType("food", 0.0, 10.0)
 kb.addVariable(food)
 
 #creazione triangolarShape con coordinate 0,2 e 4 (float) e aggiunta all'insieme di conoscenza
-rancid = fml.FuzzyTermType("rancid", fml.FuzzyTerm.TYPE_triangularShape, [0., 2., 4.])
+rancid = FuzzyTermType("rancid", FuzzyTerm.TYPE_triangularShape, [0., 2., 4.])
 food.addFuzzyTerm(rancid)
 
 # creazione Left LinearShape con coordinate 0 e 4 (float) e aggiunta all'insieme di conoscenza
-rancid = fml.FuzzyTermType("rancid", fml.FuzzyTerm.TYPE_leftLinearShape, [0., 4.])
+rancid = FuzzyTermType("rancid", FuzzyTerm.TYPE_leftLinearShape, [0., 4.])
 food.addFuzzyTerm(rancid)
 
 # creazione Right LinearShape con coordinate 4 e 10(float) e aggiunta all'insieme di conoscenza
-delicious = fml.FuzzyTermType("delicious", fml.FuzzyTerm.TYPE_rightLinearShape, [4.,10.])
+delicious = FuzzyTermType("delicious", FuzzyTerm.TYPE_rightLinearShape, [4.,10.])
 food.addFuzzyTerm(delicious)
 
 # creazione TrapezoidalShape con coordinate 0,1,3 e 4(float) e aggiunta all'insieme di conoscenza
-rancid = fml.FuzzyTermType("rancid", fml.FuzzyTerm.TYPE_trapezoidShape, [0.,1.,3.,4.])
+rancid = FuzzyTermType("rancid", FuzzyTerm.TYPE_trapezoidShape, [0.,1.,3.,4.])
 food.addFuzzyTerm(rancid)
 
 # creazione RectangularShape con coordinate 4 e 7 (float) e aggiunta all'insieme di conoscenza
-good = fml.FuzzyTermType("good", fml.FuzzyTerm.TYPE_rectangularShape, [4.,7.])
+good = FuzzyTermType("good", FuzzyTerm.TYPE_rectangularShape, [4.,7.])
 food.addFuzzyTerm(good)
 
 # creazione GaussianShape con coordinate 5 e 1 (float) e aggiunta all'insieme di conoscenza
-good = fml.FuzzyTermType("good", fml.FuzzyTerm.TYPE_gaussianShape, [5., 1.])
+good = FuzzyTermType("good", FuzzyTerm.TYPE_gaussianShape, [5., 1.])
 food.addFuzzyTerm(good)
 
 # creazione GaussianShape con coordinate 5 e 1 (float) e aggiunta all'insieme di conoscenza
-good = fml.FuzzyTermType("good", fml.FuzzyTerm.TYPE_gaussianShape, [5., 1.])
+good = FuzzyTermType("good", FuzzyTerm.TYPE_gaussianShape, [5., 1.])
 food.addFuzzyTerm(good)
 
 # creazione LeftGaussianShape con coordinate 2 e 1 (float) e aggiunta all'insieme di conoscenza
-rancid = fml.FuzzyTermType("rancid", fml.FuzzyTerm.TYPE_leftGaussianShape, [2., 1.])
+rancid = FuzzyTermType("rancid", FuzzyTerm.TYPE_leftGaussianShape, [2., 1.])
 food.addFuzzyTerm(rancid)
 
 # creazione RightGaussianShape con coordinate 8 e 1 (float) e aggiunta all'insieme di conoscenza
-delicious = fml.FuzzyTermType("delicious", fml.FuzzyTerm.TYPE_rightGaussianShape, [8., 1.])
+delicious = FuzzyTermType("delicious", FuzzyTerm.TYPE_rightGaussianShape, [8., 1.])
 food.addFuzzyTerm(delicious)
 
 # creazione Pi-Shaped con coordinate 2, 4, 6 e 8  (float) e aggiunta all'insieme di conoscenza
-good = fml.FuzzyTermType("good", fml.FuzzyTerm.TYPE_piShape, [2., 4., 6., 8.])
+good = FuzzyTermType("good", FuzzyTerm.TYPE_piShape, [2., 4., 6., 8.])
 food.addFuzzyTerm(good)
 
 # creazione Z-shape con coordinate 2 e 4 (float) e aggiunta all'insieme di conoscenza
-rancid = fml.FuzzyTermType("rancid", fml.FuzzyTerm.TYPE_zShape, [2., 4.])
+rancid = FuzzyTermType("rancid", FuzzyTerm.TYPE_zShape, [2., 4.])
 food.addFuzzyTerm(rancid)
 
 # creazione S-shape con coordinate 6 e 8 (float) e aggiunta all'insieme di conoscenza
-delicious = fml.FuzzyTermType("delicious", fml.FuzzyTerm.TYPE_rightGaussianShape, [6., 8.])
+delicious = FuzzyTermType("delicious", FuzzyTerm.TYPE_rightGaussianShape, [6., 8.])
 food.addFuzzyTerm(delicious)
 
 # creazione Singleton Shape con coordinate 5  (float) e aggiunta all'insieme di conoscenza
-good = fml.FuzzyTermType("good", fml.FuzzyTerm.TYPE_singletonShape, [5.])
+good = FuzzyTermType("good", FuzzyTerm.TYPE_singletonShape, [5.])
 food.addFuzzyTerm(good)
 
 #creazione oggetto MamdaniRB1 con aggiunta regole mandami
-rbMam = fml.MamdaniRuleBaseType("MamdaniRB1")
+rbMam = MamdaniRuleBaseType("MamdaniRB1")
 tipper.addRuleBase(rbMam)
 
 #creazione regola 1 con nome regola connettore metodo operazione e peso
-rule1 = fml.FuzzyRuleType("rule1", "or", "MAX", 1.)
+rule1 = FuzzyRuleType("rule1", "or", "MAX", 1.)
 
 #creazione clausole antecedenti alle regole
-ant1 = fml.AntecedentType()
-ant1.addClause(fml.ClauseType(food, rancid))
-ant1.addClause(fml.ClauseType(service, poor, "very"))
+ant1 = AntecedentType()
+ant1.addClause(ClauseType(food, rancid))
+ant1.addClause(ClauseType(service, poor, "very"))
 
 rule1.setAntecedent(ant1)
 
 # creazione clausole conseguenti alle regole
-con1 = fml.ConsequentType()
-con1.addThenClause(fml.ClauseType(tip, cheap))
+con1 = ConsequentType()
+con1.addThenClause(ClauseType(tip, cheap))
 
 rule1.setConsequent(con1)
 
