@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
-from py4jfml.py4jfml.FuzzyInferenceSystem import *
+from py4jfml.FuzzyInferenceSystem import *
 
 class Py4jfml:
     """

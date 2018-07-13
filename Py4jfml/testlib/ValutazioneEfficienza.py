@@ -1,4 +1,4 @@
-import py4jfml.py4jfml.Py4Jfml as fml
+import py4jfml.Py4Jfml as fml
 import cProfile
 
 
