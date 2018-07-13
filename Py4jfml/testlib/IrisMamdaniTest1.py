@@ -1,13 +1,9 @@
-from py4j.java_gateway import JavaGateway
-from py4jfml.FuzzyInferenceSystem import *
-from py4jfml.KnowledgeBaseType import *
-from py4jfml.FuzzyVariableType import *
-from py4jfml.FuzzyTermType import *
-from py4jfml.FuzzyTerm import *
-from py4jfml.MamdaniRuleBaseType import *
-from py4jfml.ClauseType import *
-from py4jfml.ConsequentType import *
-import py4jfml.Py4Jfml as fml
+from py4jfml.py4jfml.FuzzyInferenceSystem import *
+from py4jfml.knowledgebase.KnowledgeBaseType import *
+from py4jfml.term.FuzzyTerm import *
+from py4jfml.rulebase.MamdaniRuleBaseType import *
+from py4jfml.rule.ConsequentType import *
+import py4jfml.py4jfml.Py4Jfml as fml
 
 gateway = JavaGateway()
 

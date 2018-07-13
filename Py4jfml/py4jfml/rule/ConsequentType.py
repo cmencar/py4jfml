@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
-from py4jfml.ClauseType import *
+from py4jfml.rule.ClauseType import *
 
 class ConsequentType:
     """

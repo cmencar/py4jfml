@@ -1,7 +1,6 @@
 import click
-import py4jfml.Py4Jfml as fml
-from py4j.java_gateway import JavaGateway
-from py4jfml.FuzzyInferenceSystem import *
+import py4jfml.py4jfml.Py4Jfml as fml
+from py4jfml.py4jfml.FuzzyInferenceSystem import *
 
 @click.command()
 @click.option('-l', '--load', default="", help=": Load xml file")

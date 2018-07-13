@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
-from py4jfml.FuzzyTermType import *
+from py4jfml.term.FuzzyTermType import *
 
 class FuzzyVariableType:
     """

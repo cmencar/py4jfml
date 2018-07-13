@@ -1,7 +1,7 @@
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
-from py4jfml.AntecedentType import *
-from py4jfml.ConsequentType import *
+from py4jfml.rule.AntecedentType import *
+from py4jfml.rule.ConsequentType import *
 
 class FuzzyRuleType:
     """
