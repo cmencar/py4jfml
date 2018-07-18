@@ -1,36 +1,30 @@
 import click
-import py4jfml.Py4Jfml as fml
-from py4jfml.FuzzyInferenceSystem import *
+import command.Command as cmd
 
 @click.command()
 @click.option('-l', '--load', default="", help=": Load xml file")
-@click.option('-w', '--write', default="", help=": Write xml file")
-@click.option('-t', '--tipper', default="", help=": Tipper")
-@click.option('-m', '--mamdani', default="", help=": Mamdami Rule Base")
+@click.option('-e', '--evaluate', nargs=2, help=": Evaluate")
+#@click.option('-w', '--write', default="", help=": Write xml file")
+#@click.option('-t', '--tipper', default="", help=": Tipper")
+#@click.option('-m', '--mamdani', default="", help=": Mamdani Rule Base")
 
-def startCLI(load, write, tipper, mamdani):
-    #Opzione load
-    if load is not "":
-        fml.Py4jfml.load(load)
-        
-        print('File uploaded successfully!')
-    #Opzione write
-    if write is not "" and tipper is not "" and mamdani is not "":
-        #Creazione oggetto tipper
-        tipperObj = FuzzyInferenceSystem(tipper)
-        
-        #Creazione dell'oggetto kb e aggiunta all'insieme di conoscenza fuzzy
-        kb = KnowledgeBaseType()
-        tipperObj.setKnowledgeBase(kb)
-        
-        #Creazione oggetto MamdaniRB1 con aggiunta regole mandami
-        rbMam = MamdaniRuleBaseType(mamdani)
-        tipperObj.addRuleBase(rbMam)
-        
-        #Scrittura file
-        fml.Py4jfml.writeFSTtoXML(tipperObj, write)
-        
-        print('File written successfully!')
-        
+def commandComposer(load, evaluate):
+    if load is not "" and len(evaluate) > 0:
+        macroObj = cmd.MacroCommand()
+        #Method Load
+        loadObj = cmd.Load()
+        macroObj.add(loadObj)
+        macroObj.execute(0, load)
+        #Method Evaluate
+        evalObj = cmd.Evaluate()
+        macroObj.add(evalObj)
+        macroObj.execute(1, evaluate[0], evaluate[1])
+    elif load is not "":
+        #Method Load
+        loadObj = cmd.Load()
+        macroObj = cmd.MacroCommand()
+        macroObj.add(loadObj)
+        macroObj.execute(0, load)
+
 if __name__ == '__main__':
-    startCLI()
+    commandComposer()
