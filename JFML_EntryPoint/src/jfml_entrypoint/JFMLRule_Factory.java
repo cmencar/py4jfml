@@ -42,6 +42,11 @@ public class JFMLRule_Factory {
 		return new AnYaRuleType();
 	}
 	
+	public AnYaRuleType createAnYaRuleType(String name)
+	{
+		return new AnYaRuleType(name);
+	}
+	
 	public AnYaRuleType createAnYaRuleType(String name, AnYaAntecedentType ant, ConsequentType con)
 	{
 		return new AnYaRuleType(name,ant,con);
