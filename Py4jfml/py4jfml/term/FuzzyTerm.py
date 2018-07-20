@@ -1,23 +1,23 @@
 class FuzzyTerm:
     """
-    La classe FuzzyTerm contiene i tipi a cui fanno riferimento i grafici
-    :param TYPE_rightLinearShape: contiene il riferimento alla linea destra
-    :param TYPE_leftLinearShape: contiene il riferimento alla linea sinistra
-    :param  TYPE_piShape: contiene il riferimento al piShape
-    :param TYPE_triangularShape: contiene il riferimento al triangolo
-    :param TYPE_gaussianShape: contiene il riferimento alla gaussiana
-    :param TYPE_rightGaussianShape: contiene il riferimento alla gaussiana destra
-    :param  TYPE_leftGaussianShape: contiene il riferimento alla gaussiana sinistra
-    :param TYPE_trapezoidShape: contiene il riferimento al trapezio
-    :param TYPE_singletonShape: contiene il riferimento alla linea
-    :param TYPE_rectangularShape: contiene il riferimento al rettangolo
-    :param TYPE_zShape: contiene il riferimento alla Z shape
-    :param TYPE_sShape: contiene il riferimento alla S shape
-    :param TYPE_pointSetShape: contiene il riferimento al punto
-    :param TYPE_pointSetMonotonicShape: contiene il riferimento al pointSetMonotonicShape
-    :param TYPE_circularDefinition: contiene il riferimento al circularDefinition
-    :param TYPE_customShape: contiene il riferimento al customShape
-    :param TYPE_customMonotonicShape: contiene il riferimento al customMonotonicShape
+    The FuzzyTerm class contains the types to which the charts refer
+    :param TYPE_rightLinearShape: contains the reference to the right line
+    :param TYPE_leftLinearShape: contains the reference to the left line
+    :param TYPE_piShape: contains the reference to the piShape
+    :param TYPE_triangularShape: contains the reference to the triangular shape
+    :param TYPE_gaussianShape: contains the reference to the gaussian shape
+    :param TYPE_rightGaussianShape: contains the reference to the right gaussian shape
+    :param TYPE_leftGaussianShape:  contains the reference to the left gaussian shape
+    :param TYPE_trapezoidShape: contains the reference to the trapezoid shape
+    :param TYPE_singletonShape: contains the reference to the singleton shape
+    :param TYPE_rectangularShape: contains the reference to the rectangular shape
+    :param TYPE_zShape: contains the reference to the Z shape
+    :param TYPE_sShape: contains the reference to the S shape
+    :param TYPE_pointSetShape: contains the reference to the point set shape
+    :param TYPE_pointSetMonotonicShape: contains the reference to the point set monotonic shape
+    :param TYPE_circularDefinition: contains the reference to the circular definition
+    :param TYPE_customShape: contains the reference to the custom shape
+    :param TYPE_customMonotonicShape: contains the reference to the custom monotonic shape
     """
     TYPE_rightLinearShape = 0
     TYPE_leftLinearShape = 1

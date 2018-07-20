@@ -342,3 +342,71 @@ class FuzzyTermType:
         :return: possible object is string
         '''
         return self.java_t.toString()
+
+    #Methods inherited from abstract class jfml.term.FuzzyTerm
+
+    def initializeMembershipFunction(self,domainLeft,domainRight):
+        '''
+        This function initializes the membership function associated to this term
+        :param domainLeft: the left domain
+        :param domainRight: the right domain
+        '''
+        assert type(domainLeft)==float and type(domainRight)==float
+        self.java_t.initializeMembershipFunction(domainLeft,domainRight)
+
+    def setType(self,valueType):
+        '''
+        Sets the value for the type according to the static variables
+        :param valueType: the value for the type. Possible values:
+        - TYPE_rightLinearShape
+        - TYPE_leftLinearShape
+        - TYPE_piShape
+        - TYPE_triangularShape
+        - TYPE_gaussianShape
+        - TYPE_rightGaussianShape
+        - TYPE_leftGaussianShape
+        - TYPE_trapezoidShape
+        - TYPE_singletonShape
+        - TYPE_rectangularShape
+        - TYPE_zShape
+        - TYPE_sShape
+        - TYPE_pointSetShape
+        - TYPE_pointSetMonotonicShape
+        - TYPE_circularDefinition
+        - TYPE_customShape
+        - TYPE_customMonotonicShape
+        '''
+        assert type(valueType)==int
+        self.java_t.setType(int(valueType))
+
+    def getFi(self,y):
+        '''
+        Gets the x value from y
+        :param y: float value
+        :return: the x float value from y
+        '''
+        assert type(y)==float
+        return self.java_t.getFi(float(y))
+
+    def getMembershipFunction(self):
+        '''
+        Gets the MembershipFunction associated to this term
+        :return: the MembershipFunction associated to this term
+        '''
+        return self.java_t.getMembershipFunction()
+
+    def getMembershipValue(self,x):
+        '''
+        Gets the membership degree by calculating the membership value of the parameter x to this term
+        :param x: the float value x
+        :return: the membership float value of the parameter x to this term
+        '''
+        assert type(x)==float
+        return self.java_t.getMembershipValue(float(x))
+
+    def getXValuesDefuzzifier(self):
+        '''
+        This function returns a list with values [x1, x2, x3, ...] which represents points in the x domain of the function needed by defuzzifer
+        :return: a list with floats
+        '''
+        return self.java_t.getXValuesDefuzzifier()
