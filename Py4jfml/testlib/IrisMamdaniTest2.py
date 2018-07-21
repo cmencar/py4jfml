@@ -112,7 +112,7 @@ kb.addVariable(irisClass)
 # RULE BASE
 rb = MamdaniRuleBaseType("rulebase-iris")
 # RULE 1
-r1 = FuzzyRuleType("rule1", "and", "MIN", 1.0)
+r1 = FuzzyRuleType("rule1", None, None, "and", "MIN", None, None, 1.0)
 
 ant1 = AntecedentType()
 ant1.addClause(ClauseType(pw, pw_low))
@@ -124,7 +124,7 @@ r1.setConsequent(con1)
 rb.addRule(r1)
 
 # RULE 2
-r2 = FuzzyRuleType("rule2", "and", "MIN", 1.0)
+r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
 
 ant2 = AntecedentType()
 ant2.addClause(ClauseType(sw, sw_not_high))
@@ -138,7 +138,7 @@ r2.setConsequent(con2)
 rb.addRule(r2);
 
 # RULE 3
-r3 = FuzzyRuleType("rule3", "and", "MIN", 1.0)
+r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
 
 ant3 = AntecedentType()
 ant3.addClause(ClauseType(sl, sl_not_low))

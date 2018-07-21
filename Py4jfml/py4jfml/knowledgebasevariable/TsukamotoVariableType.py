@@ -1,11 +1,11 @@
-from py4jfml.term.FuzzyTermType import *
+from py4jfml.term.TsukamotoTermType import *
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
-class FuzzyVariableType:
+class TsukamotoVariableType:
     '''
-    Python class for the fuzzyVariableType complex type from IEEE Standard 1855
+    Python class for tsukamotoVariableType complex type
     '''
 
     def __init__(self, name=None, domainLeft=None, domainRight=None):
@@ -16,29 +16,13 @@ class FuzzyVariableType:
         :param domainRight: right domain
         '''
         if name==None and domainLeft==None and domainRight==None:
-            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createFuzzyVariableType()
+            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createTsukamotoVariableType()
         elif name!=None and domainLeft!=None and domainRight!=None:
             assert type(name)==str and type(domainLeft)==float and type(domainRight)==float
-            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createFuzzyVariableType(name, domainLeft, domainRight)
-
-    # 2 Methods of class FuzzyVariable
-
-    def defuzzify(self):
-        '''
-        Method to defuzzify
-        '''
-        self.java_kbv.defuzzify()
-
-    '''
-    def setDefuzzifier(self, defuzz):
-        #Sets the defuzzifier
-        #:param defuzz: defuzzifier
-        assert type(defuzz)==Defuzzifier
-        self.java_fvt.setDefuzzifier(defuzz.java_d)
-    '''
+            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createTsukamotoVariableType(name, domainLeft, domainRight)
 
 
-    #Method of class KnowledgeBaseVariable
+    # Method of class KnowledgeBaseVariable
     def isInput(self):
         '''
         Tests if the variable is input type
@@ -47,30 +31,27 @@ class FuzzyVariableType:
         return self.java_kbv.isInput()
 
 
+    def addEvaluation(self, wi, zi):
+        '''
+        Adds an evaluation
+        :param wi: value w
+        :param zi: value z
+        '''
+        assert type(wi)==float and type(zi)==float
+        self.java_kbv.addEvaluation(wi, zi)
 
-    def accumulation(self, x, y):
+    def addTsukamotoTerm(self, name=None, termType=None, param=None, t=None):
         '''
-        :param x:
-        :param y:
-        :return: the accumulation as a float
-        '''
-        assert type(x)==float and type(y)==float
-        return self.java_kbv.accumulation()
-
-    def addFuzzyTerm(self, ft=None, name=None, fuzzyTermType=None, param=None):
-        '''
-        Add a Fuzzy Term
-        :param ft:
         :param name:
         :param type:
         :param param:
         '''
-        if ft!=None and name==None and fuzzyTermType==None and param==None :
-            assert type(ft)==FuzzyTermType
-            self.java_kbv.addFuzzyTerm(ft.java_t)
-        if ft==None and name!=None and fuzzyTermType!=None and param!=None :
-            assert type(name)==str and type(fuzzyTermType)==int and type(param)==list
-            self.java_kbv.addFuzzyTerm(name, fuzzyTermType, param)
+        if name!=None and termType!=None and param!=None and t==None:
+            assert type(name)==str and type(termType)==int and type(param)==list
+            self.java_kbv.addTsukamotoTerm(name, termType, param)
+        elif name==None and termType==None and param==None and t!=None:
+            assert type(t)==TsukamotoTermType
+            self.java_kbv.addTsukamotoTerm(t.java_t)
 
     def copy(self):
         '''
@@ -79,32 +60,19 @@ class FuzzyVariableType:
         '''
         return self.java_kbv.copy()
 
-    def getAccumulation(self):
+    def getCombination(self):
         '''
-        Gets the value of the property accumulation
+        Gets the value of the property combination
         :return: possible object is String
         '''
-        return self.java_kbv.getAccumulation()
+        return self.java_kbv.getCombination()
 
     def getDefaultValue(self):
         '''
         Gets the value of the property defaultValue
-        :return: possible object is Float
+        :return: allowed object is Float
         '''
         return self.java_kbv.getDefaultValue()
-
-    def getDefuzzifier(self):
-        '''
-        :return: possible object is Defuzzifier
-        '''
-        return self.java_kbv.getDefuzzifier()
-
-    def getDefuzzifierName(self):
-        '''
-        Gets the value of the property defuzzifier
-        :return: possible object is String
-        '''
-        return self.java_kbv.getDefuzzifierName()
 
     def getDomainleft(self):
         '''
@@ -119,15 +87,6 @@ class FuzzyVariableType:
         :return: possible object is float
         '''
         return self.java_kbv.getDomainright()
-
-    def getFuzzyTerm(self, i):
-        '''
-        Returns the i-th FuzzyTerm
-        :param i: index of the FuzzyTerm
-        :return: the i-th FuzzyTerm
-        '''
-        assert type(i)==int
-        return self.java_kbv.getFuzzyTerm(i)
 
     def getName(self):
         '''
@@ -161,10 +120,19 @@ class FuzzyVariableType:
 
     def getTerms(self):
         '''
-        Gets the value of the fuzzyTerm property
+        Gets the value of the tsukamotoTerm property
         :return: a list of terms
         '''
         return self.java_kbv.getTerms()
+
+    def getTsukamotoTerm(self, i):
+        '''
+        Returns the i-th FuzzyTerm
+        :param i: index
+        :return: the i-th FuzzyTerm
+        '''
+        assert type(i)==int
+        return self.java_kbv.getTsukamotoTerm(i)
 
     def getType(self):
         '''
@@ -175,8 +143,8 @@ class FuzzyVariableType:
 
     def getValue(self):
         '''
-        If the variable is input type, return value setter. If the variable is output, return the deffuzifier value or the calculated tsk value Defuzzifier method
-        :return: the defuzzification value
+        Gets the value of the variable
+        :return: the value of the variable
         '''
         return self.java_kbv.getValue()
 
@@ -202,13 +170,13 @@ class FuzzyVariableType:
         '''
         return self.java_kbv.reset()
 
-    def setAccumulation(self, value):
+    def setCombination(self, value):
         '''
-        Sets the value of the property accumulation.
+        Sets the value of the property combination
         :param value: allowed object is String
         '''
-        assert type(value) == str
-        self.java_kbv.setAccumulation(value)
+        assert type(value)==str
+        self.java_kbv.setCombination(value)
 
     def setDefaultValue(self, value):
         '''
@@ -217,14 +185,6 @@ class FuzzyVariableType:
         '''
         assert type(value)==float
         self.java_kbv.setDefaultValue(value)
-
-    def setDefuzzifierName(self, value):
-        '''
-        Sets the value of the property defuzzifier
-        :param value: allowed object is String
-        '''
-        assert type(value)==str
-        self.java_kbv.setDefuzzifierName(value)
 
     def setDomainleft(self, value):
         '''
@@ -288,3 +248,5 @@ class FuzzyVariableType:
         :return: a String object representing this variable
         '''
         return self.java_kbv.toString()
+
+

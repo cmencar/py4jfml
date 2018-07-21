@@ -85,7 +85,7 @@ kb.addVariable(irisClass)
 rb = MamdaniRuleBaseType("rulebase-iris")
 
 # RULE 1
-r1 = FuzzyRuleType("rule1", "and", "MIN", 1.0)
+r1 = FuzzyRuleType("rule1", None, None, "and", "MIN", None, None, 1.0)
 
 #regole antecendenti
 ant1 = AntecedentType()
@@ -100,7 +100,7 @@ r1.setConsequent(con1)
 rb.addRule(r1)
 
 # RULE 2
-r2 = FuzzyRuleType("rule2", "and", "MIN", 1.0)
+r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
 
 ant2 = AntecedentType()
 ant2.addClause(ClauseType(pw, pw_lowGAU))
@@ -112,7 +112,7 @@ r2.setConsequent(con2)
 rb.addRule(r2)
 
 # RULE 3
-r3 = FuzzyRuleType("rule3", "and", "MIN", 1.0)
+r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
 
 ant3 = AntecedentType()
 ant3.addClause(ClauseType(pw, pw_lowPi))
@@ -125,7 +125,7 @@ r3.setConsequent(con3)
 rb.addRule(r3)
 
 # RULE 4
-r4 = FuzzyRuleType("rule4", "and", "MIN", 1.0)
+r4 = FuzzyRuleType("rule4", None, None, "and", "MIN", None, None, 1.0)
 
 ant4 = AntecedentType()
 ant4.addClause(ClauseType(pw, pw_lowZ))
@@ -139,7 +139,7 @@ r4.setConsequent(con4)
 rb.addRule(r4)
 
 # RULE 5
-r5 = FuzzyRuleType("rule5", "and", "MIN", 1.0)
+r5 = FuzzyRuleType("rule5", None, None, "and", "MIN", None, None, 1.0)
 
 ant5 = AntecedentType()
 ant5.addClause(ClauseType(pw, pw_mediumTRI))
@@ -153,7 +153,7 @@ r5.setConsequent(con5)
 rb.addRule(r5)
 
 # RULE 6
-r6 = FuzzyRuleType("rule6", "and", "MIN", 1.0)
+r6 = FuzzyRuleType("rule6", None, None, "and", "MIN", None, None, 1.0)
 
 ant6 = AntecedentType()
 ant6.addClause(ClauseType(pw, pw_mediumTRA))
@@ -167,7 +167,7 @@ r6.setConsequent(con6)
 rb.addRule(r6)
 
 # RULE 7
-r7 = FuzzyRuleType("rule7", "and", "MIN", 1.0)
+r7 = FuzzyRuleType("rule7", None, None, "and", "MIN", None, None, 1.0)
 
 ant7 = AntecedentType()
 ant7.addClause(ClauseType(pw, pw_mediumGAU))
@@ -181,7 +181,7 @@ r7.setConsequent(con7)
 rb.addRule(r7)
 
 # RULE 8
-r8 = FuzzyRuleType("rule8", "and", "MIN", 1.0)
+r8 = FuzzyRuleType("rule8", None, None, "and", "MIN", None, None, 1.0)
 
 ant8 = AntecedentType()
 ant8.addClause(ClauseType(pw, pw_mediumREC))
@@ -193,7 +193,7 @@ r8.setConsequent(con8)
 rb.addRule(r8)
 
 # RULE 9
-r9 = FuzzyRuleType("rule9", "and", "MIN", 1.0)
+r9 = FuzzyRuleType("rule9", None, None, "and", "MIN", None, None, 1.0)
 
 ant9 = AntecedentType()
 ant9.addClause(ClauseType(pw, pw_highLIN))
@@ -207,7 +207,7 @@ r9.setConsequent(con9)
 rb.addRule(r9)
 
 # RULE 10
-r10 = FuzzyRuleType("rule10", "and", "MIN", 1.0)
+r10 = FuzzyRuleType("rule10", None, None, "and", "MIN", None, None, 1.0)
 ant10 = AntecedentType()
 ant10.addClause(ClauseType(pw, pw_highGAU))
 
@@ -220,7 +220,7 @@ r10.setConsequent(con10)
 rb.addRule(r10)
 
 # RULE 11
-r11 = FuzzyRuleType("rule11", "and", "MIN", 1.0)
+r11 = FuzzyRuleType("rule11", None, None, "and", "MIN", None, None, 1.0)
 
 ant11 = AntecedentType()
 ant11.addClause(ClauseType(pw, pw_highSIN))
@@ -234,7 +234,7 @@ rb.addRule(r11)
 
 # RULE 12
 
-r12 = FuzzyRuleType("rule12", "and", "MIN", 1.0)
+r12 = FuzzyRuleType("rule12", None, None, "and", "MIN", None, None, 1.0)
 
 ant12 = AntecedentType()
 ant12.addClause(ClauseType(pw, pw_highS))

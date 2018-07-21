@@ -2,9 +2,9 @@ from py4jfml.rulebase.RuleBaseType import *
 
 gateway = JavaGateway()
 
-class MamdaniRuleBaseType(RuleBaseType):
+class TsukamotoRuleBaseType(RuleBaseType):
     '''
-    Python class for representing Mamdani rule base fuzzy systems
+    Python class for implementing Tsukamoto rule base fuzzy systems
     '''
 
     def __init__(self, name=None, ruleBaseType=None, activation=None, andAlgorithm=None, orAlgorithm=None):
@@ -17,7 +17,6 @@ class MamdaniRuleBaseType(RuleBaseType):
         '''
         if name!=None and ruleBaseType==None and activation==None and andAlgorithm==None and orAlgorithm==None:
             assert type(name)==str
-            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createMamdaniRuleBaseType(name)
+            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createTsukamotoRuleBaseType(name)
         else:
             super().__init__(name, ruleBaseType, activation, andAlgorithm, orAlgorithm)
-

@@ -1,49 +1,49 @@
 from py4jfml.rule.AntecedentType import *
-from py4jfml.rule.ConsequentType import *
+from py4jfml.rule.TskConsequentType import *
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 
-class FuzzyRuleType:
 
-    def __init__(self, name=None, ant=None, con=None, connector=None, connectorMethod=None, andMethod=None, orMethod=None, weight=None):
+class TskFuzzyRuleType:
+    '''
+    Python class for tskFuzzyRuleType complex type
+    '''
+
+    def __int__(self, name=None, ant=None, con=None, connector=None, connectorMethod=None, andMethod=None, orMethod=None, weight=None):
         '''
-        :param name: name of the Fuzzy Rule
+        :param name: name of the TSK Fuzzy Rule
         :param ant: the Antecedent AntecedentType
-        :param con: the Consequent ConsequentType
+        :param con: the Consequent TskConsequentType
         :param connector: the connector used to define the logical operator aimed at connecting the different clauses in antecedent part (and/or)
-        :param connectorMethod: the and algorithm to be used if the chosen connector is and or the or algorithm to be used if the chosen connector is or.
-        :param andMethod: the attribute andMethod is used to define the and algorithm to be used if the chosen connector is and
+        :param connectorMethod: the and algorithm to be used if the chosen connector is and or the or algorithm to be used if the chosen connector is or
+        :param andMethod:the attribute andMethod is used to define the and algorithm to be used if the chosen connector is and
         :param orMethod: the attribute orMethod is used to define the or algorithm to be used if the chosen connector is or
         :param weight: the attribute weight is used to define the importance of the rule to be used by the inference engine
         '''
-        if name == None and ant == None and con == None and connector == None and connectorMethod == None and andMethod == None and orMethod == None and weight == None:
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType()
-        elif name != None and ant == None and con == None and connector == None and connectorMethod == None and andMethod == None and orMethod == None and weight == None:
-            assert type(name) == str
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name)
-        elif name != None and ant != None and con != None and connector == None and connectorMethod == None and andMethod == None and orMethod == None and weight == None:
-            assert type(name) == str and type(ant) == AntecedentType and type(con) == ConsequentType
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name, ant.java_at,
-                                                                                           con.java_ct)
-        elif name != None and ant == None and con == None and connector == None and connectorMethod == None and andMethod == None and orMethod == None and weight != None:
-            assert type(name) == str and type(weight) == float
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name, weight)
-        elif name != None and ant == None and con == None and connector != None and connectorMethod != None and andMethod == None and orMethod == None and weight != None:
-            assert type(name) == str and type(weight) == float and type(connector) == str and type(
-                connectorMethod) == str
+        if name==None and ant==None and con==None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight==None:
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType()
+        elif name!=None and ant==None and con==None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight==None:
+            assert type(name)==str
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name)
+        elif name!=None and ant!=None and con!=None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight==None:
+            assert type(name)==str and type(ant)==AntecedentType and type(con)==TskConsequentType
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, ant.java_at, con.java_tskct)
+        elif name!=None and ant==None and con==None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight!=None:
+            assert type(name)==str and type(weight)==float
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, weight)
+        elif name!=None and ant==None and con==None and connector!=None and connectorMethod!=None and andMethod==None and orMethod==None and weight!=None:
+            assert type(name)==str and type(weight)==float and type(connector)==str and type(connectorMethod)==str
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, connector, connectorMethod, weight)
+        elif name!=None and ant==None and con==None and connector!=None and connectorMethod==None and andMethod!=None and orMethod!=None and weight!=None:
+            assert type(name)==str and type(weight)==float and type(connector)==str and type(andMethod)==str and type(orMethod)==str
+            self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, connector, andMethod, orMethod, weight)
 
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name, connector,
-                                                                                           connectorMethod, weight)
-        elif name != None and ant == None and con == None and connector != None and connectorMethod == None and andMethod != None and orMethod != None and weight != None:
-            assert type(name) == str and type(weight) == float and type(connector) == str and type(
-                andMethod) == str and type(orMethod) == str
-            self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name, connector, andMethod,orMethod, weight)
 
 
     # 5 methods from class Rule
 
     '''
-    def and(self, degrees, andMethod=None):
+    def andFunction(self, degrees, andMethod=None):
         #param andMethod: andMethod
         #return:
         assert type(degrees)==list
@@ -53,7 +53,6 @@ class FuzzyRuleType:
             assert type(andMethod)==str
             return self.java_r.and(andMethod, degrees)
     '''
-
 
     def getEvaluation(self):
         '''
@@ -118,13 +117,6 @@ class FuzzyRuleType:
         '''
         return self.java_r.getConnector()
 
-    def getConsequent(self):
-        '''
-        Gets the value of the property consequent
-        :return: possible object is ConsequentType
-        '''
-        return self.java_r.getConsequent()
-
     def getName(self):
         '''
         Gets the value of the property name
@@ -145,6 +137,13 @@ class FuzzyRuleType:
         :return: possible object is string
         '''
         return self.java_r.getOrMethod()
+
+    def getTskConsequent(self):
+        '''
+        Gets the value of the property tskConsequent
+        :return: possible object is TskConsequentType
+        '''
+        return self.java_r.getTskConsequent()
 
     def getWeight(self):
         '''
@@ -191,14 +190,6 @@ class FuzzyRuleType:
         assert type(value)==str
         self.java_r.	setConnector(value)
 
-    def setConsequent(self, value):
-        '''
-        Sets the value of the property consequent
-        :param value: allowed object is ConsequentType
-        '''
-        assert type(value)==ConsequentType
-        self.java_r.setConsequent(value.java_ct)
-
     def setName(self, value):
         '''
         Sets the value of the property name
@@ -223,6 +214,14 @@ class FuzzyRuleType:
         assert type(value)==str
         self.java_r.setOrMethod(value)
 
+    def setTskConsequent(self, value):
+        '''
+        Sets the value of the property tskConsequent
+        :param value: allowed object is TskConsequentType
+        '''
+        assert type(value)==TskConsequentType
+        self.java_r.setTskConsequent(value.java_tskct)
+
     def setWeight(self, value):
         '''
         Sets the value of the property weight
@@ -237,7 +236,6 @@ class FuzzyRuleType:
         :return: possible object is String
         '''
         return self.java_r.toString()
-
 
 
 

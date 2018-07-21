@@ -1,12 +1,11 @@
-from py4jfml.FuzzyInferenceSystem import *
-from py4jfml.knowledgebase.KnowledgeBaseType import *
-from py4jfml.term.FuzzyTerm import *
-from py4jfml.rulebase.MamdaniRuleBaseType import *
-from py4jfml.rule.ConsequentType import *
-import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
 
+from py4jfml.Py4Jfml import *
+from py4jfml.rule.FuzzyRuleType import *
+from py4jfml.term.FuzzyTerm import *
+from py4jfml.rulebase.MamdaniRuleBaseType import *
 gateway = JavaGateway()
+
 
 class IrisMamdaniTest1:
     #FuzzyInference
@@ -58,7 +57,7 @@ class IrisMamdaniTest1:
     rb = MamdaniRuleBaseType("rulebase-iris")
 
     #RULE 1
-    r1 = FuzzyRuleType("rule1", "and", "MIN", 1.0)
+    r1 = FuzzyRuleType("rule1",None,None,"and","MIN",None,None,1.0)
 
     #aggiunta regole antecedenti
     ant1 = AntecedentType()
@@ -73,7 +72,7 @@ class IrisMamdaniTest1:
     rb.addRule(r1)
 
     #RULE 2
-    r2 = FuzzyRuleType("rule2", "and", "MIN", 1.0)
+    r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
     ant2 = AntecedentType()
     ant2.addClause(ClauseType(pw, pw_medium))
     con2 = ConsequentType()
@@ -84,7 +83,7 @@ class IrisMamdaniTest1:
     rb.addRule(r2)
 
     #RULE 3
-    r3 = FuzzyRuleType("rule3", "and", "MIN", 1.0)
+    r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
     ant3 = AntecedentType()
     ant3.addClause(ClauseType(pw, pw_high))
     con3 = ConsequentType()
@@ -98,7 +97,7 @@ class IrisMamdaniTest1:
 
     #WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani1.xml"
-    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
+    Py4jfml.writeFSTtoXML(iris, str_xml)
 
 class IrisMamdaniTest2:
     # FuzzyInference
@@ -204,7 +203,7 @@ class IrisMamdaniTest2:
     # RULE BASE
     rb = MamdaniRuleBaseType("rulebase-iris")
     # RULE 1
-    r1 = FuzzyRuleType("rule1", "and", "MIN", 1.0)
+    r1 = FuzzyRuleType("rule1", None, None, "and", "MIN", None, None, 1.0)
 
     ant1 = AntecedentType()
     ant1.addClause(ClauseType(pw, pw_low))
@@ -216,7 +215,7 @@ class IrisMamdaniTest2:
     rb.addRule(r1)
 
     # RULE 2
-    r2 = FuzzyRuleType("rule2", "and", "MIN", 1.0)
+    r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
 
     ant2 = AntecedentType()
     ant2.addClause(ClauseType(sw, sw_not_high))
@@ -230,7 +229,7 @@ class IrisMamdaniTest2:
     rb.addRule(r2);
 
     # RULE 3
-    r3 = FuzzyRuleType("rule3", "and", "MIN", 1.0)
+    r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
 
     ant3 = AntecedentType()
     ant3.addClause(ClauseType(sl, sl_not_low))
@@ -248,7 +247,7 @@ class IrisMamdaniTest2:
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani2.xml"
-    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
+    Py4jfml.writeFSTtoXML(iris, str_xml)
 
 
 class IrisMamdaniTest3:
@@ -327,7 +326,7 @@ class IrisMamdaniTest3:
     rb = MamdaniRuleBaseType("rulebase-iris")
 
     # RULE 1
-    r1 = FuzzyRuleType("rule1", "and", "MIN", 1.0)
+    r1 = FuzzyRuleType("rule1", None, None, "and", "MIN", None, None, 1.0)
 
     #regole antecendenti
     ant1 = AntecedentType()
@@ -342,7 +341,7 @@ class IrisMamdaniTest3:
     rb.addRule(r1)
 
     # RULE 2
-    r2 = FuzzyRuleType("rule2", "and", "MIN", 1.0)
+    r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
 
     ant2 = AntecedentType()
     ant2.addClause(ClauseType(pw, pw_lowGAU))
@@ -354,7 +353,7 @@ class IrisMamdaniTest3:
     rb.addRule(r2)
 
     # RULE 3
-    r3 = FuzzyRuleType("rule3", "and", "MIN", 1.0)
+    r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
 
     ant3 = AntecedentType()
     ant3.addClause(ClauseType(pw, pw_lowPi))
@@ -367,7 +366,7 @@ class IrisMamdaniTest3:
     rb.addRule(r3)
 
     # RULE 4
-    r4 = FuzzyRuleType("rule4", "and", "MIN", 1.0)
+    r4 = FuzzyRuleType("rule4", None, None, "and", "MIN", None, None, 1.0)
 
     ant4 = AntecedentType()
     ant4.addClause(ClauseType(pw, pw_lowZ))
@@ -381,7 +380,7 @@ class IrisMamdaniTest3:
     rb.addRule(r4)
 
     # RULE 5
-    r5 = FuzzyRuleType("rule5", "and", "MIN", 1.0)
+    r5 = FuzzyRuleType("rule5", None, None, "and", "MIN", None, None, 1.0)
 
     ant5 = AntecedentType()
     ant5.addClause(ClauseType(pw, pw_mediumTRI))
@@ -395,7 +394,7 @@ class IrisMamdaniTest3:
     rb.addRule(r5)
 
     # RULE 6
-    r6 = FuzzyRuleType("rule6", "and", "MIN", 1.0)
+    r6 = FuzzyRuleType("rule6", None, None, "and", "MIN", None, None, 1.0)
 
     ant6 = AntecedentType()
     ant6.addClause(ClauseType(pw, pw_mediumTRA))
@@ -409,7 +408,7 @@ class IrisMamdaniTest3:
     rb.addRule(r6)
 
     # RULE 7
-    r7 = FuzzyRuleType("rule7", "and", "MIN", 1.0)
+    r7 = FuzzyRuleType("rule7", None, None, "and", "MIN", None, None, 1.0)
 
     ant7 = AntecedentType()
     ant7.addClause(ClauseType(pw, pw_mediumGAU))
@@ -423,7 +422,7 @@ class IrisMamdaniTest3:
     rb.addRule(r7)
 
     # RULE 8
-    r8 = FuzzyRuleType("rule8", "and", "MIN", 1.0)
+    r8 = FuzzyRuleType("rule8", None, None, "and", "MIN", None, None, 1.0)
 
     ant8 = AntecedentType()
     ant8.addClause(ClauseType(pw, pw_mediumREC))
@@ -435,7 +434,7 @@ class IrisMamdaniTest3:
     rb.addRule(r8)
 
     # RULE 9
-    r9 = FuzzyRuleType("rule9", "and", "MIN", 1.0)
+    r9 = FuzzyRuleType("rule9", None, None, "and", "MIN", None, None, 1.0)
 
     ant9 = AntecedentType()
     ant9.addClause(ClauseType(pw, pw_highLIN))
@@ -449,7 +448,7 @@ class IrisMamdaniTest3:
     rb.addRule(r9)
 
     # RULE 10
-    r10 = FuzzyRuleType("rule10", "and", "MIN", 1.0)
+    r10 = FuzzyRuleType("rule10", None, None, "and", "MIN", None, None, 1.0)
     ant10 = AntecedentType()
     ant10.addClause(ClauseType(pw, pw_highGAU))
 
@@ -462,7 +461,7 @@ class IrisMamdaniTest3:
     rb.addRule(r10)
 
     # RULE 11
-    r11 = FuzzyRuleType("rule11", "and", "MIN", 1.0)
+    r11 = FuzzyRuleType("rule11", None, None, "and", "MIN", None, None, 1.0)
 
     ant11 = AntecedentType()
     ant11.addClause(ClauseType(pw, pw_highSIN))
@@ -476,7 +475,7 @@ class IrisMamdaniTest3:
 
     # RULE 12
 
-    r12 = FuzzyRuleType("rule12", "and", "MIN", 1.0)
+    r12 = FuzzyRuleType("rule12", None, None, "and", "MIN", None, None, 1.0)
 
     ant12 = AntecedentType()
     ant12.addClause(ClauseType(pw, pw_highS))
@@ -493,4 +492,4 @@ class IrisMamdaniTest3:
 
     # WRITTING IRIS EXAMPLE INTO AN XML FILE
     str_xml = "XMLFiles/IrisMamdani3.xml"
-    fml.Py4jfml.writeFSTtoXML(iris, str_xml)
+    Py4jfml.writeFSTtoXML(iris, str_xml)

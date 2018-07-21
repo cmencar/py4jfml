@@ -101,7 +101,7 @@ rbMam = MamdaniRuleBaseType("MamdaniRB1")
 tipper.addRuleBase(rbMam)
 
 #creazione regola 1 con nome regola connettore metodo operazione e peso
-rule1 = FuzzyRuleType("rule1", "or", "MAX", 1.)
+rule1 = FuzzyRuleType("rule1", None, None, "or", "MAX", None, None, 1.)
 
 #creazione clausole antecedenti alle regole
 ant1 = AntecedentType()
