@@ -1,6 +1,8 @@
-from py4jfml.rule.AntecedentType import *
-from py4jfml.rule.ConsequentType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.rule.AntecedentType import AntecedentType
+from py4jfml.rule.ConsequentType import ConsequentType
+
 gateway = JavaGateway()
 
 class FuzzyRuleType:

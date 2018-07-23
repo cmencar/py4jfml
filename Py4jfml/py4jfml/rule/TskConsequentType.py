@@ -1,5 +1,10 @@
-from py4jfml.rule.TskConsequentClausesType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable import AnYaDataCloudType, AggregatedFuzzyVariableType, FuzzyVariableType, \
+    TskVariableType, TsukamotoVariableType
+from py4jfml.rule import TskConsequentClausesType, TskClauseType
+from py4jfml.term import TskTermType
+
 gateway = JavaGateway()
 
 

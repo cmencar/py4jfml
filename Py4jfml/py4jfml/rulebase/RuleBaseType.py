@@ -1,10 +1,10 @@
-from py4jfml.rule.FuzzyRuleType import *
-from py4jfml.rulebase.FuzzySystemRuleBase import *
 from py4j.java_gateway import JavaGateway
+from py4jfml.rule import FuzzyRuleType
+from py4jfml.rulebase import FuzzySystemRuleBase
 
 gateway = JavaGateway()
 
-class RuleBaseType(FuzzySystemRuleBase):
+class RuleBaseType():
     '''
     Python class for ruleBaseType complex type.
     '''
@@ -17,7 +17,7 @@ class RuleBaseType(FuzzySystemRuleBase):
         :param andAlgorithm: the and algorithm to be used
         :param orAlgorithm: the or algorithm to be used
         '''
-        print("OK")
+        super().__init__()
         if name==None and ruleBaseType==None and activation==None and andAlgorithm==None and orAlgorithm==None:
             self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createRuleBaseType()
         elif name!=None and ruleBaseType!=None and activation==None and andAlgorithm==None and orAlgorithm==None:

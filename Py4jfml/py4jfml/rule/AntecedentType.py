@@ -1,5 +1,9 @@
-from py4jfml.rule.ClauseType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable import AnYaDataCloudType, AggregatedFuzzyVariableType, FuzzyVariableType
+from py4jfml.rule.ClauseType import ClauseType
+from py4jfml.term import FuzzyTermType, AggregatedFuzzyTermType
+from py4jfml.term import TsukamotoTermType
 
 gateway = JavaGateway()
 

@@ -1,6 +1,6 @@
-from py4jfml.knowledgebasevariable.FuzzyVariableType import *
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType, FuzzyVariableType
 
 gateway = JavaGateway()
 

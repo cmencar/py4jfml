@@ -1,5 +1,5 @@
-from py4jfml.term.TsukamotoTermType import *
 from py4j.java_gateway import JavaGateway
+from py4jfml.term import TsukamotoTermType
 
 gateway = JavaGateway()
 

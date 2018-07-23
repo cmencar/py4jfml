@@ -1,7 +1,9 @@
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
+from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
+
 gateway = JavaGateway()
-from py4jfml.aggregated.AndAggregatedType import *
-from py4jfml.aggregated.OrAggregatedType import *
 
 class AggregatedFuzzyTermType:
     '''

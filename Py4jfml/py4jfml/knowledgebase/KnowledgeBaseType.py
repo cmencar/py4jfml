@@ -1,9 +1,11 @@
-from py4jfml.knowledgebasevariable.FuzzyVariableType import *
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import *
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import *
-from py4jfml.knowledgebasevariable.TskVariableType import *
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
+from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
+from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
+from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
+from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
+
 gateway = JavaGateway()
 
 

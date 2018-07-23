@@ -1,9 +1,17 @@
 from py4j.java_gateway import JavaGateway
 
-from py4jfml.Py4Jfml import *
-from py4jfml.rule.FuzzyRuleType import *
-from py4jfml.term.FuzzyTerm import *
-from py4jfml.rulebase.MamdaniRuleBaseType import *
+from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
+from py4jfml.Py4Jfml import Py4jfml
+from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
+from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
+from py4jfml.rule.AntecedentType import AntecedentType
+from py4jfml.rule.ClauseType import ClauseType
+from py4jfml.rule.ConsequentType import ConsequentType
+from py4jfml.rule.FuzzyRuleType import FuzzyRuleType
+from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
+from py4jfml.term.FuzzyTerm import FuzzyTerm
+from py4jfml.term.FuzzyTermType import FuzzyTermType
+
 gateway = JavaGateway()
 
 
@@ -16,6 +24,7 @@ class IrisMamdaniTest1:
 
     #FUZZY VARIABLE PetalWidth
     pw = FuzzyVariableType("PetalWidth", 0.1, 2.5)
+
 
     #FUZZY TERM low
     pw_low = FuzzyTermType("low", FuzzyTerm.TYPE_trapezoidShape, [0.1, 0.1, 0.244, 1.087])

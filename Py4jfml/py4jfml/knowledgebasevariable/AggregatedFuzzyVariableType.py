@@ -1,9 +1,8 @@
-from py4jfml.term.AggregatedFuzzyTermType import *
 from py4j.java_gateway import JavaGateway
 
+from py4jfml.term import AggregatedFuzzyTermType
+
 gateway = JavaGateway()
-
-
 
 class AggregatedFuzzyVariableType:
     '''

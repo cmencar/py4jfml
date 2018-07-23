@@ -1,6 +1,7 @@
-from py4jfml.rule.AntecedentType import *
-from py4jfml.rule.TskConsequentType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.rule import AntecedentType, TskConsequentType
+
 gateway = JavaGateway()
 
 

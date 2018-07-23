@@ -1,5 +1,6 @@
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable import AnYaDataCloudType
 
 gateway = JavaGateway()
 

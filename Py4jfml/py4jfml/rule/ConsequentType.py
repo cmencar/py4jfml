@@ -1,6 +1,16 @@
-from py4jfml.rule.ClauseType import *
-from py4jfml.rule.ConsequentClausesType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType
+from py4jfml.knowledgebasevariable import AnYaDataCloudType
+from py4jfml.knowledgebasevariable import FuzzyVariableType
+from py4jfml.knowledgebasevariable import TskVariableType
+from py4jfml.knowledgebasevariable import TsukamotoVariableType
+from py4jfml.rule.ClauseType import ClauseType
+from py4jfml.rule import ConsequentClausesType
+from py4jfml.term import AggregatedFuzzyTermType
+from py4jfml.term import FuzzyTermType
+from py4jfml.term import TsukamotoTermType
+
 gateway = JavaGateway()
 
 class ConsequentType:

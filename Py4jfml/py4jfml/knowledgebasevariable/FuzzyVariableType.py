@@ -1,5 +1,6 @@
-from py4jfml.term.FuzzyTermType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.term.FuzzyTermType import FuzzyTermType
 
 gateway = JavaGateway()
 

@@ -1,7 +1,9 @@
+from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
+from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
 from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
-from py4jfml.knowledgebase.KnowledgeBaseType import *
-from py4jfml.rulebase.MamdaniRuleBaseType import *
+
 
 class FuzzyInferenceSystem:
     """
@@ -29,7 +31,7 @@ class FuzzyInferenceSystem:
         Imposta il valore della conoscenza di base
         :param value: variabile contenete il valore
         """
-        assert type(value) == KnowledgeBaseType
+        assert type(value)==KnowledgeBaseType
         self.java_fis.setKnowledgeBase(value.java_kbt)
 
     def addRuleBase(self,r):

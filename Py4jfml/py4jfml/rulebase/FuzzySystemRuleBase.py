@@ -1,4 +1,4 @@
-class FuzzySystemRuleBase:
+class FuzzySystemRuleBase():
     '''
     Class for representing Fuzzy Systems RuleBase
     '''

@@ -1,7 +1,9 @@
-from py4jfml.rule.ClauseType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.aggregated import OrAggregatedType
+from py4jfml.rule import ClauseType
+
 gateway = JavaGateway()
-from py4jfml.aggregated.OrAggregatedType import *
 
 class AndAggregatedType:
     '''

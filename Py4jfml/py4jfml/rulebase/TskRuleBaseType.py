@@ -1,6 +1,7 @@
-from py4jfml.rule.TskFuzzyRuleType import *
-from py4jfml.rulebase.FuzzySystemRuleBase import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.rule import TskFuzzyRuleType
+from py4jfml.rulebase import FuzzySystemRuleBase
 
 gateway = JavaGateway()
 
