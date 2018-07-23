@@ -1,7 +1,15 @@
+from py4jfml.operator.AndLogicalType import *
+from py4jfml.operator.OrLogicalType import *
 from py4jfml.parameter.OneParamType import *
 from py4jfml.parameter.TwoParamType import *
 from py4jfml.parameter.ThreeParamType import *
 from py4jfml.parameter.FourParamType import *
+from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import *
+from py4jfml.knowledgebasevariable.FuzzyVariableType import *
+from py4jfml.knowledgebasevariable.AnYaDataCloudType import *
+from py4jfml.knowledgebasevariable.TskVariableType import *
+from py4jfml.knowledgebasevariable.TsukamotoVariableType import *
+
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 
@@ -9,7 +17,6 @@ class CircularDefinitionType:
     '''
     Python class for circularDefinitionType complex type.
     '''
-
     def __init__(self, andLogical=None, orLogical=None, var=None):
         '''
         Constructor of class FuzzyTermType CustomShapeType
@@ -25,20 +32,20 @@ class CircularDefinitionType:
 
         #Call of the java constructor using an instance of AndLogicalType and an instance of KnowledgeBaseVariable
         elif orLogical==None:
-            #assert type(andLogical)==AndLogicalType
-            #assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(andLogical)==AndLogicalType
+            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical==None:
-            #assert type(orLogicar)==OrLogicalType
-            #assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(orLogical)==OrLogicalType
+            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(orLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of AndLogicalType, an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         else:
-            #assert type(andLogical)==AndLogicalType and type(orLogicar)==OrLogicalType
-            #assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(andLogical)==AndLogicalType and type(orLogical)==OrLogicalType
+            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, orLogical.java_lt, var.java_kbv)
 
     def copy(self):
@@ -53,7 +60,7 @@ class CircularDefinitionType:
         Sets the value of the property and.
         :param andLogical: allowed object is AndLogicalType
         '''
-        #assert type(andLogical)==AndLogicalType
+        assert type(andLogical)==AndLogicalType
         self.java_cdt.setAnd(andLogical.java_alt)
 
     def setOr(self,orLogical):
@@ -61,7 +68,7 @@ class CircularDefinitionType:
         Sets the value of the property or
         :param orLogical: allowed object is OrLogicalType
         '''
-        #assert type(orLogical)==OrLogicalType
+        assert type(orLogical)==OrLogicalType
         self.java_cdt.setOr(orLogical.java_olt)
 
     def setVariable(self,var):
@@ -69,7 +76,7 @@ class CircularDefinitionType:
         Set the FuzzyVariableType which contains the terms
         :param var: allowed object is KnowledgeBaseVariable
         '''
-        #assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+        assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
         self.java_cdt.setVariable(var.java_kbv)
 
     def getAnd(self):
@@ -160,4 +167,3 @@ class CircularDefinitionType:
         :return: the Parameter associated to this function
         '''
         return self.java_cdt.getParameter()
-
