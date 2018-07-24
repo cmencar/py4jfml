@@ -9,14 +9,14 @@ class CustomShapeType:
         '''
         Constructor of class FuzzyTermType CustomShapeType
         '''
-        self.java_cst = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomShapeType()
+        self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomShapeType()
 
     def copy(self):
         '''
         Creates a copy of the custom shape
         :return: possible object is PointSetShapeType
         '''
-        return self.java_cst.copy()
+        return self.java_mf.copy()
 
     def setName(self,value):
         '''
@@ -24,18 +24,18 @@ class CustomShapeType:
         :param value: allowed object is String
         '''
         assert type(value)==str
-        self.java_cst.setName(str(value))
+        self.java_mf.setName(str(value))
 
     def getName(self):
         '''
         Gets the value of the property name
         :return: possible object is String
         '''
-        return self.java_cst.getName()
+        return self.java_mf.getName()
 
     def getParameter(self):
         '''
         Gets the value of the parameter property
         :return: Objects of the following type(s) are allowed in the list ParameterType
         '''
-        return self.java_cst.getParameter()
+        return self.java_mf.getParameter()

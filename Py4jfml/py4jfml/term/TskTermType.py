@@ -1,5 +1,6 @@
 from py4j.java_gateway import JavaGateway
 from py4j.java_collections import ListConverter
+
 gateway = JavaGateway()
 
 class TskTermType:

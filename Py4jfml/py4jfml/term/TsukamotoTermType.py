@@ -1,6 +1,7 @@
-from py4jfml.membershipfunction.CustomShapeType import *
-from py4jfml.parameter.TwoParamType import *
+from py4jfml.membershipfunction import CustomShapeType
+from py4jfml.parameter import TwoParamType
 from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
 
 class TsukamotoTermType:
@@ -22,17 +23,17 @@ class TsukamotoTermType:
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType()
 
         #Call of the java constructor using the name, the type of fuzzy term and an array of parameters
-        if name!=None and type_java!=None and paramList!=None and pointsList==None and psm==None:
+        elif name!=None and type_java!=None and paramList!=None and pointsList==None and psm==None:
             assert type(name)==str and type(type_java)==int and type(paramList)==list
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,type_java,paramList)
 
         #Call of the java constructor of a PointSet term using the name and a list of PointType
-        if name!=None and type_java!=None and paramList==None and pointsList!=None and psm==None:
+        elif name!=None and type_java!=None and paramList==None and pointsList!=None and psm==None:
             assert type(name)==str and type(type_java)==int and type(pointsList)==list
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,type_java,pointsList)
 
         #Call of the java constructor using the name and an instance of PointSetMonotonicShapeType
-        if name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
+        elif name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
             #assert type(name)==str and type(psm)==PointSetMonotonicShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,psm)
 

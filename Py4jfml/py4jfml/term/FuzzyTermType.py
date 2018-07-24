@@ -1,12 +1,13 @@
-from py4jfml.membershipfunction.PointSetShapeType import *
-from py4jfml.membershipfunction.CustomShapeType import *
-from py4jfml.membershipfunction.CircularDefinitionType import *
-from py4jfml.parameter.OneParamType import *
-from py4jfml.parameter.TwoParamType import *
-from py4jfml.parameter.ThreeParamType import *
-from py4jfml.parameter.FourParamType import *
-from py4j.java_gateway import JavaGateway
+from py4jfml.membershipfunction import PointSetShapeType
+from py4jfml.membershipfunction import CustomShapeType
+from py4jfml.membershipfunction import CircularDefinitionType
+from py4jfml.parameter import OneParamType
+from py4jfml.parameter import TwoParamType
+from py4jfml.parameter import ThreeParamType
+from py4jfml.parameter import FourParamType
 from py4j.java_collections import ListConverter
+from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
 
 class FuzzyTermType:
@@ -31,39 +32,39 @@ class FuzzyTermType:
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType()
 
         #Call of the java constructor using the name and an instance of CircularDefinitionType
-        elif type_java==None and param==None and custom==None and point==None and complement==None and points==None:
+        elif name!=None and type_java==None and param==None and circular!=None and custom==None and point==None and complement==None and points==None:
             assert type(name)==str and type(circular)==CircularDefinitionType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), circular.java_cdt)
 
         #Call of the java constructor using the name and an instance of CustomShapeType
-        elif type_java==None and param==None and circular==None and point==None and complement==None and points==None:
+        elif name!=None and type_java==None and param==None and circular==None and custom!=None and point==None and complement==None and points==None:
             assert type(name)==str and type(custom)==CustomShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), custom.java_cst)
 
         #Call of the java constructor using the name, the type of fuzzy term and an array of parameters
-        elif circular==None and custom==None and point==None and complement==None and points==None:
+        elif name!=None and type_java!=None and param!=None and circular==None and custom==None and point==None and complement==None and points==None:
             assert type(name)==str and type(type_java)==int and type(param)==list
             java_param_list = ListConverter().convert(param, gateway._gateway_client)
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), int(type_java), java_param_list)
 
         #Call of the java constructor of a PointSet term using the name and a list of PointType
-        elif circular==None and custom==None and point==None and complement==None and param==None:
+        elif name!=None and type_java!=None and circular==None and custom==None and point==None and complement==None and param==None and points!=None:
             assert type(name)==str and type(type_java)==int and type(points)==list
             java_points_list = ListConverter().convert(points, gateway._gateway_client)
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), int(type_java), java_points_list)
 
         #Call of the java constructor using the name and an instance of PointSetShapeType
-        elif type_java==None and param==None and circular==None and custom==None and complement==None and points==None:
+        elif name!=None and type_java==None and param==None and circular==None and custom==None and point!=None and complement==None and points==None:
             assert type(name)==str and type(point)==PointSetShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), point.java_psst)
 
         #Call of the java constructor using the name, the complement and a CircularDefinitionType
-        elif type_java==None and param==None and point==None and custom==None and points==None:
+        elif name!=None and type_java==None and param==None and point==None and circular!=None and custom==None and complement!=None and points==None:
             assert type(name)==str and type(complement)==str and type(circular)==CircularDefinitionType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), circular.java_cdt)
 
         #Call of the java constructor using the name, the complement and a PointSetShapeType
-        elif type_java==None and param==None and circular==None and custom==None and points==None:
+        elif name!=None and type_java==None and param==None and point!=None and circular==None and custom==None and complement!=None and points==None:
             assert type(name)==str and type(complement)==str and type(point)==PointSetShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), point.java_psst)
 

@@ -1,5 +1,6 @@
 from py4j.java_gateway import JavaGateway
 
+from py4jfml.Py4Jfml import Py4jfml
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
 from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
@@ -125,8 +126,8 @@ rbMam.addRule(rule1)
 
 # lettura file
 str_xml = "XMLFiles/TipperMamdani1.xml"
-tipper1 = fml.Py4jfml.load(str_xml)
+tipper1 = Py4jfml.load(str_xml)
 
 #scrittura file
 str_xmlOutput = "XMLFiles/ourFS.xml"
-fml.Py4jfml.writeFSTtoXML(tipper, str_xmlOutput)
+Py4jfml.writeFSTtoXML(tipper, str_xmlOutput)

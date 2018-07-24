@@ -1,7 +1,6 @@
+from py4jfml.aggregated import AndAggregatedType
+from py4jfml.aggregated import OrAggregatedType
 from py4j.java_gateway import JavaGateway
-
-from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
-from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
 
 gateway = JavaGateway()
 
@@ -23,18 +22,18 @@ class AggregatedFuzzyTermType:
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType()
 
         #Call of the java constructor using the name
-        if name!=None and andAgg==None and orAgg==None and agg==None:
+        elif name!=None and andAgg==None and orAgg==None and agg==None:
             assert type(name)==str
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType(name)
 
         #Call of the java constructor using the name and an AggregatedType
-        if name!=None and andAgg==None and orAgg==None and agg!=None:
+        elif name!=None and andAgg==None and orAgg==None and agg!=None:
             assert type(name)==str
             assert type(agg)==AndAggregatedType or type(agg)==OrAggregatedType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType(name,agg)
 
         #Call of the java constructor using the name and the AndAggregatedType and the OrAggregatedType
-        if name!=None and andAgg!=None and orAgg!=None and agg==None:
+        elif name!=None and andAgg!=None and orAgg!=None and agg==None:
             assert type(name)==str and type(andAgg)==AndAggregatedType and type(orAgg)==OrAggregatedType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType(name,andAgg,orAgg)
 

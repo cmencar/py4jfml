@@ -1,6 +1,8 @@
+from py4jfml.operator import AndLogicalType
 from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
-from py4jfml.operator.AndLogicalType import *
+
 
 class OrLogicalType:
     '''
@@ -19,72 +21,72 @@ class OrLogicalType:
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType()
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==AndLogicalType and type(term2)==AndLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==AndLogicalType and type(term2)==AndLogicalType:
             assert type(term1)==AndLogicalType and type(term2)==AndLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt,term2.java_lt)
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==AndLogicalType and type(term2)==OrLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==AndLogicalType and type(term2)==OrLogicalType:
             assert type(term1)==AndLogicalType and type(term2)==OrLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt,term2.java_lt)
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==OrLogicalType and type(term2)==AndLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==OrLogicalType and type(term2)==AndLogicalType:
             assert type(term1)==OrLogicalType and type(term2)==AndLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt,term2.java_lt)
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==OrLogicalType and type(term2)==OrLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==OrLogicalType and type(term2)==OrLogicalType:
             assert type(term1)==OrLogicalType and type(term2)==OrLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt,term2.java_lt)
 
         #Calling javaOr constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==AndLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==AndLogicalType:
             assert type(term1)==str and type(term2)==AndLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1),term2.java_lt)
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==OrLogicalType:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==OrLogicalType:
             assert type(term1)==str and type(term2)==OrLogicalType
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1),term2.java_lt)
 
         #Calling java Or constructor using default tConorm = MAX
-        if term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==str:
+        elif term1!=None and term2!=None and tConorm==None and type(term1)==str and type(term2)==str:
             assert type(term1)==str and type(term2)==str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1),str(term2))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==AndLogicalType and type(term2)==AndLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==AndLogicalType and type(term2)==AndLogicalType and type(tConorm)==str:
             assert type(term1) == AndLogicalType and type(term2) == AndLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt, term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==AndLogicalType and type(term2)==OrLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==AndLogicalType and type(term2)==OrLogicalType and type(tConorm)==str:
             assert type(term1) == AndLogicalType and type(term2) == OrLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt, term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==OrLogicalType and type(term2)==AndLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==OrLogicalType and type(term2)==AndLogicalType and type(tConorm)==str:
             assert type(term1) == OrLogicalType and type(term2) == AndLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt, term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==OrLogicalType and type(term2)==OrLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==OrLogicalType and type(term2)==OrLogicalType and type(tConorm)==str:
             assert type(term1) == OrLogicalType and type(term2) == OrLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(term1.java_lt, term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==AndLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==AndLogicalType and type(tConorm)==str:
             assert type(term1) == str and type(term2) == AndLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1), term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==OrLogicalType and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==OrLogicalType and type(tConorm)==str:
             assert type(term1) == str and type(term2) == OrLogicalType and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1), term2.java_lt, str(tConorm))
 
         #Calling java Or constructor using tConorm as method for or operator
-        if term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==str and type(tConorm)==str:
+        elif term1!=None and term2!=None and tConorm!=None and type(term1)==str and type(term2)==str and type(tConorm)==str:
             assert type(term1) == str and type(term2) == str and type(tConorm) == str
             self.java_lt = gateway.entry_point.getJFMLOperator_Factory().createOrLogicalType(str(term1), str(term2), str(tConorm))
 
@@ -114,9 +116,12 @@ class OrLogicalType:
         assert type(value)==str
         self.java_lt.setTConorm(str(value))
 
-    ''' IMPLEMENTARE
     def getContent(self):
-    '''
+        '''
+        Objects of the following type(s) are allowed in the list JAXBElement<OrLogicalType> JAXBElement<CircularTermType> JAXBElement<AndLogicalType>
+        :return: allowed object is a list of JAXBElement
+        '''
+        return self.java_lt.getContent()
 
     def getContent(self,i):
         '''

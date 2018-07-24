@@ -1,25 +1,25 @@
-from py4jfml.operator.AndLogicalType import *
-from py4jfml.operator.OrLogicalType import *
-from py4jfml.parameter.OneParamType import *
-from py4jfml.parameter.TwoParamType import *
-from py4jfml.parameter.ThreeParamType import *
-from py4jfml.parameter.FourParamType import *
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import *
-from py4jfml.knowledgebasevariable.FuzzyVariableType import *
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import *
-from py4jfml.knowledgebasevariable.TskVariableType import *
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import *
-
+from py4jfml.operator import AndLogicalType
+from py4jfml.operator import OrLogicalType
+from py4jfml.parameter import OneParamType
+from py4jfml.parameter import TwoParamType
+from py4jfml.parameter import ThreeParamType
+from py4jfml.parameter import FourParamType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType
+from py4jfml.knowledgebasevariable import FuzzyVariableType
+from py4jfml.knowledgebasevariable import AnYaDataCloudType
+from py4jfml.knowledgebasevariable import TskVariableType
+from py4jfml.knowledgebasevariable import TsukamotoVariableType
 from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
 
 class CircularDefinitionType:
     '''
-    Python class for circularDefinitionType complex type.
+    Python class for circularDefinitionType complex type
     '''
     def __init__(self, andLogical=None, orLogical=None, var=None):
         '''
-        Constructor of class FuzzyTermType CustomShapeType
+        Constructor of class CircularDefinitionType
         :param andLogical:
         :param orLogical:
         :param var:
@@ -28,32 +28,32 @@ class CircularDefinitionType:
 
         #Calling java default constructor
         if andLogical==None and orLogical==None and var==None:
-            self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType()
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType()
 
         #Call of the java constructor using an instance of AndLogicalType and an instance of KnowledgeBaseVariable
-        elif orLogical==None:
+        elif andLogical!=None and orLogical==None and var!=None:
             assert type(andLogical)==AndLogicalType
             assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
-            self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, var.java_kbv)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of OrLogicalType and an instance of KnowledgeBaseVariable
-        elif andLogical==None:
+        elif andLogical==None and orLogical!=None and var!=None:
             assert type(orLogical)==OrLogicalType
             assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
-            self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(orLogical.java_lt, var.java_kbv)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(orLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of AndLogicalType, an instance of OrLogicalType and an instance of KnowledgeBaseVariable
-        else:
+        elif andLogical != None and orLogical != None and var != None:
             assert type(andLogical)==AndLogicalType and type(orLogical)==OrLogicalType
             assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
-            self.java_cdt = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, orLogical.java_lt, var.java_kbv)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, orLogical.java_lt, var.java_kbv)
 
     def copy(self):
         '''
         Creates a copy of the object
         :return: a new instance of CircularDefinitionType
         '''
-        return self.java_cdt.copy()
+        return self.java_mf.copy()
 
     def setAnd(self,andLogical):
         '''
@@ -61,7 +61,7 @@ class CircularDefinitionType:
         :param andLogical: allowed object is AndLogicalType
         '''
         assert type(andLogical)==AndLogicalType
-        self.java_cdt.setAnd(andLogical.java_alt)
+        self.java_mf.setAnd(andLogical.java_lt)
 
     def setOr(self,orLogical):
         '''
@@ -69,7 +69,7 @@ class CircularDefinitionType:
         :param orLogical: allowed object is OrLogicalType
         '''
         assert type(orLogical)==OrLogicalType
-        self.java_cdt.setOr(orLogical.java_olt)
+        self.java_mf.setOr(orLogical.java_lt)
 
     def setVariable(self,var):
         '''
@@ -77,42 +77,42 @@ class CircularDefinitionType:
         :param var: allowed object is KnowledgeBaseVariable
         '''
         assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
-        self.java_cdt.setVariable(var.java_kbv)
+        self.java_mf.setVariable(var.java_kbv)
 
     def getAnd(self):
         '''
         Gets the value of the property and
         :return: possible object is AndLogicalType
         '''
-        return self.java_cdt.getAnd()
+        return self.java_mf.getAnd()
 
     def getOr(self):
         '''
         Gets the value of the property or
         :return: possible object is OrLogicalType
         '''
-        return self.java_cdt.getOr()
+        return self.java_mf.getOr()
 
     def getVariable(self):
         '''
         Get the FuzzyVariableType which contains the terms
         :return: possible object is AggregatedFuzzyVariableType or FuzzyVariableType or AnYaDataCloudType or TskVariableType or TsukamotoVariableType
         '''
-        return self.java_cdt.getVariable()
+        return self.java_mf.getVariable()
 
     def getXValuesDefuzzifier(self):
         '''
         This function returns a list with values [x1, x2, x3, ...] which represents points in the x domain of the function needed by defuzzifer
         :return: an list with floats
         '''
-        return self.java_cdt.getXValuesDefuzzifier()
+        return self.java_mf.getXValuesDefuzzifier()
 
     def __str__(self):
         '''
         Gets the object as a string
         :return: possible object is string
         '''
-        return self.java_cdt.toString()
+        return self.java_mf.toString()
 
     #Methods inherited from abstract class jfml.membershipfunction.MembershipFunction
 
@@ -121,16 +121,16 @@ class CircularDefinitionType:
         Sets the left domain value
         :param domainLeft: the left domain value
         '''
-        assert type(domainLeft) == float
-        self.java_cdt.setDomainLeft(float(domainLeft))
+        assert type(domainLeft)==float
+        self.java_mf.setDomainLeft(float(domainLeft))
 
     def setDomainRight(self, domainRight):
         '''
         Sets the right domain value
         :param domainRight: the right domain value
         '''
-        assert type(domainRight) == float
-        self.java_cdt.setDomainRight(float(domainRight))
+        assert type(domainRight)==float
+        self.java_mf.setDomainRight(float(domainRight))
 
     def setParameter(self, p):
         '''
@@ -138,32 +138,32 @@ class CircularDefinitionType:
         :param p: the parameter
         '''
         assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
-        self.java_cdt.setParameter(p.java_p)
+        self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):
         '''
         Gets the left domain
         :return: the left domain
         '''
-        return self.java_cdt.getDomainLeft()
+        return self.java_mf.getDomainLeft()
 
     def getDomainRight(self):
         '''
         Gets the right domain
         :return: the right domain
         '''
-        return self.java_cdt.getDomainRight()
+        return self.java_mf.getDomainRight()
 
     def getName(self):
         '''
         Gets the name of the function
         :return: the name of the function
         '''
-        return self.java_cdt.getName()
+        return self.java_mf.getName()
 
     def getParameter(self):
         '''
         Gets the Parameter associated to this function
         :return: the Parameter associated to this function
         '''
-        return self.java_cdt.getParameter()
+        return self.java_mf.getParameter()

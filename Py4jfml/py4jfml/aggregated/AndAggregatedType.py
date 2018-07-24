@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.aggregated import OrAggregatedType
 from py4jfml.rule import ClauseType
 
@@ -24,72 +23,72 @@ class AndAggregatedType:
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType()
 
         #Calling java And constructor using default t-norm = MIN
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
             assert type(term1)==AndAggregatedType and type(term2)==AndAggregatedType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
             assert type(term1)==AndAggregatedType and type(term2)==OrAggregatedType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
             assert type(term1)==OrAggregatedType and type(term2)==AndAggregatedType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm==None:
             assert type(term1)==OrAggregatedType and type(term2)==OrAggregatedType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
+        elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
             assert type(term2)==AndAggregatedType and type(c1)==ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
+        elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
             assert type(term2)==OrAggregatedType and type(c1)==ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java And constructor using default t-norm = MIN
-        if term1==None and term2==None and c1!=None and c2!=None and tNorm==None:
+        elif term1==None and term2==None and c1!=None and c2!=None and tNorm==None:
             assert type(c1) == ClauseType and type(c2) == ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(c1.java_ct,c2.java_ct)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
             assert type(term1)==AndAggregatedType and type(term2)==AndAggregatedType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,term1.java_at,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
             assert type(term1)==AndAggregatedType and type(term2)==OrAggregatedType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,term1.java_at,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
             assert type(term1)==OrAggregatedType and type(term2)==AndAggregatedType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,term1.java_at,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
+        elif term1!=None and term2!=None and c1==None and c2==None and tNorm!=None:
             assert type(term1)==OrAggregatedType and type(term2)==OrAggregatedType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,term1.java_at,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1==None and term2!=None and c1!=None and c2==None and tNorm!=None:
+        elif term1==None and term2!=None and c1!=None and c2==None and tNorm!=None:
             assert type(term2)==AndAggregatedType and type(c1)==ClauseType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,c1.java_ct,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1==None and term2!=None and c1!=None and c2==None and tNorm!=None:
+        elif term1==None and term2!=None and c1!=None and c2==None and tNorm!=None:
             assert type(term2)==OrAggregatedType and type(c1)==ClauseType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,c1.java_ct,term2.java_at)
 
         #Calling java  And constructor using t-norm as method for and operator
-        if term1==None and term2==None and c1!=None and c2!=None and tNorm!=None:
+        elif term1==None and term2==None and c1!=None and c2!=None and tNorm!=None:
             assert type(c1)==ClauseType and type(c2)==ClauseType and type(tNorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tNorm,c1.java_ct,c2.java_ct)
 
@@ -111,9 +110,12 @@ class AndAggregatedType:
         assert type(value)==str
         self.java_at.setTNorm(str(value))
 
-    ''' IMPLEMENTARE
     def getContent(self):
-    '''
+        '''
+        Objects of the following type(s) are allowed in the list JAXBElement<OrAggregatedType> JAXBElement<ClauseType> JAXBElement<AndAggregatedType>
+        :return: allowed object is a list of JAXBElement
+        '''
+        return self.java_at.getContent()
 
     def getContent(self,i):
         '''

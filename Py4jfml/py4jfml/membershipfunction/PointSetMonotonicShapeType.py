@@ -2,88 +2,98 @@ from py4jfml.parameter import OneParamType
 from py4jfml.parameter import TwoParamType
 from py4jfml.parameter import ThreeParamType
 from py4jfml.parameter import FourParamType
-from py4j.java_gateway import JavaGateway
+from py4jfml.membershipfunction import PointType
 from py4j.java_collections import ListConverter
+from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
 
-class PointSetShapeType:
+class PointSetMonotonicShapeType:
     '''
-    Python class for pointSetShapeType complex type
+    Python class for pointSetMonotonicShapeType complex type
     '''
-    def __init__(self, domainLeft=None, domainRight=None, points=None):
+    def __init__(self,domainLeft=None,domainRight=None,points=None):
         '''
-        Constructor of class PointSetShapeType
+        Constructor of class PointSetMonotonicShapeType
         :param domainLeft: left domain
         :param domainRight: right domain
         :param points: list of PointType
         '''
 
-        #Calling java default constructor
         if domainLeft==None and domainRight==None and points==None:
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType()
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType()
 
-        #Call of the java constructor with left and right domain
-        elif domainLeft!=None and domainRight!=None and points==None:
+        if domainLeft!=None and domainRight!=None and points==None:
             assert type(domainLeft)==float and type(domainRight)==float
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType(domainLeft,domainRight)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(domainLeft,domainRight)
 
-        #Call of the java constructor with a list of PointType
-        elif domainLeft==None and domainRight==None and points!=None:
-            assert type(points)==list
-            java_points_list = ListConverter().convert(points, gateway._gateway_client)
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType(java_points_list)
-
-        #Call of the java constructor with left and right domain and a list of PointType
-        elif domainLeft!=None and domainRight!=None and points!=None:
+        if domainLeft!=None and domainRight!=None and points!=None:
             assert type(domainLeft)==float and type(domainRight)==float and type(points)==list
             java_points_list = ListConverter().convert(points, gateway._gateway_client)
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType(domainLeft,domainRight,java_points_list)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(domainLeft,domainRight,java_points_list)
 
-    def copy(self):
-        '''
-        Copy a PointSetShapeType
-        :return: possible object is PointSetShapeType
-        '''
-        return self.java_mf.copy()
+        if domainLeft==None and domainRight==None and points!=None:
+            assert type(points)==list
+            java_points_list = ListConverter().convert(points, gateway._gateway_client)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(java_points_list)
 
-    def setDegree(self,value):
+    def addPoint(self,x,y):
         '''
-        Sets the value of the property degree
-        :param value: allowed object is Integer
+        Add a point to the list
+        :param x: float value
+        :param y: float value
         '''
-        assert type(value)==int
-        self.java_mf.setDegree(int(value))
+        assert type(x)==float and type(y)==float
+        self.java_mf.addPoint(x,y)
+
+    def addPoint(self,p):
+        '''
+        Add a point to the list
+        :param p: a PointType
+        '''
+        assert type(p)==PointType
+        self.java_mf.addPoint(p)
 
     def setInterpolationMethod(self,value):
         '''
         Sets the value of the property interpolationMethod
-        :param value: allowed object is InterpolationMethodType
+        :param value: allowed object is MonotonicInterpolationMethodType
         '''
-        #assert type(value)==InterpolationMethodType
-        self.java_mf.setInterpolationMethod(value.java_imt)
+        #assert type(value)==MonotonicInterpolationMethodType
+        self.java_mf.setInterpolationMethod(value)
 
-    def getDegree(self):
+    def setPoints(self,points):
         '''
-        Gets the value of the property degree.
-        :return: possible object is int
+        Set points
+        :param points: a list of PointType
         '''
-        return self.java_mf.getDegree()
+        assert type(points)==list
+        self.java_mf.setPoints(points)
+
+    def getFi(self,y):
+        '''
+        This function returns the inverse value. Given y, return x where f(x)=y
+        :param y: a float value
+        :return: a float value
+        '''
+        assert type(y)==float
+        return self.java_mf.getFi(y)
 
     def getInterpolationMethod(self):
         '''
         Gets the value of the property interpolationMethod
-        :return: possible object is InterpolationMethodType
+        :return: possible object is MonotonicInterpolationMethodType
         '''
         return self.java_mf.getInterpolationMethod()
 
     def getMembershipDegree(self,x):
         '''
-        Get membership degree value.
+        Get membership degree value
         :param x: Variable's 'x' value
-        :return: Note: Output must be in range [0,1]
+        :return: float value, output must be in range [0,1]
         '''
         assert type(x)==float
-        return self.java_mf.getMembershipDegree(float(x))
+        return self.java_mf.getMembershipDegree(x)
 
     def getPoints(self):
         '''
@@ -95,16 +105,9 @@ class PointSetShapeType:
     def getXValuesDefuzzifier(self):
         '''
         This function returns a list with values [x1, x2, x3, ...] which represents points in the x domain of the function needed by defuzzifer
-        :return: a list with floats
+        :return: an list with floats
         '''
         return self.java_mf.getXValuesDefuzzifier()
-
-    def __str__(self):
-        '''
-        Gets the object as a string
-        :return: possible object is string
-        '''
-        return self.java_mf.toString()
 
     #Methods inherited from abstract class jfml.membershipfunction.MembershipFunction
 
