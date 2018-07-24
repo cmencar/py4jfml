@@ -8,23 +8,22 @@ import command.Command as cmd
 #@click.option('-t', '--tipper', default="", help=": Tipper")
 #@click.option('-m', '--mamdani', default="", help=": Mamdani Rule Base")
 
-def commandComposer(load, evaluate):
+def startCLI(load, evaluate):
+    '''
+    Start the Command Line Interface.
+    :param load: path of file xml; type allowed is String.
+    :param evaluate: evaluate[0] = first value, evaluate[1] = second value; type allowed is int.
+    '''
     if load is not "" and len(evaluate) > 0:
-        macroObj = cmd.MacroCommand()
-        #Method Load
-        loadObj = cmd.Load()
-        macroObj.add(loadObj)
-        macroObj.execute(0, load)
-        #Method Evaluate
-        evalObj = cmd.Evaluate()
-        macroObj.add(evalObj)
-        macroObj.execute(1, evaluate[0], evaluate[1])
+        #Call Load + Evaluate
+        cmdCompO = cmd.CommandComposer()
+        args = {'load':load, 'evaluate':[evaluate[0],evaluate[1]]}
+        cmdCompO.callMacro(args)
     elif load is not "":
-        #Method Load
-        loadObj = cmd.Load()
-        macroObj = cmd.MacroCommand()
-        macroObj.add(loadObj)
-        macroObj.execute(0, load)
+        #Call Load
+        cmdCompO = cmd.CommandComposer()
+        args = {'load':load}
+        cmdCompO.callMacro(args)
 
 if __name__ == '__main__':
-    commandComposer()
+    startCLI()
