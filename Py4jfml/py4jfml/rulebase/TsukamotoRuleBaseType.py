@@ -1,10 +1,11 @@
 from py4j.java_gateway import JavaGateway
 
-from py4jfml.rule import FuzzyRuleType
+from py4jfml.rule.FuzzyRuleType import FuzzyRuleType
+from py4jfml.rulebase.RuleBaseType import RuleBaseType
 
 gateway = JavaGateway()
 
-class TsukamotoRuleBaseType():
+class TsukamotoRuleBaseType(RuleBaseType):
     '''
     Python class for implementing Tsukamoto rule base fuzzy systems
     '''
@@ -26,47 +27,6 @@ class TsukamotoRuleBaseType():
         elif name!=None and ruleBaseType!=None and activation!=None and andAlgorithm!=None and orAlgorithm!=None:
             assert type(name)==str and type(activation)==str and type(andAlgorithm)==str and type(orAlgorithm)==str and type(ruleBaseType)==int
             self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createTsukamotoRuleBaseType(name, activation, andAlgorithm, orAlgorithm, ruleBaseType)
-
-#METHODS OF FuzzySystemRuleBase
-
-    def getRuleBaseSystemType(self):
-        '''
-        Gets the representation of the fuzzy system according to the static variables
-        - TYPE_MAMDANI - Mamdani Rule Base
-        - TYPE_TSUKAMOTO - tsukamoto Rule Base
-        - TYPE_TSK - tsk Rule Base
-        - TYPE_ANYA - AnYa Rule Base
-        - TYPE_OTHER - other Rule Base
-        :return: the representation of the fuzzy system
-        '''
-        return self.java_fsrb.getRuleBaseSystemType()
-
-    def getRuleBaseSystemTypeName(self):
-        '''
-        Gets the name of the Rule Base fuzzy system
-        - TYPE_MAMDANI - mamdani
-        - TYPE_TSUKAMOTO - tsukamoto
-        - TYPE_TSK - tsk
-        - TYPE_ANYA - anYa
-        - TYPE_OTHER - other
-        :return: the name of the Rule Base fuzzy system
-        '''
-        return self.java_fsrb.getRuleBaseSystemTypeName()
-
-    def setRuleBaseSystemType(self, ruleBaseType):
-        '''
-        Sets the fuzzy system type according to static variables
-        - TYPE_MAMDANI - Mamdani Rule Base
-        - TYPE_TSUKAMOTO - tsukamoto Rule Base
-        - TYPE_TSK - tsk Rule Base
-        - TYPE_ANYA - AnYa Rule Base
-        - TYPE_OTHER - other Rule Base
-        :param ruleBaseType: the type of the rule base
-        '''
-        assert type(ruleBaseType)==int
-        self.java_fsrb.setRuleBaseSystemType(ruleBaseType)
-
-
 
     def addRule(self, rule):
         '''

@@ -78,7 +78,7 @@ class ClauseType:
         Sets the value of the property term
         :param value: a FuzzyTerm
         '''
-        assert type(value) == AggregatedFuzzyTermType or type(value) == FuzzyTermType or type(value) == TsukamotoTermType
+        assert type(value)==AggregatedFuzzyTermType or type(value)==FuzzyTermType or type(value)==TsukamotoTermType
         self.java_ct.setTerm(value.java_t)
 
     def setVariable(self, variable):
@@ -86,7 +86,7 @@ class ClauseType:
         Sets the value of the property variable
         :param variable: possible object is KnowledgeBaseVariable
         '''
-        assert type(variable) == AnYaDataCloudType or type(variable) == AggregatedFuzzyVariableType or type(variable) == FuzzyVariableType or type(variable) == TskVariableType or type(variable) == TsukamotoVariableType
+        assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
         self.java_ct.setVariable(variable.java_kbv)
 
     def __str__(self):

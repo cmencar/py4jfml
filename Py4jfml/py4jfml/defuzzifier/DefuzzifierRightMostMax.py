@@ -1,7 +1,7 @@
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 
-class DefuzzifierCenterOfGravity:
+class DefuzzifierRightMostMax:
 
     def __init__(self, domainLeft, domainRight, terms):
         '''

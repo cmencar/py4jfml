@@ -1,10 +1,11 @@
-from py4jfml.knowledgebase.KnowledgeBaseType import *
-from py4jfml.rulebase.AnYaRuleBaseType import *
-from py4jfml.rulebase.RuleBaseType import *
-from py4jfml.rulebase.MamdaniRuleBaseType import *
-from py4jfml.rulebase.TskRuleBaseType import *
-from py4jfml.rulebase.TsukamotoRuleBaseType import *
 from py4j.java_gateway import JavaGateway
+
+from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
+from py4jfml.rulebase.AnYaRuleBaseType import AnYaRuleBaseType
+from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
+from py4jfml.rulebase.RuleBaseType import RuleBaseType
+from py4jfml.rulebase.TskRuleBaseType import TskRuleBaseType
+from py4jfml.rulebase.TsukamotoRuleBaseType import TsukamotoRuleBaseType
 
 gateway = JavaGateway()
 

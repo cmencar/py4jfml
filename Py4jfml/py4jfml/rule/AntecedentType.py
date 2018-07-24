@@ -1,9 +1,14 @@
 from py4j.java_gateway import JavaGateway
 
-from py4jfml.knowledgebasevariable import AnYaDataCloudType, AggregatedFuzzyVariableType, FuzzyVariableType
+from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
+from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
+from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
+from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
+from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
 from py4jfml.rule.ClauseType import ClauseType
-from py4jfml.term import FuzzyTermType, AggregatedFuzzyTermType
-from py4jfml.term import TsukamotoTermType
+from py4jfml.term.AggregatedFuzzyTermType import AggregatedFuzzyTermType
+from py4jfml.term.FuzzyTermType import FuzzyTermType
+from py4jfml.term.TsukamotoTermType import TsukamotoTermType
 
 gateway = JavaGateway()
 
@@ -30,7 +35,7 @@ class AntecedentType:
         :param term: the FuzzyTerm or the name of the FuzzyTerm
         '''
         if c != None and variable == None and term == None:
-            assert type(c) == ClauseType
+            assert type(c)==ClauseType
             self.java_at.addClause(c.java_ct)
         elif c==None and variable!=None and term!=None:
             assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable) == TskVariableType or type(variable)==TsukamotoVariableType

@@ -1,8 +1,8 @@
 from py4j.java_gateway import JavaGateway
 
-from py4jfml.rule import AnYaAntecedentType
-from py4jfml.rule import ConsequentType
-from py4jfml.rule import TskConsequentType
+from py4jfml.rule.AnYaAntecedentType import AnYaAntecedentType
+from py4jfml.rule.ConsequentType import ConsequentType
+from py4jfml.rule.TskConsequentType import TskConsequentType
 
 gateway = JavaGateway()
 

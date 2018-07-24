@@ -1,6 +1,12 @@
 from py4j.java_gateway import JavaGateway
 
-from py4jfml.term import AggregatedFuzzyTermType
+from py4jfml.defuzzifier.DefuzzifierLeftMostMax import DefuzzifierLeftMostMax
+from py4jfml.defuzzifier.DefuzzifierRightMostMax import DefuzzifierRightMostMax
+from py4jfml.defuzzifier.DefuzzifierCenterOfArea import DefuzzifierCenterOfArea
+from py4jfml.defuzzifier.DefuzzifierCenterOfGravity import DefuzzifierCenterOfGravity
+from py4jfml.defuzzifier.DefuzzifierCenterOfGravitySingletons import DefuzzifierCenterOfGravitySingletons
+from py4jfml.defuzzifier.DefuzzifierMeanMax import DefuzzifierMeanMax
+from py4jfml.term.AggregatedFuzzyTermType import AggregatedFuzzyTermType
 
 gateway = JavaGateway()
 
@@ -33,13 +39,15 @@ class AggregatedFuzzyVariableType:
         '''
         self.java_kbv.defuzzify()
 
-    '''
     def setDefuzzifier(self, defuzz):
-        #Sets the defuzzifier
-        #:param defuzz: defuzzifier
-        assert type(defuzz)==Defuzzifier
-        self.java_afvt.setDefuzzifier(defuzz.java_d)
-    '''
+        '''
+        Sets the defuzzifier
+        :param defuzz: defuzzifier
+        '''
+        assert type(defuzz)==DefuzzifierCenterOfArea or type(defuzz)==DefuzzifierCenterOfGravity or type(defuzz)==DefuzzifierCenterOfGravitySingletons \
+               or type(defuzz)==DefuzzifierLeftMostMax or type(defuzz)==DefuzzifierMeanMax or type(defuzz)==DefuzzifierRightMostMax
+        self.java_kbv.setDefuzzifier(defuzz.java_d)
+
 
     # Method of class KnowledgeBaseVariable
     def isInput(self):
