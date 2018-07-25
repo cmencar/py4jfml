@@ -6,32 +6,41 @@ from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
-class RectangularMembershipFunction:
+class RightLinearMembershipFunction:
     '''
-    Python class for representing Rectangular membership functions
+    Python class for representing RightLinear membership functions
     '''
     def __init__(self,p=None,domainLeft=None,domainRight=None):
         '''
-        Constructor of class RectangularMembershipFunction
-        :param p: Parameter -> a and b. Parameters must satisfy a<=b
+        Constructor of class RightLinearMembershipFunction
+        :param p: Parameters a and b must satisfy a<=b
         :param domainLeft: left domain
         :param domainRight: right domain
         '''
 
         #Calling java default constructor
         if p==None and domainLeft==None and domainRight==None:
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRectangularMembershipFunction()
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRightLinearMembershipFunction()
 
-        #Call of the java constructor with a Parameter instance with the parameters a and b
+        #Call of the java constructor with Parameter instance with the parameters of the function
         elif p!=None and domainLeft==None and domainRight==None:
             assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRectangularMembershipFunction(p.java_p)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRightLinearMembershipFunction(p.java_p)
 
-        #Call of the java constructor with a Parameter and the left and right domain
+        #Call of the java constructor with TwoParamType with a and b values
         elif p!=None and domainLeft!=None and domainRight!=None:
             assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
             assert type(domainLeft)==float and type(domainRight)==float
-            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRectangularMembershipFunction(p.java_p,domainLeft,domainRight)
+            self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createRightLinearMembershipFunction(p.java_p,domainLeft,domainRight)
+
+    def getFi(self,y):
+        '''
+        This function returns the inverse value. Given y, return x where f(x)=y
+        :param y: float value
+        :return: the inverse value
+        '''
+        assert type(y)==float
+        return self.java_mf.getFi(y)
 
     def getMembershipDegree(self,x):
         '''
@@ -58,7 +67,7 @@ class RectangularMembershipFunction:
 
     #Methods inherited from abstract class jfml.membershipfunction.MembershipFunction
 
-    def setDomainLeft(self,domainLeft):
+    def setDomainLeft(self, domainLeft):
         '''
         Sets the left domain value
         :param domainLeft: the left domain value
@@ -66,7 +75,7 @@ class RectangularMembershipFunction:
         assert type(domainLeft)==float
         self.java_mf.setDomainLeft(float(domainLeft))
 
-    def setDomainRight(self,domainRight):
+    def setDomainRight(self, domainRight):
         '''
         Sets the right domain value
         :param domainRight: the right domain value
@@ -74,7 +83,7 @@ class RectangularMembershipFunction:
         assert type(domainRight)==float
         self.java_mf.setDomainRight(float(domainRight))
 
-    def setParameter(self,p):
+    def setParameter(self, p):
         '''
         Sets the parameter
         :param p: the parameter

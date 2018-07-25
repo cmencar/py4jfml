@@ -23,16 +23,16 @@ class PointSetMonotonicShapeType:
         if domainLeft==None and domainRight==None and points==None:
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType()
 
-        if domainLeft!=None and domainRight!=None and points==None:
+        elif domainLeft!=None and domainRight!=None and points==None:
             assert type(domainLeft)==float and type(domainRight)==float
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(domainLeft,domainRight)
 
-        if domainLeft!=None and domainRight!=None and points!=None:
+        elif domainLeft!=None and domainRight!=None and points!=None:
             assert type(domainLeft)==float and type(domainRight)==float and type(points)==list
             java_points_list = ListConverter().convert(points, gateway._gateway_client)
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(domainLeft,domainRight,java_points_list)
 
-        if domainLeft==None and domainRight==None and points!=None:
+        elif domainLeft==None and domainRight==None and points!=None:
             assert type(points)==list
             java_points_list = ListConverter().convert(points, gateway._gateway_client)
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(java_points_list)
