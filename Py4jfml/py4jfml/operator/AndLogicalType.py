@@ -1,4 +1,4 @@
-from py4jfml.operator import OrLogicalType
+from py4jfml.operator.OrLogicalType import OrLogicalType
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()

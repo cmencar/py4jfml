@@ -1,10 +1,10 @@
-from py4jfml.membershipfunction import PointSetShapeType
-from py4jfml.membershipfunction import CustomShapeType
-from py4jfml.membershipfunction import CircularDefinitionType
-from py4jfml.parameter import OneParamType
-from py4jfml.parameter import TwoParamType
-from py4jfml.parameter import ThreeParamType
-from py4jfml.parameter import FourParamType
+from py4jfml.membershipfunction.PointSetShapeType import PointSetShapeType
+from py4jfml.membershipfunction.CustomShapeType import CustomShapeType
+from py4jfml.membershipfunction.CircularDefinitionType import CircularDefinitionType
+from py4jfml.parameter.OneParamType import OneParamType
+from py4jfml.parameter.TwoParamType import TwoParamType
+from py4jfml.parameter.ThreeParamType import ThreeParamType
+from py4jfml.parameter.FourParamType import FourParamType
 from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 

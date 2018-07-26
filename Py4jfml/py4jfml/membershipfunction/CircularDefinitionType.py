@@ -1,14 +1,14 @@
-from py4jfml.operator import AndLogicalType
-from py4jfml.operator import OrLogicalType
-from py4jfml.parameter import OneParamType
-from py4jfml.parameter import TwoParamType
-from py4jfml.parameter import ThreeParamType
-from py4jfml.parameter import FourParamType
-from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType
-from py4jfml.knowledgebasevariable import FuzzyVariableType
-from py4jfml.knowledgebasevariable import AnYaDataCloudType
-from py4jfml.knowledgebasevariable import TskVariableType
-from py4jfml.knowledgebasevariable import TsukamotoVariableType
+from py4jfml.operator.AndLogicalType import AndLogicalType
+from py4jfml.operator.OrLogicalType import OrLogicalType
+from py4jfml.parameter.OneParamType import OneParamType
+from py4jfml.parameter.TwoParamType import TwoParamType
+from py4jfml.parameter.ThreeParamType import ThreeParamType
+from py4jfml.parameter.FourParamType import FourParamType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
+from py4jfml.knowledgebasevariable import FuzzyVariableType as  fvt
+from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
+from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
+from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -33,19 +33,19 @@ class CircularDefinitionType:
         #Call of the java constructor using an instance of AndLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical!=None and orLogical==None and var!=None:
             assert type(andLogical)==AndLogicalType
-            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical==None and orLogical!=None and var!=None:
             assert type(orLogical)==OrLogicalType
-            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(orLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of AndLogicalType, an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical != None and orLogical != None and var != None:
             assert type(andLogical)==AndLogicalType and type(orLogical)==OrLogicalType
-            assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, orLogical.java_lt, var.java_kbv)
 
     def copy(self):
@@ -76,7 +76,7 @@ class CircularDefinitionType:
         Set the FuzzyVariableType which contains the terms
         :param var: allowed object is KnowledgeBaseVariable
         '''
-        assert type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+        assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
         self.java_mf.setVariable(var.java_kbv)
 
     def getAnd(self):

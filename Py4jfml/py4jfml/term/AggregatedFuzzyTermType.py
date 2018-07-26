@@ -1,5 +1,5 @@
-from py4jfml.aggregated import AndAggregatedType
-from py4jfml.aggregated import OrAggregatedType
+from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
+from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
