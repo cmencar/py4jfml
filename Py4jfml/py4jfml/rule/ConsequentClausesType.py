@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
 from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
 from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
@@ -18,7 +17,7 @@ class ConsequentClausesType:
     Python class for consequentClausesType complex type
     '''
 
-    def __int__(self, clauses=None):
+    def __init__(self, clauses=None):
         '''
         :param clauses: list of ClauseType
         '''

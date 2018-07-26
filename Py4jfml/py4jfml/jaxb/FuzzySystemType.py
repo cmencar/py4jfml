@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
 from py4jfml.rulebase.AnYaRuleBaseType import AnYaRuleBaseType
 from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType

@@ -1,11 +1,10 @@
 from py4j.java_gateway import JavaGateway
-
-from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
 from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
 from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
 from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
 from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
-from py4jfml.term import AggregatedFuzzyTermType
+from py4jfml.term import AggregatedFuzzyTermType as aftt
 from py4jfml.term.FuzzyTermType import FuzzyTermType
 from py4jfml.term.TsukamotoTermType import TsukamotoTermType
 
@@ -25,12 +24,12 @@ class ClauseType:
         if variable==None and term==None and modifier==None:
             self.java_ct = gateway.entry_point.getJFMLRule_Factory().createClauseType()
         elif variable!=None and term!=None and modifier==None:
-            assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
-            assert type(term)==AggregatedFuzzyTermType or type(term)==FuzzyTermType or type(term)==TsukamotoTermType
+            assert type(variable)==AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
+            assert type(term)==aftt.AggregatedFuzzyTermType or type(term)==FuzzyTermType or type(term)==TsukamotoTermType
             self.java_ct = gateway.entry_point.getJFMLRule_Factory().createClauseType(variable.java_kbv, term.java_t)
         elif variable!=None and term!=None and modifier!=None:
-            assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
-            assert type(term)==AggregatedFuzzyTermType or type(term)==FuzzyTermType or type(term)==TsukamotoTermType
+            assert type(variable)==AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
+            assert type(term)==aftt.AggregatedFuzzyTermType or type(term)==FuzzyTermType or type(term)==TsukamotoTermType
             assert type(modifier)==str
             self.java_ct = gateway.entry_point.getJFMLRule_Factory().createClauseType(variable.java_kbv, term.java_t, modifier)
 
@@ -78,7 +77,7 @@ class ClauseType:
         Sets the value of the property term
         :param value: a FuzzyTerm
         '''
-        assert type(value)==AggregatedFuzzyTermType or type(value)==FuzzyTermType or type(value)==TsukamotoTermType
+        assert type(value)==aftt.AggregatedFuzzyTermType or type(value)==FuzzyTermType or type(value)==TsukamotoTermType
         self.java_ct.setTerm(value.java_t)
 
     def setVariable(self, variable):
@@ -86,7 +85,7 @@ class ClauseType:
         Sets the value of the property variable
         :param variable: possible object is KnowledgeBaseVariable
         '''
-        assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
+        assert type(variable)==AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable)==TskVariableType or type(variable)==TsukamotoVariableType
         self.java_ct.setVariable(variable.java_kbv)
 
     def __str__(self):

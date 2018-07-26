@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.defuzzifier.DefuzzifierLeftMostMax import DefuzzifierLeftMostMax
 from py4jfml.defuzzifier.DefuzzifierRightMostMax import DefuzzifierRightMostMax
 from py4jfml.defuzzifier.DefuzzifierCenterOfArea import DefuzzifierCenterOfArea

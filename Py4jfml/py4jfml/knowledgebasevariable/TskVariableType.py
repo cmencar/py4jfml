@@ -1,7 +1,6 @@
 from py4j.java_gateway import JavaGateway
-
-from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType
-from py4jfml.knowledgebasevariable import FuzzyVariableType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
+from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
 
 gateway = JavaGateway()
 
@@ -44,7 +43,7 @@ class TskVariableType:
         Adds an input variable
         :param fv: fuzzy variable to add
         '''
-        assert type(fv)==AggregatedFuzzyVariableType or type(fv)==FuzzyVariableType
+        assert type(fv)==afvt.AggregatedFuzzyVariableType or type(fv)==fvt.FuzzyVariableType
         self.java_kbv.addInputVariable(fv.java_kbv)
 
     def addTskTerm(self, name, order, coeff):

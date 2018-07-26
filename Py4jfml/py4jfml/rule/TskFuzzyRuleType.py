@@ -1,5 +1,5 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.rule.AntecedentType import AntecedentType
 from py4jfml.rule.TskConsequentType import TskConsequentType
 
@@ -11,7 +11,7 @@ class TskFuzzyRuleType:
     Python class for tskFuzzyRuleType complex type
     '''
 
-    def __int__(self, name=None, ant=None, con=None, connector=None, connectorMethod=None, andMethod=None, orMethod=None, weight=None):
+    def __init__(self, name=None, ant=None, con=None, connector=None, connectorMethod=None, andMethod=None, orMethod=None, weight=None):
         '''
         :param name: name of the TSK Fuzzy Rule
         :param ant: the Antecedent AntecedentType
@@ -41,20 +41,29 @@ class TskFuzzyRuleType:
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, connector, andMethod, orMethod, weight)
 
 
-
     # 5 methods from class Rule
 
-    '''
     def andFunction(self, degrees, andMethod=None):
-        #param andMethod: andMethod
-        #return:
+        '''
+        :param degrees
+        :param andMethod: and method
+         MIN for implementing the operator and with the minimum as defined from Equation (A.14);
+         PROD for implementing the operator and with the product as defined from Equation (A.15);
+         BDIF for implementing the operator and with bounded difference as defined from Equation (A.16);
+         DRP for implementing the operator and with the drastic product as defined from Equation (A.17);
+         EPROD for implementing the operator and with the Einstein product as defined from Equation (A.18);
+         HPROD for implementing the operator and with the Hamacher product as defined from Equation (A.19);
+         NILMIN for implementing the operator and with the Nilpotent minimum as defined from Equation (A.20);
+         custom_\S* for a custom method for operator and.
+        :return: if andMethod is None returns the and algorithm by default: MIN
+        '''
         assert type(degrees)==list
+        conv_degrees = ListConverter().convert(degrees, gateway._gateway_client)
         if andMethod==None:
-            return self.java_r.and(degrees)
+            return self.java_r.andFunction(conv_degrees)
         else:
             assert type(andMethod)==str
-            return self.java_r.and(andMethod, degrees)
-    '''
+            return self.java_r.andFunction(andMethod, conv_degrees)
 
     def getEvaluation(self):
         '''
@@ -63,17 +72,27 @@ class TskFuzzyRuleType:
         '''
         return self.java_r.getEvaluation()
 
-    '''
     def orFunction(self, degrees, orMethod=None):
-        # param orMethod: orMethod
-        # return:
-        assert type(degrees) == list
+        '''
+        :param degrees:
+        :param orMethod: or method
+            MAX for implementing the connector or with the maximum as defined from Equation (A.21);
+            PROBOR for implementing the connector or with the probabilistic sum as defined from Equation (A.22);
+            BSUM for implementing the operator or with the bounded sum as defined from Equation (A.23);
+            DRS for implementing the operator or with the drastic sum as defined from Equation (A.24);
+            ESUM for implementing the operator or with the Einstein sum as defined from Equation (A.25);
+            HSUM for implementing the operator or with the Hamacher sum as defined from Equation (A.26);
+            NILMAX for implementing the operator or with the Nilpotent maximum as defined from Equation (A.27);
+            custom_\S* for a custom method for implementing the connector or.
+        :return: if orMethod is None, returns the or algorithm by default: MAX
+        '''
+        assert type(degrees)==list
+        conv_degrees = ListConverter().convert(degrees, gateway._gateway_client)
         if orMethod == None:
-            return self.java_r.or(degrees)
+            return self.java_r.orFunction(conv_degrees)
         else:
             assert type(orMethod) == str
-            return self.java_r.or(orMethod, degrees)
-    '''
+            return self.java_r.orFunction(orMethod, conv_degrees)
 
     def reset(self):
         '''
@@ -84,7 +103,7 @@ class TskFuzzyRuleType:
         '''
         :param evaluation: allowed object is float
         '''
-        assert type(evaluation) == float
+        assert type(evaluation)==float
         self.java_r.setEvaluation(evaluation)
 
 

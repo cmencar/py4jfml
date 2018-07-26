@@ -1,5 +1,5 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.term.TsukamotoTermType import TsukamotoTermType
 
 gateway = JavaGateway()
@@ -48,8 +48,11 @@ class TsukamotoVariableType:
         :param param:
         '''
         if name!=None and termType!=None and param!=None and t==None:
-            assert type(name)==str and type(termType)==int and type(param)==list
-            self.java_kbv.addTsukamotoTerm(name, termType, param)
+            assert type(name)==str and type(termType)==int and type(param)==tuple
+            conv_param = gateway.new_array(gateway.jvm.float,len(param))
+            for p in param:
+                conv_param[param.index(p)] = p
+            self.java_kbv.addTsukamotoTerm(name, termType, conv_param)
         elif name==None and termType==None and param==None and t!=None:
             assert type(t)==TsukamotoTermType
             self.java_kbv.addTsukamotoTerm(t.java_t)

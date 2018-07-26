@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.defuzzifier.DefuzzifierCenterOfArea import DefuzzifierCenterOfArea
 from py4jfml.defuzzifier.DefuzzifierCenterOfGravity import DefuzzifierCenterOfGravity
 from py4jfml.defuzzifier.DefuzzifierCenterOfGravitySingletons import DefuzzifierCenterOfGravitySingletons

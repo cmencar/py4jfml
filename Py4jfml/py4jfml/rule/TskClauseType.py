@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
 from py4jfml.term.TskTermType import TskTermType
 
@@ -11,7 +10,7 @@ class TskClauseType:
     Python class for tskClauseType complex type
     '''
 
-    def __int__(self, variable=None, term=None):
+    def __init__(self, variable=None, term=None):
         '''
         :param variable: possible object is TskVariableType
         :param term: possible object is TskTermType

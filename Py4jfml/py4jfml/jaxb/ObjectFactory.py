@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
 from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
 from py4jfml.jaxb.FuzzySystemType import FuzzySystemType
@@ -320,7 +319,192 @@ class ObjectFactory:
         assert type(value)==TsukamotoVariableType
         return self.java_of.createKnowledgeBaseTypeTsukamotoVariable(value.java_kbv)
 
+    def createOneParamType(self):
+        '''
+        Create an instance of OneParamType
+        :return: an instance of OneParamType
+        '''
+        return self.java_of.createOneParamType()
 
+    def createOrAggregatedType(self):
+        '''
+        Create an instance of OrAggregatedType
+        :return: an instance of OrAggregatedType
+        '''
+        return self.java_of.createOrAggregatedType()
+
+    def createOrAggregatedTypeAnd(self, value):
+        '''
+        Create an instance of JAXBElement<AndAggregatedType>
+        :param value: allowed object is AndAggregatedType
+        :return: an instance of JAXBElement<AndAggregatedType>
+        '''
+        assert type(value)==AndAggregatedType
+        return self.java_of.createOrAggregatedTypeAnd(value.java_at)
+
+    def createOrAggregatedTypeClause(self, value):
+        '''
+        Create an instance of JAXBElement<ClauseType>
+        :param value: allowed object is ClauseType
+        :return: an instance of JAXBElement<ClauseType>
+        '''
+        assert type(value)==ClauseType
+        return self.java_of.createOrAggregatedTypeClause(value.java_ct)
+
+    def createOrAggregatedTypeOr(self, value):
+        '''
+        Create an instance of JAXBElement<OrAggregatedType >
+        :param value: allowed object is OrAggregatedType
+        :return: an instance of JAXBElement<OrAggregatedType >
+        '''
+        assert type(value)==OrAggregatedType
+        return self.java_of.createOrAggregatedTypeOr(value.java_at)
+
+    def createOrLogicalType(self):
+        '''
+        Create an instance of OrLogicalType
+        :return: an instance of OrLogicalType
+        '''
+        return self.java_of.createOrLogicalType()
+
+    def createOrLogicalTypeAnd(self, value):
+        '''
+        Create an instance of JAXBElement<AndLogicalType>
+        :param value: allowed object is AndLogicalType
+        :return: an instance of JAXBElement<AndLogicalType>
+        '''
+        assert type(value)==AndLogicalType
+        return self.java_of.createOrLogicalTypeAnd(value.java_lt)
+
+    def createOrLogicalTypeOr(self, value):
+        '''
+        Create an instance of JAXBElement<OrLogicalType>
+        :param value: allowed object is OrLogicalType
+        :return: an instance of JAXBElement<OrLogicalType>
+        '''
+        assert type(value)==OrLogicalType
+        return self.java_of.createOrLogicalTypeOr(value.java_lt)
+
+    def createOrLogicalTypeTermName(self, value):
+        '''
+        Create an instance of JAXBElement<CircularTermType >
+        :param value: allowed object is CircularTermType
+        :return: an instance of JAXBElement<CircularTermType >
+        '''
+        assert type(value)==CircularTermType
+        return self.java_of.createOrLogicalTypeTermName(value.java_t)
+
+    def createParameterType(self):
+        '''
+        Create an instance of ParameterType
+        :return: an instance of ParameterType
+        '''
+        return self.java_of.createParameterType()
+
+    def createPointSetMonotonicShapeType(self):
+        '''
+        Create an instance of PointSetMonotonicShapeType
+        :return: an instance of PointSetMonotonicShapeType
+        '''
+        return self.java_of.createPointSetMonotonicShapeType()
+
+    def createPointSetShapeType(self):
+        '''
+        Create an instance of PointSetShapeType
+        :return: an instance of PointSetShapeType
+        '''
+        return self.java_of.createPointSetShapeType()
+
+    def createPointType(self):
+        '''
+        Create an instance of PointType
+        :return: an instance of PointType
+        '''
+        return self.java_of.createPointType()
+
+    def createRuleBaseType(self):
+        '''
+        Create an instance of RuleBaseType
+        :return: an instance of RuleBaseType
+        '''
+        return self.java_of.createRuleBaseType()
+
+    def createThreeParamType(self):
+        '''
+        Create an instance of ThreeParamType
+        :return: an instance of ThreeParamType
+        '''
+        return self.java_of.createThreeParamType()
+
+    def createTskClauseType(self):
+        '''
+        Create an instance of TskClauseType
+        :return: an instance of TskClauseType
+        '''
+        return self.java_of.createTskClauseType()
+
+    def createTskConsequentClausesType(self):
+        '''
+        Create an instance of TskConsequentClausesType
+        :return: an instance of TskConsequentClausesType
+        '''
+        return self.java_of.createTskConsequentClausesType()
+
+    def createTskConsequentType(self):
+        '''
+        Create an instance of TskConsequentType
+        :return: an instance of TskConsequentType
+        '''
+        return self.java_of.createTskConsequentType()
+
+    def createTskFuzzyRuleType(self):
+        '''
+        Create an instance of TskFuzzyRuleType
+        :return: an instance of TskFuzzyRuleType
+        '''
+        return self.java_of.createTskFuzzyRuleType()
+
+    def createTskRuleBaseType(self):
+        '''
+        Create an instance of TskRuleBaseType
+        :return: an instance of TskRuleBaseType
+        '''
+        return self.java_of.createTskRuleBaseType()
+
+    def createTskTermType(self):
+        '''
+        Create an instance of TskTermType
+        :return: an instance of TskTermType
+        '''
+        return self.java_of.createTskTermType()
+
+    def createTskVariableType(self):
+        '''
+        Create an instance of TskVariableType
+        :return: an instance of TskVariableType
+        '''
+        return self.java_of.createTskVariableType()
+
+    def createTsukamotoTermType(self):
+        '''
+        Create an instance of TsukamotoTermType
+        :return: an instance of TsukamotoTermType
+        '''
+        return self.java_of.createTsukamotoTermType()
+
+    def createTsukamotoVariableType(self):
+        '''
+        Create an instance of TsukamotoVariableType
+        :return: an instance of TsukamotoVariableType
+        '''
+        return self.java_of.createTsukamotoVariableType()
+
+    def createTwoParamType(self):
+        '''
+        Create an instance of TwoParamType
+        :return: an instance of TwoParamType
+        '''
+        return self.java_of.createTwoParamType()
 
 
 

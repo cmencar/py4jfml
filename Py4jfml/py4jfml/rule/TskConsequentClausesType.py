@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
 from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
 from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
@@ -19,7 +18,7 @@ class TskConsequentClausesType:
     Python class for tskConsequentClausesType complex type.
     '''
 
-    def __int__(self):
+    def __init__(self):
         '''
         '''
         self.java_tskcct = gateway.entry_point.getJFMLRule_Factory().createTskConsequentClausesType()
