@@ -39,27 +39,27 @@ public class JFMLRule_Factory {
 	
 	public AnYaRuleType createAnYaRuleType()
 	{
-		return new AnYaRuleType();
+		return new ExtendedAnYaRuleType();
 	}
 	
 	public AnYaRuleType createAnYaRuleType(String name)
 	{
-		return new AnYaRuleType(name);
+		return new ExtendedAnYaRuleType(name);
 	}
 	
 	public AnYaRuleType createAnYaRuleType(String name, AnYaAntecedentType ant, ConsequentType con)
 	{
-		return new AnYaRuleType(name,ant,con);
+		return new ExtendedAnYaRuleType(name,ant,con);
 	}
 	
 	public AnYaRuleType createAnYaRuleType(String name, AnYaAntecedentType ant, TskConsequentType con)
 	{
-		return new AnYaRuleType(name,ant,con);
+		return new ExtendedAnYaRuleType(name,ant,con);
 	}
 	
 	public AnYaRuleType createAnYaRuleType(String name, java.lang.Float weight)
 	{
-		return new AnYaRuleType(name,weight);
+		return new ExtendedAnYaRuleType(name,weight);
 	}
 	
 	public ClauseType createClauseType()
@@ -99,32 +99,32 @@ public class JFMLRule_Factory {
 	
 	public FuzzyRuleType createFuzzyRuleType()
 	{
-		return new FuzzyRuleType();
+		return new ExtendedFuzzyRuleType();
 	}
 	
 	public FuzzyRuleType createFuzzyRuleType(String name)
 	{
-		return new FuzzyRuleType(name);
+		return new ExtendedFuzzyRuleType(name);
 	}
 	
 	public FuzzyRuleType createFuzzyRuleType(String name, AntecedentType ant, ConsequentType con)
 	{
-		return new FuzzyRuleType(name,ant,con);
+		return new ExtendedFuzzyRuleType(name,ant,con);
 	}
 	
 	public FuzzyRuleType createFuzzyRuleType(String name, Float weight)
 	{
-		return new FuzzyRuleType(name,weight);
+		return new ExtendedFuzzyRuleType(name,weight);
 	}
 	
 	public FuzzyRuleType createFuzzyRuleType(String name, String connector, String connectorMethod, Float weight)
 	{
-		return new FuzzyRuleType(name,connector,connectorMethod,weight);
+		return new ExtendedFuzzyRuleType(name,connector,connectorMethod,weight);
 	}
 	
 	public FuzzyRuleType createFuzzyRuleType(String name, String connector, String andMethod, String orMethod, Float weight)
 	{
-		return new FuzzyRuleType(name,connector,andMethod,orMethod,weight);
+		return new ExtendedFuzzyRuleType(name,connector,andMethod,orMethod,weight);
 	}
 	
 	public TskClauseType createTskClauseType()
@@ -154,32 +154,32 @@ public class JFMLRule_Factory {
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType()
 	{
-		return new TskFuzzyRuleType();
+		return new ExtendedTskFuzzyRuleType();
 	}
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType(String name)
 	{
-		return new TskFuzzyRuleType(name);
+		return new ExtendedTskFuzzyRuleType(name);
 	}
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType(String name, AntecedentType ant, TskConsequentType con)
 	{
-		return new TskFuzzyRuleType(name,ant,con);
+		return new ExtendedTskFuzzyRuleType(name,ant,con);
 	}
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType(String name, Float weight)
 	{
-		return new TskFuzzyRuleType(name,weight);
+		return new ExtendedTskFuzzyRuleType(name,weight);
 	}
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType(String name, String connector, String connectorMethod, Float weight)
 	{
-		return new TskFuzzyRuleType(name,connector,connectorMethod,weight);
+		return new ExtendedTskFuzzyRuleType(name,connector,connectorMethod,weight);
 	}
 	
 	public TskFuzzyRuleType createTskFuzzyRuleType(String name, String connector, String andMethod, String orMethod, Float weight)
 	{
-		return new TskFuzzyRuleType(name,connector,andMethod,orMethod,weight);
+		return new ExtendedTskFuzzyRuleType(name,connector,andMethod,orMethod,weight);
 	}
 	
 }
