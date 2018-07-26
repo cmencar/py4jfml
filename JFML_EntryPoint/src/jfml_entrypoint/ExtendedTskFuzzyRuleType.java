@@ -31,7 +31,7 @@ public class ExtendedTskFuzzyRuleType extends TskFuzzyRuleType{
 		super(name,connector,andMethod,orMethod,weight);
 	}
 	
-	public float andFunction(ArrayList<Float> degreesList){	
+	public float andFunction(ArrayList<Double> degreesList){	
 		float[] degrees = new float[degreesList.size()];
 		for (int i = 0; i < degreesList.size(); i++) {
 			degrees[i] = degreesList.get(i).floatValue();
@@ -39,7 +39,7 @@ public class ExtendedTskFuzzyRuleType extends TskFuzzyRuleType{
 		return this.and(degrees);
 	}
 	
-	public float andFunction(String andMethod, ArrayList<Float> degreesList){
+	public float andFunction(String andMethod, ArrayList<Double> degreesList){
 		float[] degrees = new float[degreesList.size()];
 		for (int i = 0; i < degreesList.size(); i++) {
 			degrees[i] = degreesList.get(i).floatValue();
@@ -47,7 +47,7 @@ public class ExtendedTskFuzzyRuleType extends TskFuzzyRuleType{
 		return this.and(andMethod, degrees);
 	}
 	
-	public float orFunction(ArrayList<Float> degreesList){	
+	public float orFunction(ArrayList<Double> degreesList){	
 		float[] degrees = new float[degreesList.size()];
 		for (int i = 0; i < degreesList.size(); i++) {
 			degrees[i] = degreesList.get(i).floatValue();
@@ -55,7 +55,7 @@ public class ExtendedTskFuzzyRuleType extends TskFuzzyRuleType{
 		return this.or(degrees);
 	}
 	
-	public float orFunction(String andMethod, ArrayList<Float> degreesList){
+	public float orFunction(String andMethod, ArrayList<Double> degreesList){
 		float[] degrees = new float[degreesList.size()];
 		for (int i = 0; i < degreesList.size(); i++) {
 			degrees[i] = degreesList.get(i).floatValue();
