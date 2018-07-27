@@ -1,10 +1,10 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.AnYaRuleType import AnYaRuleType
-from py4jfml.rulebase.FuzzySystemRuleBase import FuzzySystemRuleBase
+from py4jfml.rule import AnYaRuleType as art
+from py4jfml.rulebase import FuzzySystemRuleBase as fsrb
 
 gateway = JavaGateway()
 
-class AnYaRuleBaseType(FuzzySystemRuleBase):
+class AnYaRuleBaseType(fsrb.FuzzySystemRuleBase):
 
     '''
     Python for anYaRuleBaseType complex type.
@@ -52,7 +52,7 @@ class AnYaRuleBaseType(FuzzySystemRuleBase):
         Adds a AnYaRuleType to the list of rules
         :param rule: the AnYaRuleType
         '''
-        assert type(rule)==AnYaRuleType
+        assert type(rule)==art.AnYaRuleType
         self.java_fsrb.addAnYaRule(rule.java_art)
 
     def evaluate(self):

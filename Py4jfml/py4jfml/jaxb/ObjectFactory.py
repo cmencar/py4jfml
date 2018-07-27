@@ -1,19 +1,19 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
-from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
-from py4jfml.jaxb.FuzzySystemType import FuzzySystemType
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
-from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
-from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
-from py4jfml.operator.AndLogicalType import AndLogicalType
-from py4jfml.operator.OrLogicalType import OrLogicalType
-from py4jfml.rule.ClauseType import ClauseType
-from py4jfml.rulebase.AnYaRuleBaseType import AnYaRuleBaseType
-from py4jfml.rulebase.RuleBaseType import RuleBaseType
-from py4jfml.rulebase.TskRuleBaseType import TskRuleBaseType
-from py4jfml.term.CircularTermType import CircularTermType
+from py4jfml.aggregated import AndAggregatedType as aat
+from py4jfml.aggregated  import OrAggregatedType as oat
+from py4jfml.jaxb  import FuzzySystemType as fst
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
+from py4jfml.knowledgebasevariable import AnYaDataCloudType as adct
+from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
+from py4jfml.knowledgebasevariable import TskVariableType as tskvt
+from py4jfml.knowledgebasevariable import TsukamotoVariableType as tvt
+from py4jfml.operator import AndLogicalType as alt
+from py4jfml.operator import OrLogicalType as olt
+from py4jfml.rule import ClauseType as ct
+from py4jfml.rulebase import AnYaRuleBaseType as arbt
+from py4jfml.rulebase import RuleBaseType as rbt
+from py4jfml.rulebase import TskRuleBaseType as tskrbt
+from py4jfml.term import CircularTermType as ctt
 
 gateway = JavaGateway()
 
@@ -55,7 +55,7 @@ class ObjectFactory:
         :param value: allowed object is AndAggregatedType
         :return: an instance of JAXBElement<AndAggregatedType>
         '''
-        assert type(value)==AndAggregatedType
+        assert type(value)==aat.AndAggregatedType
         return self.java_of.createAndAggregatedTypeAnd(value.java_at)
 
     def createAndAggregatedTypeClause(self, value):
@@ -64,7 +64,7 @@ class ObjectFactory:
         :param value: allowed object is ClauseType
         :return: an instance of JAXBElement<ClauseType>
         '''
-        assert type(value)==ClauseType
+        assert type(value)==ct.ClauseType
         return self.java_of.createAndAggregatedTypeClause(value.java_ct)
 
     def createAndAggregatedTypeOr(self, value):
@@ -73,7 +73,7 @@ class ObjectFactory:
         :param value: allowed object is OrAggregatedType
         :return: an instance of JAXBElement<OrAggregatedType>
         '''
-        assert type(value)==OrAggregatedType
+        assert type(value)==oat.OrAggregatedType
         return self.java_of.createAndAggregatedTypeOr(value.java_at)
 
     def createAndLogicalType(self):
@@ -89,7 +89,7 @@ class ObjectFactory:
         :param value: allowed object is AndLogicalType
         :return: an instance of JAXBElement<AndLogicalType>
         '''
-        assert type(value)==AndLogicalType
+        assert type(value)==alt.AndLogicalType
         return self.java_of.createAndLogicalTypeAnd(value.java_lt)
 
     def createAndLogicalTypeOr(self, value):
@@ -98,7 +98,7 @@ class ObjectFactory:
         :param value: allowed object is OrLogicalType
         :return: an instance of JAXBElement<OrLogicalType>
         '''
-        assert type(value)==OrLogicalType
+        assert type(value)==olt.OrLogicalType
         return self.java_of.createAndLogicalTypeOr(value.java_lt)
 
     def createAndLogicalTypeTermName(self, value):
@@ -107,7 +107,7 @@ class ObjectFactory:
         :param value: allowed object is CircularTermType
         :return: an instance of JAXBElement<CircularTermType>
         '''
-        assert type(value)==CircularTermType
+        assert type(value)==ctt.CircularTermType
         return self.java_of.createAndLogicalTypeTermName(value.java_t)
 
     def createAntecedentType(self):
@@ -207,7 +207,7 @@ class ObjectFactory:
         :param value: allowed object is FuzzySystemType
         :return: an instance of JAXBElement<FuzzySystemType>
         '''
-        assert type(value)==FuzzySystemType
+        assert type(value)==fst.FuzzySystemType
         return self.java_of.createFuzzySystem(value.java_fst)
 
     def createFuzzySystemType(self):
@@ -223,7 +223,7 @@ class ObjectFactory:
         :param value: allowed object is AnYaRuleBaseType
         :return: an instance of JAXBElement<AnYaRuleBaseType>
         '''
-        assert type(value)==AnYaRuleBaseType
+        assert type(value)==arbt.AnYaRuleBaseType
         return self.java_of.createFuzzySystemTypeAnYaRuleBase(value.java_fsrb)
 
     def createFuzzySystemTypeMamdaniRuleBase(self, value):
@@ -232,7 +232,7 @@ class ObjectFactory:
         :param value: allowed object is RuleBaseType
         :return: an instance of JAXBElement<RuleBaseType>
         '''
-        assert type(value)==RuleBaseType
+        assert type(value)==rbt.RuleBaseType
         return self.java_of.createFuzzySystemTypeMamdaniRuleBase(value.java_fsrb)
 
     def createFuzzySystemTypeTskRuleBase(self, value):
@@ -241,7 +241,7 @@ class ObjectFactory:
         :param value: allowed object is TskRuleBaseType
         :return: an instance of JAXBElement<TskRuleBaseType>
         '''
-        assert type(value)==TskRuleBaseType
+        assert type(value)==tskrbt.TskRuleBaseType
         return self.java_of.createFuzzySystemTypeTskRuleBase(value.java_fsrb)
 
     def createFuzzySystemTypeTsukamotoRuleBase(self, value):
@@ -250,7 +250,7 @@ class ObjectFactory:
         :param value: allowed object is RuleBaseType
         :return: an instance of JAXBElement<RuleBaseType>
         '''
-        assert type(value)==RuleBaseType
+        assert type(value)==rbt.RuleBaseType
         return self.java_of.createFuzzySystemTypeTsukamotoRuleBase(value.java_fsrb)
 
     def createFuzzyTermType(self):
@@ -280,7 +280,7 @@ class ObjectFactory:
         :param value: allowed object is AggregatedFuzzyVariableType
         :return: an instance of JAXBElement<AggregatedFuzzyVariableType>
         '''
-        assert type(value)==AggregatedFuzzyVariableType
+        assert type(value)==afvt.AggregatedFuzzyVariableType
         return self.java_of.createKnowledgeBaseTypeAggregatedFuzzyVariable(value.java_kbv)
 
     def createKnowledgeBaseTypeAnYaDataCloud(self, value):
@@ -289,7 +289,7 @@ class ObjectFactory:
         :param value: allowed object is AnYaDataCloudType
         :return: an instance of JAXBElement<AnYaDataCloudType>
         '''
-        assert type(value)==AnYaDataCloudType
+        assert type(value)==adct.AnYaDataCloudType
         return self.java_of.createKnowledgeBaseTypeAnYaDataCloud(value.java_kbv)
 
     def createKnowledgeBaseTypeFuzzyVariable(self, value):
@@ -298,7 +298,7 @@ class ObjectFactory:
         :param value: allowed object is FuzzyVariableType
         :return: an instance of JAXBElement<FuzzyVariableType>
         '''
-        assert type(value)==FuzzyVariableType
+        assert type(value)==fvt.FuzzyVariableType
         return self.java_of.createKnowledgeBaseTypeFuzzyVariable(value.java_kbv)
 
     def createKnowledgeBaseTypeTskVariable(self, value):
@@ -307,7 +307,7 @@ class ObjectFactory:
         :param value: allowed object is TskVariableType
         :return: an instance of JAXBElement<TskVariableType>
         '''
-        assert type(value)==TskVariableType
+        assert type(value)==tskvt.TskVariableType
         return self.java_of.createKnowledgeBaseTypeTskVariable(value.java_kbv)
 
     def createKnowledgeBaseTypeTsukamotoVariable(self, value):
@@ -316,7 +316,7 @@ class ObjectFactory:
         :param value: allowed object is TsukamotoVariableType
         :return: an instance of JAXBElement<TsukamotoVariableType >
         '''
-        assert type(value)==TsukamotoVariableType
+        assert type(value)==tvt.TsukamotoVariableType
         return self.java_of.createKnowledgeBaseTypeTsukamotoVariable(value.java_kbv)
 
     def createOneParamType(self):
@@ -339,7 +339,7 @@ class ObjectFactory:
         :param value: allowed object is AndAggregatedType
         :return: an instance of JAXBElement<AndAggregatedType>
         '''
-        assert type(value)==AndAggregatedType
+        assert type(value)==aat.AndAggregatedType
         return self.java_of.createOrAggregatedTypeAnd(value.java_at)
 
     def createOrAggregatedTypeClause(self, value):
@@ -348,7 +348,7 @@ class ObjectFactory:
         :param value: allowed object is ClauseType
         :return: an instance of JAXBElement<ClauseType>
         '''
-        assert type(value)==ClauseType
+        assert type(value)==ct.ClauseType
         return self.java_of.createOrAggregatedTypeClause(value.java_ct)
 
     def createOrAggregatedTypeOr(self, value):
@@ -357,7 +357,7 @@ class ObjectFactory:
         :param value: allowed object is OrAggregatedType
         :return: an instance of JAXBElement<OrAggregatedType >
         '''
-        assert type(value)==OrAggregatedType
+        assert type(value)==oat.OrAggregatedType
         return self.java_of.createOrAggregatedTypeOr(value.java_at)
 
     def createOrLogicalType(self):
@@ -373,7 +373,7 @@ class ObjectFactory:
         :param value: allowed object is AndLogicalType
         :return: an instance of JAXBElement<AndLogicalType>
         '''
-        assert type(value)==AndLogicalType
+        assert type(value)==alt.AndLogicalType
         return self.java_of.createOrLogicalTypeAnd(value.java_lt)
 
     def createOrLogicalTypeOr(self, value):
@@ -382,7 +382,7 @@ class ObjectFactory:
         :param value: allowed object is OrLogicalType
         :return: an instance of JAXBElement<OrLogicalType>
         '''
-        assert type(value)==OrLogicalType
+        assert type(value)==olt.OrLogicalType
         return self.java_of.createOrLogicalTypeOr(value.java_lt)
 
     def createOrLogicalTypeTermName(self, value):

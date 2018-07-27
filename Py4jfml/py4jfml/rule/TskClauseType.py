@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
-from py4jfml.term.TskTermType import TskTermType
+from py4jfml.knowledgebasevariable import TskVariableType as tskvt
+from py4jfml.term import TskTermType as tsktt
 
 gateway = JavaGateway()
 
@@ -18,8 +18,8 @@ class TskClauseType:
         if variable==None and term==None:
             self.java_tskct = gateway.entry_point.getJFMLRule_Factory().createTskClauseType()
         elif variable!=None and term!=None:
-            assert type(variable)==TskVariableType
-            assert type(term)==TskTermType
+            assert type(variable)==tskvt.TskVariableType
+            assert type(term)==tsktt.TskTermType
             self.java_tskct = gateway.entry_point.getJFMLRule_Factory().createTskClauseType(variable.java_kbv, term.java_t)
 
 
@@ -42,7 +42,7 @@ class TskClauseType:
         Sets the value of the property term
         :param value: allowed object is TskTermType
         '''
-        assert type(value)==TskTermType
+        assert type(value)==tsktt.TskTermType
         self.java_tskct.setTerm(value.java_t)
 
 
@@ -51,5 +51,5 @@ class TskClauseType:
         Sets the value of the property variable
         :param value: allowed object is TskVariableType
         '''
-        assert type(value) == TskVariableType
+        assert type(value)==tskvt.TskVariableType
         self.java_tskct.setVariable(value.java_kbv)

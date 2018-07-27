@@ -1,7 +1,7 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.AnYaAntecedentType import AnYaAntecedentType
-from py4jfml.rule.ConsequentType import ConsequentType
-from py4jfml.rule.TskConsequentType import TskConsequentType
+from py4jfml.rule import AnYaAntecedentType as aat
+from py4jfml.rule import ConsequentType as ct
+from py4jfml.rule import TskConsequentType as tskct
 
 gateway = JavaGateway()
 
@@ -23,9 +23,9 @@ class AnYaRuleType:
             assert type(name)==str
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createAnYaRuleType(name)
         elif name!=None and ant!=None and con!=None and weight==None:
-            assert type(name)==str and type(ant)==AnYaAntecedentType
-            assert type(con)==ConsequentType or type(con)==TskConsequentType
-            if type(con)==ConsequentType:
+            assert type(name)==str and type(ant)==aat.AnYaAntecedentType
+            assert type(con)==ct.ConsequentType or type(con)==tskct.TskConsequentType
+            if type(con)==ct.ConsequentType:
                 self.java_r = gateway.entry_point.getJFMLRule_Factory().createAnYaRuleType(name, ant.java_aat, con.java_ct)
             else:
                 self.java_r = gateway.entry_point.getJFMLRule_Factory().createAnYaRuleType(name, ant.java_aat, con.java_tskct)
@@ -165,7 +165,7 @@ class AnYaRuleType:
         Sets the value of the property anYaAntecedent
         :param value: allowed object is AnYaAntecedentTypeì
         '''
-        assert type(value)==AnYaAntecedentType
+        assert type(value)==aat.AnYaAntecedentType
         self.java_r.setAnYaAntecedent(value.java_aat)
 
     def setConsequent(self, value):
@@ -173,7 +173,7 @@ class AnYaRuleType:
         Sets the value of the property consequent
         :param value: allowed object is ConsequentType
         '''
-        assert type(value)==ConsequentType
+        assert type(value)==ct.ConsequentType
         self.java_r.setConsequent(value.java_ct)
 
     def setName(self, value):
@@ -197,7 +197,7 @@ class AnYaRuleType:
         Sets the value of the property tskConsequent
         :param value: allowed object is TskConsequentType
         '''
-        assert type(value)==TskConsequentType
+        assert type(value)==tskct.TskConsequentType
         self.java_r.setTskConsequent(value.tskct)
 
     def setWeight(self, value):

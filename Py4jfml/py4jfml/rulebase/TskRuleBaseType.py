@@ -1,10 +1,10 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.TskFuzzyRuleType import TskFuzzyRuleType
-from py4jfml.rulebase.FuzzySystemRuleBase import FuzzySystemRuleBase
+from py4jfml.rule import TskFuzzyRuleType as tskfrt
+from py4jfml.rulebase import FuzzySystemRuleBase as fsrb
 
 gateway = JavaGateway()
 
-class TskRuleBaseType(FuzzySystemRuleBase):
+class TskRuleBaseType(fsrb.FuzzySystemRuleBase):
     '''
     Python class for tskRuleBaseType complex type.
     '''
@@ -73,7 +73,7 @@ class TskRuleBaseType(FuzzySystemRuleBase):
         Adds a TskFuzzyRuleType to the list of rules
         :param rule: the TskFuzzyRuleType
         '''
-        assert type(rule)==TskFuzzyRuleType
+        assert type(rule)==tskfrt.TskFuzzyRuleType
         self.java_fsrb.addTskRule(rule.java_r)
 
     def evaluate(self):

@@ -1,7 +1,6 @@
-from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.AntecedentType import AntecedentType
-from py4jfml.rule.TskConsequentType import TskConsequentType
+from py4jfml.rule import AntecedentType as at
+from py4jfml.rule import TskConsequentType as tskct
 
 gateway = JavaGateway()
 
@@ -28,7 +27,7 @@ class TskFuzzyRuleType:
             assert type(name)==str
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name)
         elif name!=None and ant!=None and con!=None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight==None:
-            assert type(name)==str and type(ant)==AntecedentType and type(con)==TskConsequentType
+            assert type(name)==str and type(ant)==at.AntecedentType and type(con)==tskct.TskConsequentType
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createTskFuzzyRuleType(name, ant.java_at, con.java_tskct)
         elif name!=None and ant==None and con==None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight!=None:
             assert type(name)==str and type(weight)==float
@@ -207,7 +206,7 @@ class TskFuzzyRuleType:
         Sets the value of the property antecedent
         :param value: allowed object is AntecedentType
         '''
-        assert type(value)==AntecedentType
+        assert type(value)==at.AntecedentType
         self.java_r.setAntecedent(value.java_at)
 
     def setConnector(self, value):
@@ -247,7 +246,7 @@ class TskFuzzyRuleType:
         Sets the value of the property tskConsequent
         :param value: allowed object is TskConsequentType
         '''
-        assert type(value)==TskConsequentType
+        assert type(value)==tskct.TskConsequentType
         self.java_r.setTskConsequent(value.java_tskct)
 
     def setWeight(self, value):
