@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
 from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
@@ -25,7 +26,8 @@ class ConsequentClausesType:
             self.java_cct = gateway.entry_point.getJFMLRule_Factory().createConsequentClausesType()
         else:
             assert type(clauses)==list
-            self.java_cct = gateway.entry_point.getJFMLRule_Factory().createConsequentClausesType(clauses)
+            javalist_clauses = ListConverter().convert(clauses, gateway._gateway_client)
+            self.java_cct = gateway.entry_point.getJFMLRule_Factory().createConsequentClausesType(javalist_clauses)
 
     def addClause(self, c=None, v=None, t=None):
         '''

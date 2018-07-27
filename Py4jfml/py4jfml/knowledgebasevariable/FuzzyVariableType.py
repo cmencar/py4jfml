@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.defuzzifier.DefuzzifierCenterOfArea import DefuzzifierCenterOfArea
 from py4jfml.defuzzifier.DefuzzifierCenterOfGravity import DefuzzifierCenterOfGravity
@@ -66,17 +67,20 @@ class FuzzyVariableType:
     def addFuzzyTerm(self, ft=None, name=None, fuzzyTermType=None, param=None):
         '''
         Add a Fuzzy Term
-        :param ft:
-        :param name:
-        :param type:
-        :param param:
+        :param ft: fuzzy term
+        :param name: fuzzy term name
+        :param type: fuzzy term type
+        :param param: array of parameters
         '''
-        if ft!=None and name==None and fuzzyTermType==None and param==None :
+        if ft!=None and name==None and fuzzyTermType==None and param==None:
             assert type(ft)==FuzzyTermType
             self.java_kbv.addFuzzyTerm(ft.java_t)
-        if ft==None and name!=None and fuzzyTermType!=None and param!=None :
+        if ft==None and name!=None and fuzzyTermType!=None and param!=None:
             assert type(name)==str and type(fuzzyTermType)==int and type(param)==list
-            self.java_kbv.addFuzzyTerm(name, fuzzyTermType, param)
+            javaarray_param = gateway.new_array(gateway.jvm.float, len(param))
+            for p in param:
+                javaarray_param[param.index(p)] = p
+            self.java_kbv.addFuzzyTerm(name, fuzzyTermType, javaarray_param)
 
     def copy(self):
         '''

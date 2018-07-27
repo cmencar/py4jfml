@@ -1,5 +1,4 @@
 from py4j.java_gateway import JavaGateway
-
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.Py4Jfml import Py4jfml
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType

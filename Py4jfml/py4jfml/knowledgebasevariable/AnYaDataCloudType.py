@@ -1,4 +1,6 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
+
 gateway = JavaGateway()
 
 class AnYaDataCloudType():
@@ -15,10 +17,11 @@ class AnYaDataCloudType():
             self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType()
         elif name!=None and terms==None:
             assert type(name)==str
-            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType(name)
+            self.java_kbvv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType(name)
         elif name!=None and terms!=None:
             assert type(name)==str and type(terms)==list
-            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType(name, terms)
+            javalist_terms = ListConverter().convert(terms, gateway._gateway_client)
+            self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType(name, javalist_terms)
 
 
     # Method of class KnowledgeBaseVariable
@@ -117,7 +120,8 @@ class AnYaDataCloudType():
         :param datum:
         '''
         assert type(datum)==list
-        self.java_kbv.setTerms(datum)
+        javalist_datum = ListConverter().convert(datum, gateway._gateway_client)
+        self.java_kbv.setTerms(javalist_datum)
 
     def setValue(self, x):
         '''

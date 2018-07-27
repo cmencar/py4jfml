@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()
 
@@ -10,7 +11,8 @@ class DefuzzifierCenterOfGravity:
         :param terms:
         '''
         assert type(domainLeft)==float and type(domainRight)==float and type(terms)==list
-        self.java_d = gateway.entry_point.getJFMLDefuzzifier_Factory().createDefuzzifierCenterOfGravity(domainLeft, domainRight, terms)
+        javalist_terms = ListConverter().convert(terms, gateway._gateway_client)
+        self.java_d = gateway.entry_point.getJFMLDefuzzifier_Factory().createDefuzzifierCenterOfGravity(domainLeft, domainRight, javalist_terms)
 
 
     # 2 Methods from Java abstract class Defuzzifier

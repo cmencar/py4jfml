@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
 from py4jfml.rulebase.AnYaRuleBaseType import AnYaRuleBaseType
@@ -28,7 +29,8 @@ class FuzzySystemType:
             self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name)
         elif knowledgeBase!=None and ruleBase!=None and networkAddress!=None:
             assert type(name)==str and type(knowledgeBase)==KnowledgeBaseType and type(ruleBase)==list and type(networkAddress)==str
-            self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, ruleBase, networkAddress)
+            javalist_ruleBase = ListConverter().convert(ruleBase, gateway._gateway_client)
+            self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, javalist_ruleBase, networkAddress)
 
     def addRuleBase(self,r):
         '''

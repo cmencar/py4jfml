@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
 from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
@@ -24,7 +25,8 @@ class AntecedentType:
             self.java_at = gateway.entry_point.getJFMLRule_Factory().createAntecedentType()
         else:
             assert type(clauses)==list
-            self.java_at = gateway.entry_point.getJFMLRule_Factory().createAntecedentType(clauses)
+            javalist_clauses = ListConverter().convert(clauses, gateway._gateway_client)
+            self.java_at = gateway.entry_point.getJFMLRule_Factory().createAntecedentType(javalist_clauses)
 
     def addClause(self, c=None, variable=None, term=None):
         '''

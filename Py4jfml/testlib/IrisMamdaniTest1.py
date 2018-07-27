@@ -1,6 +1,5 @@
 from py4j.java_gateway import JavaGateway
-
-import py4jfml.Py4Jfml as fml
+from py4jfml.Py4Jfml import Py4jfml
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
 from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
@@ -102,6 +101,6 @@ iris.addRuleBase(rb)
 
 #WRITTING IRIS EXAMPLE INTO AN XML FILE
 str_xml = "XMLFiles/IrisMamdani1.xml"
-fml.Py4jfml.writeFSTtoXML(iris, str_xml)
+Py4jfml.writeFSTtoXML(iris, str_xml)
 
 

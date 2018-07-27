@@ -48,8 +48,10 @@ class AnYaRuleBaseType(FuzzySystemRuleBase):
 
 
     def addAnYaRule(self, rule):
-        #Adds a AnYaRuleType to the list of rules
-        #param rule: the AnYaRuleType
+        '''
+        Adds a AnYaRuleType to the list of rules
+        :param rule: the AnYaRuleType
+        '''
         assert type(rule)==AnYaRuleType
         self.java_fsrb.addAnYaRule(rule.java_art)
 

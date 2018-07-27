@@ -1,5 +1,5 @@
-import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
+from py4jfml.Py4Jfml import Py4jfml
 
 gateway = JavaGateway()
 
@@ -7,9 +7,9 @@ gateway = JavaGateway()
 str_xml = "XMLFiles/IrisMamdani3.xml"
 
 #creazione sistema fuzzy
-fs1 = fml.Py4jfml.load(str_xml)
-fs2 = fml.Py4jfml.load(str_xml)
-fs3 = fml.Py4jfml.load(str_xml)
+fs1 = Py4jfml.load(str_xml)
+fs2 = Py4jfml.load(str_xml)
+fs3 = Py4jfml.load(str_xml)
 
 #imposto i valori di input
 

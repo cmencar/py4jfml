@@ -45,7 +45,7 @@ class TskFuzzyRuleType:
 
     def andFunction(self, degrees, andMethod=None):
         '''
-        :param degrees
+        :param degrees: array of degrees
         :param andMethod: and method
          MIN for implementing the operator and with the minimum as defined from Equation (A.14);
          PROD for implementing the operator and with the product as defined from Equation (A.15);
@@ -58,12 +58,14 @@ class TskFuzzyRuleType:
         :return: if andMethod is None returns the and algorithm by default: MIN
         '''
         assert type(degrees)==list
-        conv_degrees = ListConverter().convert(degrees, gateway._gateway_client)
+        javaarray_degrees = gateway.new_array(gateway.jvm.float, len(degrees))
+        for d in degrees:
+            javaarray_degrees[degrees.index(d)] = d
         if andMethod==None:
-            return self.java_r.andFunction(conv_degrees)
+            return self.java_r.andFunction(javaarray_degrees)
         else:
             assert type(andMethod)==str
-            return self.java_r.andFunction(andMethod, conv_degrees)
+            return self.java_r.andFunction(andMethod, javaarray_degrees)
 
     def getEvaluation(self):
         '''
@@ -87,12 +89,14 @@ class TskFuzzyRuleType:
         :return: if orMethod is None, returns the or algorithm by default: MAX
         '''
         assert type(degrees)==list
-        conv_degrees = ListConverter().convert(degrees, gateway._gateway_client)
+        javaarray_degrees = gateway.new_array(gateway.jvm.float, len(degrees))
+        for d in degrees:
+            javaarray_degrees[degrees.index(d)] = d
         if orMethod == None:
-            return self.java_r.orFunction(conv_degrees)
+            return self.java_r.orFunction(javaarray_degrees)
         else:
             assert type(orMethod) == str
-            return self.java_r.orFunction(orMethod, conv_degrees)
+            return self.java_r.orFunction(orMethod, javaarray_degrees)
 
     def reset(self):
         '''
@@ -115,7 +119,10 @@ class TskFuzzyRuleType:
         :return: aggregation value
         '''
         assert type(degrees)==list
-        return self.java_r.aggregation(degrees)
+        javaarray_degrees = gateway.new_array(gateway.jvm.float, len(degrees))
+        for d in degrees:
+            javaarray_degrees[degrees.index(d)] = d
+        return self.java_r.aggregation(javaarray_degrees)
 
     def getAndMethod(self):
         '''

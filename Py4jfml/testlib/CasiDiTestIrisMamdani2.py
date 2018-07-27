@@ -1,5 +1,5 @@
-import py4jfml.Py4Jfml as fml
 from py4j.java_gateway import JavaGateway
+from py4jfml.Py4Jfml import Py4jfml
 
 gateway = JavaGateway()
 
@@ -8,7 +8,7 @@ str_xml = "XMLFiles/IrisMamdani2.xml"
 
 
 #Sistema fuzzy
-fs = fml.Py4jfml.load(str_xml)
+fs = Py4jfml.load(str_xml)
 #limite minimo massimo e medio SepalLength
 limitiSL = [4.3, 7.9, 6.1]
 
