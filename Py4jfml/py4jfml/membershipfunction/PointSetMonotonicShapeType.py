@@ -37,22 +37,19 @@ class PointSetMonotonicShapeType:
             java_points_list = ListConverter().convert(points, gateway._gateway_client)
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetMonotonicShapeType(java_points_list)
 
-    def addPoint(self,x,y):
+    def addPoint(self,x=None,y=None,p=None):
         '''
         Add a point to the list
         :param x: float value
         :param y: float value
-        '''
-        assert type(x)==float and type(y)==float
-        self.java_mf.addPoint(x,y)
-
-    def addPoint(self,p):
-        '''
-        Add a point to the list
         :param p: a PointType
         '''
-        assert type(p)==PointType
-        self.java_mf.addPoint(p)
+        if x!=None and y!=None and p==None:
+            assert type(x) == float and type(y) == float
+            self.java_mf.addPoint(x, y)
+        elif x==None and y==None and p!=None:
+            assert type(p)==PointType
+            self.java_mf.addPoint(p)
 
     def setInterpolationMethod(self,value):
         '''
@@ -68,7 +65,8 @@ class PointSetMonotonicShapeType:
         :param points: a list of PointType
         '''
         assert type(points)==list
-        self.java_mf.setPoints(points)
+        conv_points = ListConverter().convert(points, gateway._gateway_client)
+        self.java_mf.setPoints(conv_points)
 
     def getFi(self,y):
         '''
@@ -108,6 +106,13 @@ class PointSetMonotonicShapeType:
         :return: an list with floats
         '''
         return self.java_mf.getXValuesDefuzzifier()
+
+    def __str__(self):
+        '''
+        Gets the object as a string
+        :return: possible object is string
+        '''
+        return self.java_mf.toString()
 
     #Methods inherited from abstract class jfml.membershipfunction.MembershipFunction
 

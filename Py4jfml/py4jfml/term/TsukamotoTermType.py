@@ -1,5 +1,6 @@
 from py4jfml.membershipfunction.CustomShapeType import CustomShapeType
 from py4jfml.parameter.TwoParamType import TwoParamType
+from py4jfml.membershipfunction.PointSetMonotonicShapeType import PointSetMonotonicShapeType
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -34,7 +35,7 @@ class TsukamotoTermType:
 
         #Call of the java constructor using the name and an instance of PointSetMonotonicShapeType
         elif name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
-            #assert type(name)==str and type(psm)==PointSetMonotonicShapeType
+            assert type(name)==str and type(psm)==PointSetMonotonicShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,psm)
 
     def copy(self):
@@ -89,7 +90,7 @@ class TsukamotoTermType:
         Sets the value of the property pointSetMonotonicShape
         :param value: allowed object is PointSetMonotonicShapeType
         '''
-        #assert type(value)==PointSetMonotonicShapeType
+        assert type(value)==PointSetMonotonicShapeType
         self.java_t.setPointSetMonotonicShape(value.java_psmst)
 
     def setRightGaussianShape(self,value):

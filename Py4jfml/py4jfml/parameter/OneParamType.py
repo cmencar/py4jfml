@@ -17,7 +17,7 @@ class OneParamType:
         :param value: float value
         '''
         assert type(value)==float
-        self.java_psetParam1(float(value))
+        self.java_p.setParam1(float(value))
 
     def getParam1(self):
         '''

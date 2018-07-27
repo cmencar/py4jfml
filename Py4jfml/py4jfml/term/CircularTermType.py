@@ -28,14 +28,6 @@ class CircularTermType:
         assert type(value)==str
         self.java_t.setComplement(str(value))
 
-    def setComplement(self,value):
-        '''
-        Sets the value of the property complement
-        :param value: allowed object is String
-        '''
-        assert type(value)==str
-        self.java_t.setComplement(str(value))
-
     def getComplement(self):
         '''
         Gets the value of the property complement
