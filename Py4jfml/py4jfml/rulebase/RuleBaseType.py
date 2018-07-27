@@ -17,7 +17,6 @@ class RuleBaseType(fsrb.FuzzySystemRuleBase):
         :param andAlgorithm: the and algorithm to be used
         :param orAlgorithm: the or algorithm to be used
         '''
-        super().__init__()
         if name==None and ruleBaseType==None and activation==None and andAlgorithm==None and orAlgorithm==None:
             self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createRuleBaseType()
         elif name!=None and ruleBaseType!=None and activation==None and andAlgorithm==None and orAlgorithm==None:
