@@ -5,12 +5,13 @@ from py4jfml.parameter import OneParamType as onept
 from py4jfml.parameter import TwoParamType as twopt
 from py4jfml.parameter import ThreeParamType as threept
 from py4jfml.parameter import FourParamType as fourpt
+from py4jfml.term import FuzzyTerm as ft
 from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
 
-class FuzzyTermType:
+class FuzzyTermType(ft.FuzzyTerm):
     """
     Python class for fuzzyTermType complex type.
     """

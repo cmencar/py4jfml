@@ -1,9 +1,10 @@
 from py4j.java_gateway import JavaGateway
 from py4j.java_collections import ListConverter
+from py4jfml.term import TskTerm as tskt
 
 gateway = JavaGateway()
 
-class TskTermType:
+class TskTermType(tskt.TskTerm):
     '''
     Python class for tskTermType complex type
     '''
