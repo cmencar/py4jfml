@@ -18,6 +18,7 @@ class TskTermType:
         #Calling java default constructor
         if name==None and order==None and coeff==None:
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTskTermType()
+
         #Call of the java constructor using the name, the order and a list of coefficients (c, a, b, ...)
         elif name!=None and order!=None and coeff!=None:
             assert type(name)==None and type(order)==int and type(coeff)==list
@@ -37,7 +38,8 @@ class TskTermType:
         :param listVar: list of variables of the KnowledgeBase
         '''
         assert type(listVar)==list
-        self.java_t.evaluateTskTerm(listVar)
+        java_listVar = ListConverter().convert(listVar, gateway._gateway_client)
+        self.java_t.evaluateTskTerm(java_listVar)
 
     def setName(self,value):
         '''

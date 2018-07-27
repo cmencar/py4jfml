@@ -114,23 +114,20 @@ class AndLogicalType:
         assert type(value)==str
         self.java_lt.setTNorm(value)
 
-    def getContent(self):
+    def getContent(self,i=None):
         '''
         Objects of the following type(s) are allowed in the list JAXBElement<OrLogicalType> JAXBElement<AndLogicalType> JAXBElement<CircularTermType>
-        :return: allowed object is a list of JAXBElement
-        '''
-        return self.java_lt.getContent()
-
-    def getContent(self,i):
-        '''
-        Gets the i-th element of the Aggregation Both the element AND and the element OR contain two elements,
+        Or gets the i-th element of the Aggregation Both the element AND and the element OR contain two elements,
         clause or an element AND followed by an element clause or an element OR followed by an element clause.
         The element clause represents the clause to be used in the fuzzy expression of the aggregated fuzzy term under definition.
         :param i: 0=first element, 1=last element
-        :return: the content of the i-th part i of the Aggregation
+        :return: allowed object is a list of JAXBElement or the content of the i-th part i of the Aggregation
         '''
-        assert type(i)==int
-        return self.java_lt.getContent(int(i))
+        if i==None:
+            return self.java_lt.getContent()
+        elif i!=None:
+            assert type(i)==int
+            return self.java_lt.getContent(int(i))
 
     def getOperator(self):
         '''
