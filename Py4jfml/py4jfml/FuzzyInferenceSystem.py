@@ -14,7 +14,6 @@ class FuzzyInferenceSystem(fst.FuzzySystemType):
         Constructor of class FuzzyInferenceSystem
         :param name: the name of the fuzzy system
         """
-        super().__init__(name)
         #Calling java default constructor
         if name==None:
             self.java_fis = gateway.entry_point.getJFML_Factory().createFuzzyInferenceSystem()

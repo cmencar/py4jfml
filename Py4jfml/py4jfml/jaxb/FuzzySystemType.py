@@ -23,14 +23,14 @@ class FuzzySystemType:
         :param networkAddress: the value of the networkAddress
         '''
         if name==None and knowledgeBase==None and ruleBase==None and networkAddress==None :
-            self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType()
-        elif knowledgeBase==None and ruleBase==None and networkAddress==None :
+            self.java_fis = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType()
+        elif name!=None and knowledgeBase==None and ruleBase==None and networkAddress==None :
             assert type(name)==str
-            self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name)
-        elif knowledgeBase!=None and ruleBase!=None and networkAddress!=None:
+            self.java_fis = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name)
+        elif name!=None and knowledgeBase!=None and ruleBase!=None and networkAddress!=None:
             assert type(name)==str and type(knowledgeBase)==kbt.KnowledgeBaseType and type(ruleBase)==list and type(networkAddress)==str
             javalist_ruleBase = ListConverter().convert(ruleBase, gateway._gateway_client)
-            self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, javalist_ruleBase, networkAddress)
+            self.java_fis = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, javalist_ruleBase, networkAddress)
 
     def addRuleBase(self,r):
         '''
@@ -38,54 +38,54 @@ class FuzzySystemType:
         :param r: allowed object is FuzzySystemRuleBase
         '''
         assert type(r)==arbt.AnYaRuleBaseType or type(r)==tskrbt.TskRuleBaseType or type(r)==rbt.RuleBaseType or type(r)==mrbt.MamdaniRuleBaseType or type(r)==trbt.TsukamotoRuleBaseType
-        self.java_fst.addRuleBase(r.java_fsrb)
+        self.java_fis.addRuleBase(r.java_fsrb)
 
     def evaluate(self):
         '''
         Evaluate the fuzzy system
         '''
-        self.java_fst.evaluate()
+        self.java_fis.evaluate()
 
     def getAllRuleBase(self):
         '''
         Gets an array with all the rule bases
         :return: an array with all the rule bases
         '''
-        return self.java_fst.getAllRuleBase()
+        return self.java_fis.getAllRuleBase()
 
     def getInferenceResults(self):
         '''
         Gets a string with the results
         :return: a String with results
         '''
-        return self.java_fst.getInferenceResults()
+        return self.java_fis.getInferenceResults()
 
     def getJAXBElement(self):
         '''
         :return: the JAXBE element
         '''
-        return self.java_fst.getJAXBElement()
+        return self.java_fis.getJAXBElement()
 
     def getKnowledgeBase(self):
         '''
         Gets the value of the knowledgeBase property
         :return: possible object is KnowledgeBaseType
         '''
-        return self.java_fst.getKnowledgeBase()
+        return self.java_fis.getKnowledgeBase()
 
     def getName(self):
         '''
         Gets the value of the name property
         :return: possible object is String
         '''
-        return self.java_fst.getName()
+        return self.java_fis.getName()
 
     def getNetworkAddress(self):
         '''
         Gets the value of the networkAddress property
         :return: possible object is String
         '''
-        return self.java_fst.getNetworkAddress()
+        return self.java_fis.getNetworkAddress()
 
     def getRuleBase(self, index=None):
         '''
@@ -95,10 +95,10 @@ class FuzzySystemType:
         :return: if the parameter index is none, returns a list of RuleBase; else returns a FuzzySystemRuleBase or null if the index does not match
         '''
         if index==None:
-            return self.java_fst.getRuleBase()
+            return self.java_fis.getRuleBase()
         else:
             assert type(index)==int
-            return self.java_fst.getRuleBase(index)
+            return self.java_fis.getRuleBase(index)
 
     def getVariable(self, name):
         '''
@@ -107,14 +107,14 @@ class FuzzySystemType:
         :return: allowed object is KnowledgeBaseVariable
         '''
         assert type(name)==str
-        return self.java_fst.getVariable(name)
+        return self.java_fis.getVariable(name)
 
     def getVariables(self):
         '''
         Return a variable instance identifies by its name
         :return: allowed object is KnowledgeBaseVariable
         '''
-        return self.java_fst.getVariables()
+        return self.java_fis.getVariables()
 
     def setKnowledgeBase(self, value):
         '''
@@ -122,7 +122,7 @@ class FuzzySystemType:
         :param value: allowed object is KnowledgeBaseType
         '''
         assert type(value)==kbt.KnowledgeBaseType
-        self.java_fst.setKnowledgeBase(value.java_kbt)
+        self.java_fis.setKnowledgeBase(value.java_kbt)
 
     def setName(self, value):
         '''
@@ -130,7 +130,7 @@ class FuzzySystemType:
         :param value: allowed object is String
         '''
         assert type(value)==str
-        self.java_fst.setName(value)
+        self.java_fis.setName(value)
 
     def setNetworkAddress(self, value):
         '''
@@ -138,7 +138,7 @@ class FuzzySystemType:
         :param value: allowed object is String
         '''
         assert type(value)==str
-        self.java_fst.setNetworkAddress(value)
+        self.java_fis.setNetworkAddress(value)
 
     def setVariableValue(self,var,value):
         '''
@@ -147,11 +147,11 @@ class FuzzySystemType:
         :param value: allowed object is float
         '''
         assert type(var)==str and type(value)==float
-        self.java_fst.setVariableValue(var,value)
+        self.java_fis.setVariableValue(var, value)
 
     def __str__(self):
         '''
         Returns a String object representing this object
         :return: allowed object is String
         '''
-        return self.java_fst.toString()
+        return self.java_fis.toString()
