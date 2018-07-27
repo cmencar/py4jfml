@@ -1,10 +1,10 @@
-from py4jfml.membershipfunction.PointSetShapeType import PointSetShapeType
-from py4jfml.membershipfunction.CustomShapeType import CustomShapeType
-from py4jfml.membershipfunction.CircularDefinitionType import CircularDefinitionType
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
+from py4jfml.membershipfunction import PointSetShapeType as psst
+from py4jfml.membershipfunction import CustomShapeType as cst
+from py4jfml.membershipfunction import CircularDefinitionType as cdt
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
 from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 
@@ -33,12 +33,12 @@ class FuzzyTermType:
 
         #Call of the java constructor using the name and an instance of CircularDefinitionType
         elif name!=None and type_java==None and param==None and circular!=None and custom==None and point==None and complement==None and points==None:
-            assert type(name)==str and type(circular)==CircularDefinitionType
+            assert type(name)==str and type(circular)==cdt.CircularDefinitionType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), circular.java_cdt)
 
         #Call of the java constructor using the name and an instance of CustomShapeType
         elif name!=None and type_java==None and param==None and circular==None and custom!=None and point==None and complement==None and points==None:
-            assert type(name)==str and type(custom)==CustomShapeType
+            assert type(name)==str and type(custom)==cst.CustomShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), custom.java_cst)
 
         #Call of the java constructor using the name, the type of fuzzy term and an array of parameters
@@ -55,17 +55,17 @@ class FuzzyTermType:
 
         #Call of the java constructor using the name and an instance of PointSetShapeType
         elif name!=None and type_java==None and param==None and circular==None and custom==None and point!=None and complement==None and points==None:
-            assert type(name)==str and type(point)==PointSetShapeType
+            assert type(name)==str and type(point)==psst.PointSetShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), point.java_psst)
 
         #Call of the java constructor using the name, the complement and a CircularDefinitionType
         elif name!=None and type_java==None and param==None and point==None and circular!=None and custom==None and complement!=None and points==None:
-            assert type(name)==str and type(complement)==str and type(circular)==CircularDefinitionType
+            assert type(name)==str and type(complement)==str and type(circular)==cdt.CircularDefinitionType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), circular.java_cdt)
 
         #Call of the java constructor using the name, the complement and a PointSetShapeType
         elif name!=None and type_java==None and param==None and point!=None and circular==None and custom==None and complement!=None and points==None:
-            assert type(name)==str and type(complement)==str and type(point)==PointSetShapeType
+            assert type(name)==str and type(complement)==str and type(point)==psst.PointSetShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), point.java_psst)
 
     def copy(self):
@@ -80,7 +80,7 @@ class FuzzyTermType:
         Sets the value of the property circularDefinition
         :param value: allowed object is CircularDefinitionType
         '''
-        assert type(value)==CircularDefinitionType
+        assert type(value)==cdt.CircularDefinitionType
         self.java_t.setCircularDefinition(value.java_cdt)
 
     def setComplement(self, value):
@@ -96,7 +96,7 @@ class FuzzyTermType:
         Sets the value of the property customShape
         :param value: allowed object is CustomShapeType
         '''
-        assert type(value)==CustomShapeType
+        assert type(value)==cst.CustomShapeType
         self.java_t.setCustomShape(value.java_cst)
 
     def setGaussianShape(self,value):
@@ -104,7 +104,7 @@ class FuzzyTermType:
         Sets the value of the property gaussianShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setGaussianShape(value.java_p)
 
     def setLeftGaussianShape(self,value):
@@ -112,7 +112,7 @@ class FuzzyTermType:
         Sets the value of the property leftGaussianShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setLeftGaussianShape(value.java_p)
 
     def setLeftLinearShape(self,value):
@@ -120,7 +120,7 @@ class FuzzyTermType:
         Sets the value of the property leftLinearShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setLeftLinearShape(value.java_p)
 
     def setName(self,value):
@@ -136,7 +136,7 @@ class FuzzyTermType:
         Sets the value of the property piShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setPiShape(value.java_p)
 
     def setPointSetShape(self,value):
@@ -144,7 +144,7 @@ class FuzzyTermType:
         Sets the value of the property pointSetShape
         :param value: allowed object is PointSetShapeType
         '''
-        assert type(value)==PointSetShapeType
+        assert type(value)==psst.PointSetShapeType
         self.java_t.setPointSetShape(value.java_psst)
 
     def setRectangularShape(self,value):
@@ -152,7 +152,7 @@ class FuzzyTermType:
         Sets the value of the property rectangularShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setRectangularShape(value.java_p)
 
     def setRightGaussianShape(self,value):
@@ -160,7 +160,7 @@ class FuzzyTermType:
         Sets the value of the property rightGaussianShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setRightGaussianShape(value.java_p)
 
     def setRightLinearShape(self,value):
@@ -168,7 +168,7 @@ class FuzzyTermType:
         Sets the value of the property rightLinearShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setRightLinearShape(value.java_p)
 
     def setSingletonShape(self,value):
@@ -176,7 +176,7 @@ class FuzzyTermType:
         Sets the value of the property singletonShape
         :param value: allowed object is OneParamType
         '''
-        assert type(value)==OneParamType
+        assert type(value)==onept.OneParamType
         self.java_t.setSingletonShape(value.java_p)
 
     def setSShape(self,value):
@@ -184,7 +184,7 @@ class FuzzyTermType:
         Sets the value of the property sShape
         :param value: possible object is PointSetShapeType
         '''
-        assert type(value)==PointSetShapeType
+        assert type(value)==psst.PointSetShapeType
         self.java_t.setSShape(value.java_psst)
 
     def setTrapezoidShape(self,value):
@@ -192,7 +192,7 @@ class FuzzyTermType:
         Sets the value of the property trapezoidShape
         :param value: allowed object is FourParamType
         '''
-        assert type(value)==FourParamType
+        assert type(value)==fourpt.FourParamType
         self.java_t.setTrapezoidShape(value.java_p)
 
     def setTriangularShape(self,value):
@@ -200,7 +200,7 @@ class FuzzyTermType:
         Sets the value of the property triangularShape
         :param value: allowed object is ThreeParamType
         '''
-        assert type(value)==ThreeParamType
+        assert type(value)==threept.ThreeParamType
         self.java_t.setTriangularShape(value.java_p)
 
     def setZShape(self,value):
@@ -208,7 +208,7 @@ class FuzzyTermType:
         Sets the value of the property zShape.
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setZShape(value.java_p)
 
     def getCircularDefinition(self):

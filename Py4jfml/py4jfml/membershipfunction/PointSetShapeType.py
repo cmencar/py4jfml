@@ -1,7 +1,7 @@
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
 from py4j.java_gateway import JavaGateway
 from py4j.java_collections import ListConverter
 gateway = JavaGateway()
@@ -129,7 +129,7 @@ class PointSetShapeType:
         Sets the parameter
         :param p: the parameter
         '''
-        assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+        assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
         self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):

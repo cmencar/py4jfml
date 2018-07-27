@@ -1,7 +1,7 @@
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -24,12 +24,12 @@ class ZShapeMembershipFunction:
 
         #Call of the java constructor with a Parameter
         elif p!=None and domainLeft==None and domainRight==None:
-            assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+            assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createZShapeMembershipFunction(p.java_p)
 
         #Call of the java constructor with a parameter and left and right domain
         elif p!=None and domainLeft!=None and domainRight!=None:
-            assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+            assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
             assert type(domainRight)==float and type(domainLeft)==float
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createZShapeMembershipFunction(p.java_p,domainLeft,domainRight)
 
@@ -88,7 +88,7 @@ class ZShapeMembershipFunction:
         Sets the parameter
         :param p: the parameter
         '''
-        assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+        assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
         self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):

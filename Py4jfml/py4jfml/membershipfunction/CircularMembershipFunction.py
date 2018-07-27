@@ -1,8 +1,8 @@
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
-from py4jfml.membershipfunction.CircularDefinitionType import CircularDefinitionType
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
+from py4jfml.membershipfunction import CircularDefinitionType as cdt
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -25,12 +25,12 @@ class CircularMembershipFunction:
 
         #Call of the java constructor with a CircularDefinitionType as param
         elif p!=None and domainLeft==None and domainRight==None:
-            assert type(p)==CircularDefinitionType
+            assert type(p)==cdt.CircularDefinitionType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularMembershipFunction(p.java_mf)
 
         #Call of the java constructor with a a CircularDefinitionType and the left and right domain
         elif p!=None and domainLeft!=None and domainRight!=None:
-            assert type(p)==CircularDefinitionType and type(domainLeft)==float and type(domainRight)==float
+            assert type(p)==cdt.CircularDefinitionType and type(domainLeft)==float and type(domainRight)==float
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularMembershipFunction(p.java_mf,domainLeft,domainRight)
 
     def getMembershipDegree(self,x):
@@ -79,7 +79,7 @@ class CircularMembershipFunction:
         Sets the parameter
         :param p: the parameter
         '''
-        assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+        assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
         self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):

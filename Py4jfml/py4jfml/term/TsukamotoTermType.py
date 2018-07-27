@@ -1,6 +1,6 @@
-from py4jfml.membershipfunction.CustomShapeType import CustomShapeType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.membershipfunction.PointSetMonotonicShapeType import PointSetMonotonicShapeType
+from py4jfml.membershipfunction import CustomShapeType as cst
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.membershipfunction import PointSetMonotonicShapeType as psmst
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -35,7 +35,7 @@ class TsukamotoTermType:
 
         #Call of the java constructor using the name and an instance of PointSetMonotonicShapeType
         elif name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
-            assert type(name)==str and type(psm)==PointSetMonotonicShapeType
+            assert type(name)==str and type(psm)==psmst.PointSetMonotonicShapeType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,psm)
 
     def copy(self):
@@ -66,7 +66,7 @@ class TsukamotoTermType:
         Sets the value of the property customMonotonicShape.
         :param value: allowed object is CustomShapeType
         '''
-        assert type(value)==CustomShapeType
+        assert type(value)==cst.CustomShapeType
         self.java_t.setCustomMonotonicShape(value.java_cst)
 
     def setLeftGaussianShape(self,value):
@@ -74,7 +74,7 @@ class TsukamotoTermType:
         Sets the value of the property leftGaussianShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setLeftGaussianShape(value.java_p)
 
     def setLeftLinearShape(self,value):
@@ -82,7 +82,7 @@ class TsukamotoTermType:
         Sets the value of the property leftLinearShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setLeftLinearShape(value.java_p)
 
     def setPointSetMonotonicShape(self,value):
@@ -90,7 +90,7 @@ class TsukamotoTermType:
         Sets the value of the property pointSetMonotonicShape
         :param value: allowed object is PointSetMonotonicShapeType
         '''
-        assert type(value)==PointSetMonotonicShapeType
+        assert type(value)==psmst.PointSetMonotonicShapeType
         self.java_t.setPointSetMonotonicShape(value.java_psmst)
 
     def setRightGaussianShape(self,value):
@@ -98,7 +98,7 @@ class TsukamotoTermType:
         Sets the value of the property rightGaussianShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setRightGaussianShape(value.java_p)
 
     def setRightLinearShape(self,value):
@@ -106,7 +106,7 @@ class TsukamotoTermType:
         Sets the value of the property rightLinearShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setRightLinearShape(value.java_p)
 
     def setSShape(self,value):
@@ -114,7 +114,7 @@ class TsukamotoTermType:
         Sets the value of the property sShape
         :param value: allowed object is TwoParamType
         '''
-        assert type(value)==TwoParamType
+        assert type(value)==twopt.TwoParamType
         self.java_t.setSShape(value.java_p)
 
     def setZShape(self,value):
@@ -122,7 +122,7 @@ class TsukamotoTermType:
         Sets the value of the property zShape
         :param value: allowed object is TwoParamType
         '''
-        assert type()==TwoParamType
+        assert type()==twopt.TwoParamType
         self.java_t.setZShape(value.java_p)
 
     def getName(self):

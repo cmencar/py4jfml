@@ -1,14 +1,14 @@
-from py4jfml.operator.AndLogicalType import AndLogicalType
-from py4jfml.operator.OrLogicalType import OrLogicalType
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
+from py4jfml.operator import AndLogicalType as alt
+from py4jfml.operator import OrLogicalType as olt
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
 from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
 from py4jfml.knowledgebasevariable import FuzzyVariableType as  fvt
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
-from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
+from py4jfml.knowledgebasevariable import AnYaDataCloudType as aydc
+from py4jfml.knowledgebasevariable import TskVariableType as tskvt
+from py4jfml.knowledgebasevariable import TsukamotoVariableType as tvt
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -32,20 +32,20 @@ class CircularDefinitionType:
 
         #Call of the java constructor using an instance of AndLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical!=None and orLogical==None and var!=None:
-            assert type(andLogical)==AndLogicalType
-            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(andLogical)==alt.AndLogicalType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==aydc.AnYaDataCloudType or type(var)==tskvt.TskVariableType or type(var)==tvt.TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical==None and orLogical!=None and var!=None:
-            assert type(orLogical)==OrLogicalType
-            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(orLogical)==olt.OrLogicalType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==aydc.AnYaDataCloudType or type(var)==tskvt.TskVariableType or type(var)==tvt.TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(orLogical.java_lt, var.java_kbv)
 
         #Call of the java constructor using an instance of AndLogicalType, an instance of OrLogicalType and an instance of KnowledgeBaseVariable
         elif andLogical != None and orLogical != None and var != None:
-            assert type(andLogical)==AndLogicalType and type(orLogical)==OrLogicalType
-            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+            assert type(andLogical)==alt.AndLogicalType and type(orLogical)==olt.OrLogicalType
+            assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==aydc.AnYaDataCloudType or type(var)==tskvt.TskVariableType or type(var)==tvt.TsukamotoVariableType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCircularDefinitionType(andLogical.java_lt, orLogical.java_lt, var.java_kbv)
 
     def copy(self):
@@ -60,7 +60,7 @@ class CircularDefinitionType:
         Sets the value of the property and.
         :param andLogical: allowed object is AndLogicalType
         '''
-        assert type(andLogical)==AndLogicalType
+        assert type(andLogical)==alt.AndLogicalType
         self.java_mf.setAnd(andLogical.java_lt)
 
     def setOr(self,orLogical):
@@ -68,7 +68,7 @@ class CircularDefinitionType:
         Sets the value of the property or
         :param orLogical: allowed object is OrLogicalType
         '''
-        assert type(orLogical)==OrLogicalType
+        assert type(orLogical)==olt.OrLogicalType
         self.java_mf.setOr(orLogical.java_lt)
 
     def setVariable(self,var):
@@ -76,7 +76,7 @@ class CircularDefinitionType:
         Set the FuzzyVariableType which contains the terms
         :param var: allowed object is KnowledgeBaseVariable
         '''
-        assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==AnYaDataCloudType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+        assert type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==aydc.AnYaDataCloudType or type(var)==tskvt.TskVariableType or type(var)==tvt.TsukamotoVariableType
         self.java_mf.setVariable(var.java_kbv)
 
     def getAnd(self):
@@ -137,7 +137,7 @@ class CircularDefinitionType:
         Sets the parameter
         :param p: the parameter
         '''
-        assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+        assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
         self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):

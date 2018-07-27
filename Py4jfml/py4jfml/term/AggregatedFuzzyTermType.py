@@ -1,5 +1,5 @@
-from py4jfml.aggregated.AndAggregatedType import AndAggregatedType
-from py4jfml.aggregated.OrAggregatedType import OrAggregatedType
+from py4jfml.aggregated import AndAggregatedType as aat
+from py4jfml.aggregated import OrAggregatedType as oat
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -29,12 +29,12 @@ class AggregatedFuzzyTermType:
         #Call of the java constructor using the name and an AggregatedType
         elif name!=None and andAgg==None and orAgg==None and agg!=None:
             assert type(name)==str
-            assert type(agg)==AndAggregatedType or type(agg)==OrAggregatedType
+            assert type(agg)==aat.AndAggregatedType or type(agg)==oat.OrAggregatedType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType(name,agg)
 
         #Call of the java constructor using the name and the AndAggregatedType and the OrAggregatedType
         elif name!=None and andAgg!=None and orAgg!=None and agg==None:
-            assert type(name)==str and type(andAgg)==AndAggregatedType and type(orAgg)==OrAggregatedType
+            assert type(name)==str and type(andAgg)==aat.AndAggregatedType and type(orAgg)==oat.OrAggregatedType
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createAggregatedFuzzyTermType(name,andAgg,orAgg)
 
     def copy(self):
@@ -57,7 +57,7 @@ class AggregatedFuzzyTermType:
         Sets the value of the property and
         :param value: allowed object is AndAggregatedType
         '''
-        assert type(value)==AndAggregatedType
+        assert type(value)==aat.AndAggregatedType
         self.java_t.setAnd(value.java_at)
 
     def setOr(self, value):
@@ -65,7 +65,7 @@ class AggregatedFuzzyTermType:
         Sets the value of the property or
         :param value: allowed object is OrAggregatedType
         '''
-        assert type(value)==OrAggregatedType
+        assert type(value)==oat.OrAggregatedType
         self.java_t.setOr(value.java_at)
 
     def getAnd(self):

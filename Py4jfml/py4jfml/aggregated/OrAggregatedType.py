@@ -1,6 +1,6 @@
 from py4j.java_gateway import JavaGateway
 from py4jfml.aggregated import AndAggregatedType as aat
-from py4jfml.rule.ClauseType import ClauseType
+from py4jfml.rule import ClauseType as ct
 
 gateway = JavaGateway()
 
@@ -44,17 +44,17 @@ class OrAggregatedType:
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm==None:
-            assert type(term2)==aat.AndAggregatedType and type(c1)==ClauseType
+            assert type(term2)==aat.AndAggregatedType and type(c1)==ct.ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm==None:
-            assert type(term2)==OrAggregatedType and type(c1)==ClauseType
+            assert type(term2)==OrAggregatedType and type(c1)==ct.ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2==None and c1!=None and c2!=None and tConorm==None:
-            assert type(c1) == ClauseType and type(c2) == ClauseType
+            assert type(c1)==ct.ClauseType and type(c2)==ct.ClauseType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(c1.java_ct,c2.java_ct)
 
         #Calling java Or constructor using tConorm as method for or operator
@@ -79,17 +79,17 @@ class OrAggregatedType:
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm!=None:
-            assert type(term2)==aat.AndAggregatedType and type(c1)==ClauseType and type(tConorm)==str
+            assert type(term2)==aat.AndAggregatedType and type(c1)==ct.ClauseType and type(tConorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm!=None:
-            assert type(term2)==OrAggregatedType and type(c1)==ClauseType and type(tConorm)==str
+            assert type(term2)==OrAggregatedType and type(c1)==ct.ClauseType and type(tConorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2==None and c1!=None and c2!=None and tConorm!=None:
-            assert type(c1)==ClauseType and type(c2)==ClauseType and type(tConorm)==str
+            assert type(c1)==ct.ClauseType and type(c2)==ct.ClauseType and type(tConorm)==str
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,c2.java_ct)
 
     def operate(self,x,y):

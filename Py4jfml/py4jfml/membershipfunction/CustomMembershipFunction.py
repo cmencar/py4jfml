@@ -1,8 +1,8 @@
-from py4jfml.parameter.OneParamType import OneParamType
-from py4jfml.parameter.TwoParamType import TwoParamType
-from py4jfml.parameter.ThreeParamType import ThreeParamType
-from py4jfml.parameter.FourParamType import FourParamType
-from py4jfml.membershipfunction.CustomShapeType import CustomShapeType
+from py4jfml.parameter import OneParamType as onept
+from py4jfml.parameter import TwoParamType as twopt
+from py4jfml.parameter import ThreeParamType as threept
+from py4jfml.parameter import FourParamType as fourpt
+from py4jfml.membershipfunction import CustomShapeType as cst
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -24,15 +24,15 @@ class CustomMembershipFunction:
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomMembershipFunction()
 
         elif c!=None and p==None and domainLeft==None and domainRight==None:
-            assert type(c)==CustomShapeType
+            assert type(c)==cst.CustomShapeType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomMembershipFunction(c.java_mf)
 
         elif c!=None and p==None and domainLeft!=None and domainRight!=None:
-            assert type(c)==CustomShapeType and type(domainLeft)==float and type(domainRight)==float
+            assert type(c)==cst.CustomShapeType and type(domainLeft)==float and type(domainRight)==float
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomMembershipFunction(c.java_mf,domainLeft,domainRight)
 
         elif c==None and p!=None and domainLeft==None and domainRight==None:
-            assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+            assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createCustomMembershipFunction(p.java_p)
 
     def getMembershipDegree(self,x):
@@ -81,7 +81,7 @@ class CustomMembershipFunction:
         Sets the parameter
         :param p: the parameter
         '''
-        assert type(p)==OneParamType or type(p)==TwoParamType or type(p)==ThreeParamType or type(p)==FourParamType
+        assert type(p)==onept.OneParamType or type(p)==twopt.TwoParamType or type(p)==threept.ThreeParamType or type(p)==fourpt.FourParamType
         self.java_mf.setParameter(p.java_p)
 
     def getDomainLeft(self):

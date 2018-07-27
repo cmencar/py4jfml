@@ -1,5 +1,6 @@
-from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
-from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
+from py4jfml.knowledgebase import KnowledgeBaseType as kbt
+from py4jfml.rulebase import MamdaniRuleBaseType as mrbt
+from py4jfml.jaxb import FuzzySystemType as fst
 from py4j.java_gateway import JavaGateway
 
 gateway = JavaGateway()
@@ -24,17 +25,16 @@ class FuzzyInferenceSystem:
             self.java_fis = gateway.entry_point.getJFML_Factory().createFuzzyInferenceSystem(str(name))
 
         #Call of the java constructor using another FuzzySystemType instance
-        elif type(name)==FuzzyInferenceSystem:
-            self.java_fis = name.fuzzyInferenceSystem
         else:
-            self.java_fis = name
+            #assert type(name)==FuzzyInferenceSystem or type(name)==fst.FuzzySystemType
+            self.java_fis = gateway.entry_point.getJFML_Factory().createFuzzyInferenceSystem(name)
 
     def setKnowledgeBase(self, value):
         """
         Sets the value of the knowledgeBase property.
         :param value: allowed object is KnowledgeBaseType
         """
-        assert type(value)==KnowledgeBaseType
+        assert type(value)==kbt.KnowledgeBaseType
         self.java_fis.setKnowledgeBase(value.java_kbt)
 
     def setName(self,value):
@@ -67,7 +67,7 @@ class FuzzyInferenceSystem:
         Adds a new RuleBase to the fuzzySystem
         :param r: allowed object is FuzzySystemRuleBase
         """
-        assert type(r)==MamdaniRuleBaseType
+        assert type(r)==mrbt.MamdaniRuleBaseType
         self.java_fis.addRuleBase(r.java_fsrb)
 
     def getAllRuleBase(self):
