@@ -1,12 +1,11 @@
-from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-from py4jfml.defuzzifier.DefuzzifierCenterOfArea import DefuzzifierCenterOfArea
-from py4jfml.defuzzifier.DefuzzifierCenterOfGravity import DefuzzifierCenterOfGravity
-from py4jfml.defuzzifier.DefuzzifierCenterOfGravitySingletons import DefuzzifierCenterOfGravitySingletons
-from py4jfml.defuzzifier.DefuzzifierLeftMostMax import DefuzzifierLeftMostMax
-from py4jfml.defuzzifier.DefuzzifierMeanMax import DefuzzifierMeanMax
-from py4jfml.defuzzifier.DefuzzifierRightMostMax import DefuzzifierRightMostMax
-from py4jfml.term.FuzzyTermType import FuzzyTermType
+from py4jfml.defuzzifier import DefuzzifierLeftMostMax as dlmm
+from py4jfml.defuzzifier import DefuzzifierRightMostMax as drmm
+from py4jfml.defuzzifier import DefuzzifierCenterOfArea as dcoa
+from py4jfml.defuzzifier import DefuzzifierCenterOfGravity as dcog
+from py4jfml.defuzzifier import DefuzzifierCenterOfGravitySingletons as dcogs
+from py4jfml.defuzzifier import DefuzzifierMeanMax as dmm
+from py4jfml.term import FuzzyTermType as ftt
 
 gateway = JavaGateway()
 
@@ -39,8 +38,8 @@ class FuzzyVariableType:
     def setDefuzzifier(self, defuzz):
         #Sets the defuzzifier
         #:param defuzz: defuzzifier
-        assert type(defuzz)==DefuzzifierCenterOfArea or type(defuzz)==DefuzzifierCenterOfGravity or type(defuzz)==DefuzzifierCenterOfGravitySingletons \
-               or type(defuzz)==DefuzzifierLeftMostMax or type(defuzz)==DefuzzifierMeanMax or type(defuzz)==DefuzzifierRightMostMax
+        assert type(defuzz)==dcoa.DefuzzifierCenterOfArea or type(defuzz)==dcog.DefuzzifierCenterOfGravity or type(defuzz)==dcogs.DefuzzifierCenterOfGravitySingletons \
+               or type(defuzz)==dlmm.DefuzzifierLeftMostMax or type(defuzz)==dmm.DefuzzifierMeanMax or type(defuzz)==drmm.DefuzzifierRightMostMax
         self.java_kbv.setDefuzzifier(defuzz.java_d)
 
 
@@ -73,7 +72,7 @@ class FuzzyVariableType:
         :param param: array of parameters
         '''
         if ft!=None and name==None and fuzzyTermType==None and param==None:
-            assert type(ft)==FuzzyTermType
+            assert type(ft)==ftt.FuzzyTermType
             self.java_kbv.addFuzzyTerm(ft.java_t)
         if ft==None and name!=None and fuzzyTermType!=None and param!=None:
             assert type(name)==str and type(fuzzyTermType)==int and type(param)==list

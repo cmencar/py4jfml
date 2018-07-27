@@ -1,11 +1,11 @@
 from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
-from py4jfml.rulebase.AnYaRuleBaseType import AnYaRuleBaseType
-from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
-from py4jfml.rulebase.RuleBaseType import RuleBaseType
-from py4jfml.rulebase.TskRuleBaseType import TskRuleBaseType
-from py4jfml.rulebase.TsukamotoRuleBaseType import TsukamotoRuleBaseType
+from py4jfml.knowledgebase import KnowledgeBaseType as kbt
+from py4jfml.rulebase import AnYaRuleBaseType as arbt
+from py4jfml.rulebase import MamdaniRuleBaseType as mrbt
+from py4jfml.rulebase import RuleBaseType as rbt
+from py4jfml.rulebase import TskRuleBaseType as tskrbt
+from py4jfml.rulebase import TsukamotoRuleBaseType as trbt
 
 gateway = JavaGateway()
 
@@ -28,7 +28,7 @@ class FuzzySystemType:
             assert type(name)==str
             self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name)
         elif knowledgeBase!=None and ruleBase!=None and networkAddress!=None:
-            assert type(name)==str and type(knowledgeBase)==KnowledgeBaseType and type(ruleBase)==list and type(networkAddress)==str
+            assert type(name)==str and type(knowledgeBase)==kbt.KnowledgeBaseType and type(ruleBase)==list and type(networkAddress)==str
             javalist_ruleBase = ListConverter().convert(ruleBase, gateway._gateway_client)
             self.java_fst = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, javalist_ruleBase, networkAddress)
 
@@ -37,7 +37,7 @@ class FuzzySystemType:
         Adds a new RuleBase to the fuzzySystem
         :param r: allowed object is FuzzySystemRuleBase
         '''
-        assert type(r)==AnYaRuleBaseType or type(r)==TskRuleBaseType or type(r) == RuleBaseType or type(r)==MamdaniRuleBaseType or type(r)==TsukamotoRuleBaseType
+        assert type(r)==arbt.AnYaRuleBaseType or type(r)==tskrbt.TskRuleBaseType or type(r)==rbt.RuleBaseType or type(r)==mrbt.MamdaniRuleBaseType or type(r)==trbt.TsukamotoRuleBaseType
         self.java_fst.addRuleBase(r.java_fsrb)
 
     def evaluate(self):
@@ -121,7 +121,7 @@ class FuzzySystemType:
         Sets the value of the knowledgeBase property
         :param value: allowed object is KnowledgeBaseType
         '''
-        assert type(value)==KnowledgeBaseType
+        assert type(value)==kbt.KnowledgeBaseType
         self.java_fst.setKnowledgeBase(value.java_kbt)
 
     def setName(self, value):

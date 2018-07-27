@@ -1,10 +1,10 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.FuzzyRuleType import FuzzyRuleType
-from py4jfml.rulebase.FuzzySystemRuleBase import FuzzySystemRuleBase
+from py4jfml.rule import FuzzyRuleType as frt
+from py4jfml.rulebase import FuzzySystemRuleBase as fsrb
 
 gateway = JavaGateway()
 
-class RuleBaseType(FuzzySystemRuleBase):
+class RuleBaseType(fsrb.FuzzySystemRuleBase):
     '''
     Python class for ruleBaseType complex type.
     '''
@@ -74,7 +74,7 @@ class RuleBaseType(FuzzySystemRuleBase):
         Adds a FuzzyRuleType to the list of rules
         :param rule: the FuzzyRuleType
         '''
-        assert type(rule)==FuzzyRuleType
+        assert type(rule)==frt.FuzzyRuleType
         self.java_fsrb.addRule(rule.java_r)
 
     def evaluate(self):

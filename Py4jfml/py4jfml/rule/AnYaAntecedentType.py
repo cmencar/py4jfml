@@ -1,5 +1,5 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
+from py4jfml.knowledgebasevariable import AnYaDataCloudType as adct
 
 gateway = JavaGateway()
 
@@ -15,7 +15,7 @@ class AnYaAntecedentType:
         if dataCloud==None:
             self.java_aat = gateway.entry_point.getJFMLRule_Factory().createAnYaAntecedentType()
         else:
-            assert type(dataCloud)==AnYaDataCloudType
+            assert type(dataCloud)==adct.AnYaDataCloudType
             self.java_aat = gateway.entry_point.getJFMLRule_Factory().createAnYaAntecedentType(dataCloud.java_kbv)
 
     def getDataCloudName(self):

@@ -1,5 +1,5 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.term.TsukamotoTermType import TsukamotoTermType
+from py4jfml.term import TsukamotoTermType as ttt
 
 gateway = JavaGateway()
 
@@ -53,7 +53,7 @@ class TsukamotoVariableType:
                 conv_param[param.index(p)] = p
             self.java_kbv.addTsukamotoTerm(name, termType, conv_param)
         elif name==None and termType==None and param==None and t!=None:
-            assert type(t)==TsukamotoTermType
+            assert type(t)==ttt.TsukamotoTermType
             self.java_kbv.addTsukamotoTerm(t.java_t)
 
     def copy(self):

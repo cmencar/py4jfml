@@ -1,9 +1,9 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
-from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
-from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
+from py4jfml.knowledgebasevariable import AnYaDataCloudType as adct
+from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
+from py4jfml.knowledgebasevariable import TskVariableType as tskvt
+from py4jfml.knowledgebasevariable import TsukamotoVariableType as tvt
 
 gateway = JavaGateway()
 
@@ -23,7 +23,7 @@ class KnowledgeBaseType:
         Adds a variable to the list of varibles
         :param var: the variable to add
         '''
-        assert type(var)==AnYaDataCloudType or type(var)==AggregatedFuzzyVariableType or type(var)==FuzzyVariableType or type(var)==TskVariableType or type(var)==TsukamotoVariableType
+        assert type(var)==adct.AnYaDataCloudType or type(var)==afvt.AggregatedFuzzyVariableType or type(var)==fvt.FuzzyVariableType or type(var)==tskvt.TskVariableType or type(var)==tvt.TsukamotoVariableType
         self.java_kbt.addVariable(var.java_kbv)
 
 

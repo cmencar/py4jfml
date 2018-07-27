@@ -1,7 +1,6 @@
-from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.AntecedentType import AntecedentType
-from py4jfml.rule.ConsequentType import ConsequentType
+from py4jfml.rule import AntecedentType as at
+from py4jfml.rule import ConsequentType as ct
 
 gateway = JavaGateway()
 
@@ -24,7 +23,7 @@ class FuzzyRuleType:
             assert type(name)==str
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name)
         elif name!=None and ant!=None and con!=None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight==None:
-            assert type(name)==str and type(ant) == AntecedentType and type(con) == ConsequentType
+            assert type(name)==str and type(ant)==at.AntecedentType and type(con)==ct.ConsequentType
             self.java_r = gateway.entry_point.getJFMLRule_Factory().createFuzzyRuleType(name, ant.java_at,con.java_ct)
         elif name != None and ant==None and con==None and connector==None and connectorMethod==None and andMethod==None and orMethod==None and weight!=None:
             assert type(name)==str and type(weight)==float
@@ -203,7 +202,7 @@ class FuzzyRuleType:
         Sets the value of the property antecedent
         :param value: allowed object is AntecedentType
         '''
-        assert type(value)==AntecedentType
+        assert type(value)==at.AntecedentType
         self.java_r.setAntecedent(value.java_at)
 
     def setConnector(self, value):
@@ -219,7 +218,7 @@ class FuzzyRuleType:
         Sets the value of the property consequent
         :param value: allowed object is ConsequentType
         '''
-        assert type(value)==ConsequentType
+        assert type(value)==ct.ConsequentType
         self.java_r.setConsequent(value.java_ct)
 
     def setName(self, value):

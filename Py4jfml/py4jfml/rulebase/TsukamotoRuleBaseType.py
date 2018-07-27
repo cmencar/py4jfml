@@ -1,10 +1,10 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.rule.FuzzyRuleType import FuzzyRuleType
-from py4jfml.rulebase.RuleBaseType import RuleBaseType
+from py4jfml.rule import FuzzyRuleType as frt
+from py4jfml.rulebase import RuleBaseType as rbt
 
 gateway = JavaGateway()
 
-class TsukamotoRuleBaseType(RuleBaseType):
+class TsukamotoRuleBaseType(rbt.RuleBaseType):
     '''
     Python class for implementing Tsukamoto rule base fuzzy systems
     '''
@@ -32,7 +32,7 @@ class TsukamotoRuleBaseType(RuleBaseType):
         Adds a FuzzyRuleType to the list of rules
         :param rule: the FuzzyRuleType
         '''
-        assert type(rule)==FuzzyRuleType
+        assert type(rule)==frt.FuzzyRuleType
         self.java_fsrb.addRule(rule.java_r)
 
     def evaluate(self):

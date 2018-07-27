@@ -1,12 +1,12 @@
 from py4j.java_gateway import JavaGateway
-from py4jfml.knowledgebasevariable.AggregatedFuzzyVariableType import AggregatedFuzzyVariableType
-from py4jfml.knowledgebasevariable.AnYaDataCloudType import AnYaDataCloudType
-from py4jfml.knowledgebasevariable.FuzzyVariableType import FuzzyVariableType
-from py4jfml.knowledgebasevariable.TskVariableType import TskVariableType
-from py4jfml.knowledgebasevariable.TsukamotoVariableType import TsukamotoVariableType
-from py4jfml.rule.TskClauseType import TskClauseType
-from py4jfml.rule.TskConsequentClausesType import TskConsequentClausesType
-from py4jfml.term.TskTermType import TskTermType
+from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
+from py4jfml.knowledgebasevariable import AnYaDataCloudType as adct
+from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
+from py4jfml.knowledgebasevariable import TskVariableType as tskvt
+from py4jfml.knowledgebasevariable import TsukamotoVariableType as tvt
+from py4jfml.rule import TskClauseType as tskct
+from py4jfml.rule import TskConsequentClausesType as tskcct
+from py4jfml.term import TskTermType as tsktt
 
 gateway = JavaGateway()
 
@@ -24,7 +24,7 @@ class TskConsequentType:
         if thenConseq==None and elseConseq==None:
             self.java_tskct = gateway.entry_point.getJFMLRule_Factory().createTskConsequentType()
         elif thenConseq!=None and elseConseq!=None:
-            assert type(thenConseq)==TskConsequentClausesType and type(elseConseq)==TskConsequentClausesType
+            assert type(thenConseq)==tskcct.TskConsequentClausesType and type(elseConseq)==tskct.TskConsequentClausesType
             self.java_tskct = gateway.entry_point.getJFMLRule_Factory().createTskConsequentType(thenConseq.java_tskcct, elseConseq.java_tskcct)
 
     def addTskElseClause(self, c=None, variable=None, term=None):
@@ -35,11 +35,11 @@ class TskConsequentType:
         :param term: the TKSTerm
         '''
         if c != None and variable == None and term == None:
-            assert type(c) == TskClauseType
+            assert type(c)==tskct.TskClauseType
             self.java_tskct.addTskElseClause(c.java_tskct)
         elif c==None and variable!=None and term!=None:
-            assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable) == TskVariableType or type(variable)==TsukamotoVariableType
-            assert type(term)==TskTermType
+            assert type(variable)==adct.AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==fvt.FuzzyVariableType or type(variable)==tskvt.TskVariableType or type(variable)==tvt.TsukamotoVariableType
+            assert type(term)==tsktt.TskTermType
             self.java_tskct.addTskElseClause(term.java_t)
 
 
@@ -51,11 +51,11 @@ class TskConsequentType:
         :param term: the TSKTerm
         '''
         if c != None and variable == None and term == None:
-            assert type(c) == TskClauseType
+            assert type(c)==tskct.TskClauseType
             self.java_tskct.addTskThenClause(c.java_tskct)
         elif c==None and variable!=None and term!=None:
-            assert type(variable)==AnYaDataCloudType or type(variable)==AggregatedFuzzyVariableType or type(variable)==FuzzyVariableType or type(variable) == TskVariableType or type(variable)==TsukamotoVariableType
-            assert type(term)==TskTermType or type(term)==str
+            assert type(variable)==adct.AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==fvt.FuzzyVariableType or type(variable)==tskvt.TskVariableType or type(variable)==tvt.TsukamotoVariableType
+            assert type(term)==tsktt.TskTermType or type(term)==str
             if type(term)==str:
                 self.java_tskct.addTskThenClause(variable.kbv, term)
             else:
@@ -81,7 +81,7 @@ class TskConsequentType:
         Sets the value of the property tskelse
         :param value: allowed object is TskConsequentClausesType
         '''
-        assert type(value)==TskConsequentClausesType
+        assert type(value)==tskcct.TskConsequentClausesType
         self.java_tskct.setElse(value.java_tskcct)
 
     def setThen(self, value):
@@ -89,6 +89,6 @@ class TskConsequentType:
         Sets the value of the property tskthen
         :param value: allowed object is TskConsequentClausesType
         '''
-        assert type(value)==TskConsequentClausesType
+        assert type(value)==tskcct.TskConsequentClausesType
         self.java_tskct.setThen(value.java_tskcct)
 
