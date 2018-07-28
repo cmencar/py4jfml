@@ -35,7 +35,7 @@ class FuzzyTermType(ft.FuzzyTerm):
         #Call of the java constructor using the name and an instance of CircularDefinitionType
         elif name!=None and type_java==None and param==None and circular!=None and custom==None and point==None and complement==None and points==None:
             assert type(name)==str and type(circular)==cdt.CircularDefinitionType
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), circular.java_cdt)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), circular.java_mf)
 
         #Call of the java constructor using the name and an instance of CustomShapeType
         elif name!=None and type_java==None and param==None and circular==None and custom!=None and point==None and complement==None and points==None:
@@ -62,7 +62,7 @@ class FuzzyTermType(ft.FuzzyTerm):
         #Call of the java constructor using the name, the complement and a CircularDefinitionType
         elif name!=None and type_java==None and param==None and point==None and circular!=None and custom==None and complement!=None and points==None:
             assert type(name)==str and type(complement)==str and type(circular)==cdt.CircularDefinitionType
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), circular.java_cdt)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), circular.java_mf)
 
         #Call of the java constructor using the name, the complement and a PointSetShapeType
         elif name!=None and type_java==None and param==None and point!=None and circular==None and custom==None and complement!=None and points==None:
@@ -82,7 +82,7 @@ class FuzzyTermType(ft.FuzzyTerm):
         :param value: allowed object is CircularDefinitionType
         '''
         assert type(value)==cdt.CircularDefinitionType
-        self.java_t.setCircularDefinition(value.java_cdt)
+        self.java_t.setCircularDefinition(value.java_mf)
 
     def setComplement(self, value):
         """

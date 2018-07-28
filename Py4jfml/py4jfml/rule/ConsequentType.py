@@ -61,9 +61,9 @@ class ConsequentType:
             assert type(variable)==adct.AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==fvt.FuzzyVariableType or type(variable)==tskvt.TskVariableType or type(variable)==tvt.TsukamotoVariableType
             assert type(term)==str or type(term)==aftt.AggregatedFuzzyTermType or type(term)==ftt.FuzzyTermType or type(term)==ttt.TsukamotoTermType
             if type(term)==str:
-                self.java_ct.addThenClause(variable.kbv, term)
+                self.java_ct.addThenClause(variable.java_kbv, term)
             else:
-                self.java_ct.addThenClause(variable.kbv, term.java_t)
+                self.java_ct.addThenClause(variable.java_kbv, term.java_t)
 
 
     def getElse(self):

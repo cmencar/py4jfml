@@ -1,3 +1,4 @@
+import os
 from py4j.java_gateway import JavaGateway
 
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
@@ -31,5 +32,8 @@ class Py4jfml:
         """
         assert type(fst) == FuzzyInferenceSystem and type(str_output) == str
         JFML = gateway.entry_point.getJFML_Factory().createJFML()
+        if not os.path.isfile(str_output):
+            f = open(str_output,'w+')
+            f.close()
         xmlOutput = gateway.jvm.java.io.File(str(str_output))
-        return JFML.writeFSTtoXML(fst.java_fis, xmlOutput)
+        JFML.writeFSTtoXML(fst.java_fis, xmlOutput)
