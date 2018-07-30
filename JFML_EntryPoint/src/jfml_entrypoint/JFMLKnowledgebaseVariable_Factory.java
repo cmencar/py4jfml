@@ -58,7 +58,7 @@ public class JFMLKnowledgebaseVariable_Factory
 	
 	public TskVariableType createTskVariableType(String name)
 	{
-		return new TskVariableType();
+		return new TskVariableType(name);
 	}
 	
 	public TsukamotoVariableType createTsukamotoVariableType()
