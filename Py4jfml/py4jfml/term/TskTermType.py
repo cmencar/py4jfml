@@ -22,7 +22,7 @@ class TskTermType(tskt.TskTerm):
 
         #Call of the java constructor using the name, the order and a list of coefficients (c, a, b, ...)
         elif name!=None and order!=None and coeff!=None:
-            assert type(name)==None and type(order)==int and type(coeff)==list
+            assert type(name)==str and type(order)==int and type(coeff)==list
             java_coeff_list = ListConverter().convert(coeff, gateway._gateway_client)
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTskTermType(name,order,java_coeff_list)
 

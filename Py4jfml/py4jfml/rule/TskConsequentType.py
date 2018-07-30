@@ -57,9 +57,9 @@ class TskConsequentType:
             assert type(variable)==adct.AnYaDataCloudType or type(variable)==afvt.AggregatedFuzzyVariableType or type(variable)==fvt.FuzzyVariableType or type(variable)==tskvt.TskVariableType or type(variable)==tvt.TsukamotoVariableType
             assert type(term)==tsktt.TskTermType or type(term)==str
             if type(term)==str:
-                self.java_tskct.addTskThenClause(variable.kbv, term)
+                self.java_tskct.addTskThenClause(variable.java_kbv, term)
             else:
-                self.java_tskct.addTskThenClause(variable.kbv, term.java_t)
+                self.java_tskct.addTskThenClause(variable.java_kbv, term.java_t)
 
 
     def getTskElse(self):

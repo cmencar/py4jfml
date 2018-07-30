@@ -18,13 +18,13 @@ class TskRuleBaseType(fsrb.FuzzySystemRuleBase):
         :param orAlgorithm: the or algorithm to be used
         '''
         if name==None and tskRuleBaseType==None and activation==None and andAlgorithm==None and orAlgorithm==None:
-            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createRuleBaseType()
+            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createTskRuleBaseType()
         elif name!=None and tskRuleBaseType!=None and activation==None and andAlgorithm==None and orAlgorithm==None:
             assert type(name) == str and type(tskRuleBaseType) == int
-            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createRuleBaseType(name, tskRuleBaseType)
+            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createTskRuleBaseType(name, tskRuleBaseType)
         elif name!=None and tskRuleBaseType!=None and activation!=None and andAlgorithm!=None and orAlgorithm!=None:
             assert type(name) == str and type(activation) == str and type(andAlgorithm) == str and type(orAlgorithm) == str and type(tskRuleBaseType) == int
-            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createRuleBaseType(name, activation, andAlgorithm, orAlgorithm, tskRuleBaseType)
+            self.java_fsrb = gateway.entry_point.getJFMLRulebase_Factory().createTskRuleBaseType(name, activation, andAlgorithm, orAlgorithm, tskRuleBaseType)
 
 
     #METHODS OF FuzzySystemRuleBase

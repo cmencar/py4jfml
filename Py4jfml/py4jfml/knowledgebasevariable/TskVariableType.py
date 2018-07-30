@@ -2,6 +2,7 @@ from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
 from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
+from py4jfml.term import TskTermType as tsktt
 
 gateway = JavaGateway()
 
@@ -47,18 +48,23 @@ class TskVariableType:
         assert type(fv)==afvt.AggregatedFuzzyVariableType or type(fv)==fvt.FuzzyVariableType
         self.java_kbv.addInputVariable(fv.java_kbv)
 
-    def addTskTerm(self, name, order, coeff):
+    def addTskTerm(self, t=None, name=None, order=None, coeff=None):
         '''
         Adds a tsk term
         :param name:
         :param order:
         :param coeff:
+        :param t: TskTermType
         '''
-        assert type(name)==str and type(order)==int and type(coeff)==list
-        javaarray_coeff = gateway.new_array(gateway.jvm.float, len(coeff))
-        for c in coeff:
-            javaarray_coeff[coeff.index(c)] = c
-        self.java_kbv.addTskTerm(name, order, javaarray_coeff)
+        if t!=None and name==None and order==None and coeff==None:
+            assert type(t)==tsktt.TskTermType
+            self.java_kbv.addTskTerm(t.java_t)
+        elif t==None and name!=None and order!=None and coeff!=None:
+            assert type(name)==str and type(order)==int and type(coeff)==list
+            javaarray_coeff = gateway.new_array(gateway.jvm.float, len(coeff))
+            for c in coeff:
+                javaarray_coeff[coeff.index(c)] = c
+            self.java_kbv.addTskTerm(name, order, javaarray_coeff)
 
     def copy(self):
         '''
