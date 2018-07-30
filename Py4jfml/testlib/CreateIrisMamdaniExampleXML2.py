@@ -1,4 +1,3 @@
-from py4j.java_gateway import JavaGateway
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.Py4Jfml import Py4jfml
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
@@ -11,10 +10,9 @@ from py4jfml.rulebase.MamdaniRuleBaseType import MamdaniRuleBaseType
 from py4jfml.term.FuzzyTerm import FuzzyTerm
 from py4jfml.term.FuzzyTermType import FuzzyTermType
 
-gateway = JavaGateway()
-
 # FuzzyInference
 iris = FuzzyInferenceSystem("iris - MAMDANI")
+
 # KnowledgeBase
 kb = KnowledgeBaseType()
 iris.setKnowledgeBase(kb)
@@ -25,18 +23,21 @@ sl = FuzzyVariableType("SepalLength", 4.3, 7.9)
 # FUZZY TERM low
 sl_low = FuzzyTermType("low", FuzzyTerm.TYPE_trapezoidShape, [4.3, 4.3, 5.019, 6.048])
 sl.addFuzzyTerm(sl_low)
+
 # FUZZY TERM  medium
 sl_medium = FuzzyTermType("medium", FuzzyTerm.TYPE_triangularShape, [5.019, 6.048, 7.05])
 sl.addFuzzyTerm(sl_medium)
+
 # FUZZY TERM high
 sl_high = FuzzyTermType("high", FuzzyTerm.TYPE_trapezoidShape, [6.048, 7.05, 7.9, 7.9])
 sl.addFuzzyTerm(sl_high)
+
 # FUZZY TERM NOT(low)
 sl_not_low = FuzzyTermType("NOT(low)", FuzzyTerm.TYPE_trapezoidShape, [4.3, 4.3, 5.019, 6.048])
-sl_not_low.setComplement("true");
-sl.addFuzzyTerm(sl_not_low);
+sl_not_low.setComplement("true")
+sl.addFuzzyTerm(sl_not_low)
 
-kb.addVariable(sl);
+kb.addVariable(sl)
 
 # FUZZY VARIABLE SepalWidth
 sw = FuzzyVariableType("SepalWidth", 2., 4.4)
@@ -44,12 +45,15 @@ sw = FuzzyVariableType("SepalWidth", 2., 4.4)
 # FUZZY TERM low
 sw_low = FuzzyTermType("low", FuzzyTerm.TYPE_trapezoidShape, [2., 2., 2.585, 3.119])
 sw.addFuzzyTerm(sw_low)
+
 # FUZZY TERM medium
 sw_medium = FuzzyTermType("medium", FuzzyTerm.TYPE_triangularShape, [2.585, 3.119, 3.758])
 sw.addFuzzyTerm(sw_medium)
+
 # FUZZY TERM high
 sw_high = FuzzyTermType("high", FuzzyTerm.TYPE_trapezoidShape, [3.119, 3.758, 4.4, 4.4])
 sw.addFuzzyTerm(sw_high)
+
 # FUZZY TERM NOT(high)
 sw_not_high = FuzzyTermType("NOT(high)", FuzzyTerm.TYPE_trapezoidShape, [3.119, 3.758, 4.4, 4.4])
 sw_not_high.setComplement("true")
@@ -83,9 +87,11 @@ pw = FuzzyVariableType("PetalWidth", 0.1, 2.5)
 # FUZZY TERM low
 pw_low = FuzzyTermType("low", FuzzyTerm.TYPE_trapezoidShape, [0., 0.1, 0.244, 1.337])
 pw.addFuzzyTerm(pw_low)
+
 # FUZZY TERM medium
 pw_medium = FuzzyTermType("medium", FuzzyTerm.TYPE_triangularShape, [0.244, 1.337, 2.074])
 pw.addFuzzyTerm(pw_medium)
+
 # FUZZY TERM high
 pw_high = FuzzyTermType("high", FuzzyTerm.TYPE_trapezoidShape, [1.337, 2.074, 2.5, 2.5])
 pw.addFuzzyTerm(pw_high)
@@ -93,31 +99,31 @@ pw.addFuzzyTerm(pw_high)
 kb.addVariable(pw)
 
 # OUTPUT CLASS irisClass
-irisClass = FuzzyVariableType("irisClass", 1., 3.)
+irisClass = FuzzyVariableType("irisClass", 1.0, 3.0)
 irisClass.setDefaultValue(1.)
 irisClass.setAccumulation("MAX")
 irisClass.setDefuzzifierName("LM")
 irisClass.setType("output")
 
 # FUZZY TERM setosa
-irisClass_setosa = FuzzyTermType("setosa", FuzzyTerm.TYPE_singletonShape, [1.])
+irisClass_setosa = FuzzyTermType("setosa", FuzzyTerm.TYPE_singletonShape, [1.0])
 irisClass.addFuzzyTerm(irisClass_setosa);
 
 # FUZZY TERM virginica
-irisClass_virginica = FuzzyTermType("virginica", FuzzyTerm.TYPE_singletonShape, [2.])
+irisClass_virginica = FuzzyTermType("virginica", FuzzyTerm.TYPE_singletonShape, [2.0])
 irisClass.addFuzzyTerm(irisClass_virginica)
 
 # FUZZY TERM versicolor
-irisClass_versicolor = FuzzyTermType("versicolor", FuzzyTerm.TYPE_singletonShape, [3.])
+irisClass_versicolor = FuzzyTermType("versicolor", FuzzyTerm.TYPE_singletonShape, [3.0])
 irisClass.addFuzzyTerm(irisClass_versicolor)
 
 kb.addVariable(irisClass)
 
 # RULE BASE
 rb = MamdaniRuleBaseType("rulebase-iris")
-# RULE 1
-r1 = FuzzyRuleType("rule1", None, None, "and", "MIN", None, None, 1.0)
 
+# RULE 1
+r1 = FuzzyRuleType("rule1", connector="and", connectorMethod="MIN", weight=1.0)
 ant1 = AntecedentType()
 ant1.addClause(ClauseType(pw, pw_low))
 con1 = ConsequentType()
@@ -128,8 +134,7 @@ r1.setConsequent(con1)
 rb.addRule(r1)
 
 # RULE 2
-r2 = FuzzyRuleType("rule2", None, None, "and", "MIN", None, None, 1.0)
-
+r2 = FuzzyRuleType("rule2", connector="and", connectorMethod="MIN", weight=1.0)
 ant2 = AntecedentType()
 ant2.addClause(ClauseType(sw, sw_not_high))
 ant2.addClause(ClauseType(pl, pl_medium))
@@ -142,13 +147,11 @@ r2.setConsequent(con2)
 rb.addRule(r2);
 
 # RULE 3
-r3 = FuzzyRuleType("rule3", None, None, "and", "MIN", None, None, 1.0)
-
+r3 = FuzzyRuleType("rule3", connector="and", connectorMethod="MIN", weight=1.0)
 ant3 = AntecedentType()
 ant3.addClause(ClauseType(sl, sl_not_low))
 ant3.addClause(ClauseType(pl, pl_not_low))
 ant3.addClause(ClauseType(pw, pw_high))
-
 con3 = ConsequentType()
 con3.addThenClause(ClauseType(irisClass, irisClass_versicolor))
 r3.setAntecedent(ant3)
@@ -157,6 +160,8 @@ r3.setConsequent(con3)
 rb.addRule(r3)
 
 iris.addRuleBase(rb)
+
+print(iris)
 
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
 str_xml = "XMLFiles/IrisMamdani2.xml"
