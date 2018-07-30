@@ -1,3 +1,9 @@
+'''
+ This class creates an XML file with the definition of a Mamdani-type FLS for the Iris classification problem:
+     1) Four input variables (SepalLength, SepalWith, PetalLength and PetalWidth) with Triangular and Trapezoidal membership functions
+     2) Three rules (one per output class)
+'''
+
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.Py4Jfml import Py4jfml
 from py4jfml.knowledgebase.KnowledgeBaseType import KnowledgeBaseType
@@ -164,5 +170,5 @@ iris.addRuleBase(rb)
 print(iris)
 
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
-str_xml = "XMLFiles/IrisMamdani2.xml"
-Py4jfml.writeFSTtoXML(iris, str_xml)
+irisXMLFile = "XMLFiles/IrisMamdani2.xml"
+Py4jfml.writeFSTtoXML(iris, irisXMLFile)
