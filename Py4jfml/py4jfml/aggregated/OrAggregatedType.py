@@ -20,77 +20,77 @@ class OrAggregatedType:
 
         #Calling java default constructor
         if term1==None and term2==None and c1==None and c2==None and tConorm==None:
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType()
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType()
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm==None:
             assert type(term1)==aat.AndAggregatedType and type(term2)==aat.AndAggregatedType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm==None:
             assert type(term1)==aat.AndAggregatedType and type(term2)==OrAggregatedType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm==None:
             assert type(term1)==OrAggregatedType and type(term2)==aat.AndAggregatedType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm==None:
             assert type(term1)==OrAggregatedType and type(term2)==OrAggregatedType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term1.java_at,term2.java_at)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm==None:
             assert type(term2)==aat.AndAggregatedType and type(c1)==ct.ClauseType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm==None:
             assert type(term2)==OrAggregatedType and type(c1)==ct.ClauseType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java Or constructor using default tConorm = MAX
         elif term1==None and term2==None and c1!=None and c2!=None and tConorm==None:
             assert type(c1)==ct.ClauseType and type(c2)==ct.ClauseType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(c1.java_ct,c2.java_ct)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(c1.java_ct,c2.java_ct)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm!=None:
             assert type(term1)==aat.AndAggregatedType and type(term2)==aat.AndAggregatedType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,term1.java_at,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm!=None:
             assert type(term1)==aat.AndAggregatedType and type(term2)==OrAggregatedType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,term1.java_at,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm!=None:
             assert type(term1)==OrAggregatedType and type(term2)==aat.AndAggregatedType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,term1.java_at,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1!=None and term2!=None and c1==None and c2==None and tConorm!=None:
             assert type(term1)==OrAggregatedType and type(term2)==OrAggregatedType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,term1.java_at,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,term1.java_at,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm!=None:
             assert type(term2)==aat.AndAggregatedType and type(c1)==ct.ClauseType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,c1.java_ct,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2!=None and c1!=None and c2==None and tConorm!=None:
             assert type(term2)==OrAggregatedType and type(c1)==ct.ClauseType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,term2.java_at)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,c1.java_ct,term2.java_at)
 
         #Calling java Or constructor using tConorm as method for or operator
         elif term1==None and term2==None and c1!=None and c2!=None and tConorm!=None:
             assert type(c1)==ct.ClauseType and type(c2)==ct.ClauseType and type(tConorm)==str
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(tConorm,c1.java_ct,c2.java_ct)
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createOrAggregatedType(tConorm,c1.java_ct,c2.java_ct)
 
     def operate(self,x,y):
         '''

@@ -57,7 +57,7 @@ class FuzzyTermType(ft.FuzzyTerm):
         #Call of the java constructor using the name and an instance of PointSetShapeType
         elif name!=None and type_java==None and param==None and circular==None and custom==None and point!=None and complement==None and points==None:
             assert type(name)==str and type(point)==psst.PointSetShapeType
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), point.java_psst)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), point.java_mf)
 
         #Call of the java constructor using the name, the complement and a CircularDefinitionType
         elif name!=None and type_java==None and param==None and point==None and circular!=None and custom==None and complement!=None and points==None:
@@ -67,7 +67,7 @@ class FuzzyTermType(ft.FuzzyTerm):
         #Call of the java constructor using the name, the complement and a PointSetShapeType
         elif name!=None and type_java==None and param==None and point!=None and circular==None and custom==None and complement!=None and points==None:
             assert type(name)==str and type(complement)==str and type(point)==psst.PointSetShapeType
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), point.java_psst)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), str(complement), point.java_mf)
 
     def copy(self):
         '''

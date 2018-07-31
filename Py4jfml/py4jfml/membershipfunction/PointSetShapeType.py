@@ -1,3 +1,4 @@
+from py4jfml.enumeration import InterpolationMethodType as imt
 from py4jfml.parameter import OneParamType as onept
 from py4jfml.parameter import TwoParamType as twopt
 from py4jfml.parameter import ThreeParamType as threept
@@ -30,8 +31,12 @@ class PointSetShapeType:
         #Call of the java constructor with a list of PointType
         elif domainLeft==None and domainRight==None and points!=None:
             assert type(points)==list
-            java_points_list = ListConverter().convert(points, gateway._gateway_client)
+            #java_points_list = ListConverter().convert(points, gateway._gateway_client)
+            java_points_list = gateway.jvm.java.util.ArrayList()
+            for p in points:
+                java_points_list.add(p.java_mf)
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType(java_points_list)
+
 
         #Call of the java constructor with left and right domain and a list of PointType
         elif domainLeft!=None and domainRight!=None and points!=None:
@@ -59,8 +64,10 @@ class PointSetShapeType:
         Sets the value of the property interpolationMethod
         :param value: allowed object is InterpolationMethodType
         '''
-        #assert type(value)==InterpolationMethodType
-        self.java_mf.setInterpolationMethod(value.java_imt)
+        assert type(value)==imt.InterpolationMethodType
+        print(type(value))
+        #self.java_mf.setInterpolationMethod(value.java_imt)
+        self.java_mf.setInterpolationMethod(value)
 
     def getDegree(self):
         '''

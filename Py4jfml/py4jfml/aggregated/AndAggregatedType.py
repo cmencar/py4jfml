@@ -42,15 +42,20 @@ class AndAggregatedType:
             assert type(term1)==oat.OrAggregatedType and type(term2)==oat.OrAggregatedType
             self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term1.java_at,term2.java_at)
 
+        #METODI DA MODIFICARE E CHIEDERE
         #Calling java And constructor using default t-norm = MIN
-        elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
-            assert type(term2)==AndAggregatedType and type(c1)==ct.ClauseType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
+        #elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
+        #    assert type(term2)==AndAggregatedType and type(c1)==ct.ClauseType
+        #    self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
 
         #Calling java And constructor using default t-norm = MIN
-        elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
-            assert type(term2)==oat.OrAggregatedType and type(c1)==ct.ClauseType
-            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
+        #elif term1==None and term2!=None and c1!=None and c2==None and tNorm==None:
+        #    assert type(term2)==oat.OrAggregatedType and type(c1)==ct.ClauseType
+        #    self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(term2.java_at,c1.java_ct)
+
+        elif term1 == None and term2 != None and c1 != None and c2 == None and tNorm == None:
+            assert (type(term2)==AndAggregatedType or type(term2)==oat.OrAggregatedType) and type(c1)==ct.ClauseType
+            self.java_at = gateway.entry_point.getJFMLAggregated_Factory().createAndAggregatedType(c1.java_ct,term2.java_at)
 
         #Calling java And constructor using default t-norm = MIN
         elif term1==None and term2==None and c1!=None and c2!=None and tNorm==None:
