@@ -1,6 +1,6 @@
-class StandardTconormType:
+class StandardAccumulationType:
     '''
-    Python class StandardTconormType
+    Python class for StandardAccumulationType
     '''
     MAX="MAX"
     PROBOR="PROBOR"

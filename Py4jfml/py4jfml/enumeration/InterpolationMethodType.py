@@ -1,9 +1,10 @@
-from enum import Enum
-
-
-class InterpolationMethodType(Enum):
+class InterpolationMethodType:
 
     LINEAR="linear"
     LAGRANGE="lagrange"
     SPLINE="spline"
+
+
+
+
 

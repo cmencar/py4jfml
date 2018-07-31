@@ -1,20 +1,18 @@
-from enum import Enum
-
-
-class StandardModifierType(Enum):
+class StandardModifierType:
     '''
     Python class for StandardModifierType
     '''
-    ABOVE
-    ANY
-    BELOW
-    EXTREMELY
-    INTENSIFY
-    MORE_OR_LESS
-    NORM
-    NOT
-    PLUS
-    SELDOM
-    SLIGHTLY
-    SOMEWHAT
-    VERY
+
+    ABOVE="above"
+    ANY="any"
+    BELOW="below"
+    EXTREMELY="extremely"
+    INTENSIFY="intensify"
+    MORE_OR_LESS="more_or_less"
+    NORM="norm"
+    NOT="not"
+    PLUS="plus"
+    SELDOM="seldom"
+    SLIGHTLY="slightly"
+    SOMEWHAT="somewhat"
+    VERY="very"

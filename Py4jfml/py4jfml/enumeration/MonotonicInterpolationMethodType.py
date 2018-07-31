@@ -1,9 +1,7 @@
-from enum import Enum
-
-class MonotonicInterpolationMethodType(Enum):
+class MonotonicInterpolationMethodType:
     '''
     Python class for monotonicInterpolationMethodType
     '''
 
-    LINEAR
-    CUBIC
+    LINEAR="linear"
+    CUBIC="cubic"

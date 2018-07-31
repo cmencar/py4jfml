@@ -1,8 +1,5 @@
-from enum import Enum
-
-
-class StandardCombinationType(Enum):
+class StandardCombinationType:
     '''
     Python class for StandardCombinationType
     '''
-    WA 
+    WA="WA"

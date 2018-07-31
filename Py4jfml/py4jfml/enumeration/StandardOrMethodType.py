@@ -1,6 +1,6 @@
-class StandardTconormType:
+class StandardOrMethodType:
     '''
-    Python class StandardTconormType
+    Python class for StandardOrMethodType
     '''
     MAX="MAX"
     PROBOR="PROBOR"

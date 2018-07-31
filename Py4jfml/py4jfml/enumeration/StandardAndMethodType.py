@@ -1,6 +1,6 @@
-class StandardActivationMethodType:
+class StandardAndMethodType:
     '''
-    Python class for StandardActivationMethodType
+    Python class for StandardAndMethodType
     '''
     MIN="MIN"
     PROD="PROD"
