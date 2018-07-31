@@ -62,12 +62,12 @@ class PointSetShapeType:
     def setInterpolationMethod(self,value):
         '''
         Sets the value of the property interpolationMethod
-        :param value: allowed object is InterpolationMethodType
+        :param value: allowed object is String
         '''
-        assert type(value)==imt.InterpolationMethodType
-        print(type(value))
-        #self.java_mf.setInterpolationMethod(value.java_imt)
-        self.java_mf.setInterpolationMethod(value)
+        assert type(value)==str
+        java_imt = gateway.entry_point.getJFMLEnemeration_Factory().createJFMLEnumeration_InterpolationMethodType()
+        java_imt_value = java_imt.fromValue(value)
+        self.java_mf.setInterpolationMethod(java_imt_value)
 
     def getDegree(self):
         '''
