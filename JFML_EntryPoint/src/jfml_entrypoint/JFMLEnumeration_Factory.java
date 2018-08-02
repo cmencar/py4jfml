@@ -12,7 +12,7 @@ import jfml_entrypoint.enumeration.JFMLEnumeration_StandardOrMethodType;
 import jfml_entrypoint.enumeration.JFMLEnumeration_StandardTconormType;
 import jfml_entrypoint.enumeration.JFMLEnumeration_StandardTnormType;
 
-public class JFMLEnemeration_Factory {
+public class JFMLEnumeration_Factory {
 	
 	public JFMLEnumeration_InterpolationMethodType createJFMLEnumeration_InterpolationMethodType(){
 		return new JFMLEnumeration_InterpolationMethodType();

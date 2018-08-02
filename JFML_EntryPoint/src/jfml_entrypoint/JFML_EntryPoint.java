@@ -69,9 +69,9 @@ public class JFML_EntryPoint {
 		return new JFMLTerm_Factory();
 	}
 	
-	public JFMLEnemeration_Factory getJFMLEnemeration_Factory()
+	public JFMLEnumeration_Factory getJFMLEnemeration_Factory()
 	{
-		return new JFMLEnemeration_Factory();
+		return new JFMLEnumeration_Factory();
 	}
 	
 	//Start server
