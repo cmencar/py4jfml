@@ -53,7 +53,7 @@ class AnYaRuleBaseType(fsrb.FuzzySystemRuleBase):
         :param rule: the AnYaRuleType
         '''
         assert type(rule)==art.AnYaRuleType
-        self.java_fsrb.addAnYaRule(rule.java_art)
+        self.java_fsrb.addAnYaRule(rule.java_r)
 
     def evaluate(self):
         '''
