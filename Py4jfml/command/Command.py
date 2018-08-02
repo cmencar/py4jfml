@@ -5,9 +5,9 @@ import command.State as st
 class Command:
     '''
     Command class.
-    :param _state: Initialize State.
+    :param _state: Create State object (Singleton).
     '''
-    _state = None
+    _state = st.State()
     def execute(self, args):
         '''
         Demands the execute of commands to the child commands.
@@ -18,10 +18,7 @@ class Command:
 class Load(Command):
     '''
     Load class.
-    :param _state: Create State object (Singleton).
     '''
-    _state = st.State()
-
     def execute(self, args):
         '''
         Execute the command Load.
@@ -30,8 +27,10 @@ class Load(Command):
         assert type(args) == str
         #Load file xml and get FIS
         fis = fml.Py4jfml.load(args)
-        #Save path of file xml
-        self._state.fields['filename'] = args
+        #Save the name of file xml
+        from pathlib import Path
+        filename = Path(args).name
+        self._state.fields['filename'] = filename
         #Save FIS file
         self._state.fields['fis'] = fis
 
@@ -39,10 +38,7 @@ class Load(Command):
 class Write(Command):
     '''
     Write class.
-    :param _state: Create State object (Singleton).
     '''
-    _state = st.State()
-
     def execute(self, args):
         assert type(args) == list
         pass
@@ -50,10 +46,7 @@ class Write(Command):
 class Evaluate(Command):
     '''
     Evaluate class.
-    :param _state: Create State object (Singleton).
     '''
-    _state = st.State()
-
     def execute(self, args):
         '''
         Execute the command Evaluate.
@@ -78,8 +71,34 @@ class Evaluate(Command):
         name = tip.getName()
         #Get tipper value
         value = tip.getValue()
-        #Print results
-        print(name, ' = ', value)
+        #Save name
+        if 'names' in self._state.fields:
+            self._state.fields['names'].append(name)
+        else:
+            self._state.fields['names'] = [name]
+        #Save results
+        if 'results' in self._state.fields:
+            self._state.fields['results'].append(value)
+        else:
+            self._state.fields['results'] = [value]
+
+class Output(Command):
+    '''
+    Output class.
+    '''
+    def execute(self, args):
+        '''
+        Execute the command Output.
+        :param args: path of file csv; type allowed is String.
+        '''
+        assert type(args) == str
+        import csv
+        with open(args, 'w') as csvfile:
+            writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for e in self._state.fields['results']:
+                s = str(e)
+                writer.writerow(s)
+
 
 #Composite
 class MacroCommand(Command):
@@ -90,25 +109,16 @@ class MacroCommand(Command):
     Implement child-related operations in the Command class.
     :param _children: Initialize child commands.
     '''
-    _children = {}
+    _children = []
 
-    def add(self, key, component):
+    def add(self, component):
         '''
         Add a command to the self._children.
-        :param key: name of command; type allowed is String.
         :param component: constructor of command; types allowed are children of Command class.
         '''
-        assert type(key) == str
-        assert type(component) == Load or type(component) == Evaluate
-        self._children[key] = component
-
-    def remove(self, key):
-        '''
-        Remove a command by name.
-        :param key: name of command; type allowed is String.
-        '''
-        assert type(key) == str
-        self._children.pop(key, None)
+        assert type(component) == Load or type(component) == Evaluate or type(component) == Output
+        #Append component in child list
+        self._children.append(component)
 
     def execute(self, args):
         '''
@@ -116,15 +126,15 @@ class MacroCommand(Command):
         :param args: args[0] = name of command, args[1] = arguments; type allowed is List.
         '''
         assert type(args) == list
-        self._children[args[0]].execute(args[1])
+        for index, child in enumerate(self._children):
+            child.execute(args[index])
 
 class CommandComposer():
     '''
     CommandComposer class.
     :param _ops: Initialize commands.
     '''
-    _ops = {'load':False, 'evaluate':False}
-    def callMacro(self, args):
+    def compose(self, args):
         '''
         Create and execute command using MacroCommand class.
         :param args: args[0] = name of command, args[1] = arguments; type allowed is Dictionary.
@@ -132,26 +142,32 @@ class CommandComposer():
         assert type(args) == dict
         #Create MacroCommand object
         cmdo = MacroCommand()
-        #Check and active commands
-        for i in self._ops:
-            for y in args:
-                if i == y:
-                    self._ops[y] = True;
+        #Create a list of arguments
+        lis = []
+        #Create a dictionary that contain each operations in args with True as default value
+        ops = {}
+        for op in args:
+            ops[op] = True;
         #Check if there is Load
-        if self._ops['load']:
-            #Create Load object
-            loadObj = Load()
-            #Add Load command 
-            cmdo.add('load', loadObj)
-            lis = ['load', args['load']]
-            #Execute Load command 
+        if ops['load']:
+            for index, elem in enumerate(args['load']):
+                #Create Load object
+                loadObj = Load()
+                #Add Load command 
+                cmdo.add(loadObj)
+                #Add arguments of command Load
+                lis.append(elem)
+                #Check if there is Evaluate after Load
+                if ops['evaluate']:
+                    #Create Evaluate object
+                    evalObj = Evaluate()
+                    #Add Evaluate command
+                    cmdo.add(evalObj)
+                    #Add arguments of command Evaluate
+                    lis.append(args['evaluate'][index])
+                    if ops['output']:
+                        outObj = Output()
+                        cmdo.add(outObj)
+                        lis.append(args['output'])
+            #Execute commands
             cmdo.execute(lis)
-            #Check if there is Evaluate after Load
-            if self._ops['evaluate']:
-                #Create Evaluate object
-                evalObj = Evaluate()
-                #Add Evaluate command
-                cmdo.add('evaluate', evalObj)
-                lis = ['evaluate', args['evaluate']]
-                #Execute Evaluate command 
-                cmdo.execute(lis)

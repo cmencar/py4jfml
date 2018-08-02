@@ -56,8 +56,10 @@ class PointSetMonotonicShapeType:
         Sets the value of the property interpolationMethod
         :param value: allowed object is MonotonicInterpolationMethodType
         '''
-        #assert type(value)==MonotonicInterpolationMethodType
-        self.java_mf.setInterpolationMethod(value)
+        assert type(value) == str
+        java_mimt = gateway.entry_point.getJFMLEnemeration_Factory().createJFMLEnumeration_MonotonicInterpolationMethodType()
+        java_mimt_value = java_mimt.fromValue(value)
+        self.java_mf.setInterpolationMethod(java_mimt_value)
 
     def setPoints(self,points):
         '''
