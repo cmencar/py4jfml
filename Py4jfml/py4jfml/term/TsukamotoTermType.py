@@ -39,7 +39,7 @@ class TsukamotoTermType:
         #Call of the java constructor using the name and an instance of PointSetMonotonicShapeType
         elif name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
             assert type(name)==str and type(psm)==psmst.PointSetMonotonicShapeType
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,psm)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,psm.java_mf)
 
     def copy(self):
         '''

@@ -31,7 +31,6 @@ class PointSetShapeType:
         #Call of the java constructor with a list of PointType
         elif domainLeft==None and domainRight==None and points!=None:
             assert type(points)==list
-            #java_points_list = ListConverter().convert(points, gateway._gateway_client)
             java_points_list = gateway.jvm.java.util.ArrayList()
             for p in points:
                 java_points_list.add(p.java_mf)
@@ -41,7 +40,9 @@ class PointSetShapeType:
         #Call of the java constructor with left and right domain and a list of PointType
         elif domainLeft!=None and domainRight!=None and points!=None:
             assert type(domainLeft)==float and type(domainRight)==float and type(points)==list
-            java_points_list = ListConverter().convert(points, gateway._gateway_client)
+            java_points_list = gateway.jvm.java.util.ArrayList()
+            for p in points:
+                java_points_list.add(p.java_mf)
             self.java_mf = gateway.entry_point.getJFMLMembershipfunction_Factory().createPointSetShapeType(domainLeft,domainRight,java_points_list)
 
     def copy(self):
