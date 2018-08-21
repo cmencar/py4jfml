@@ -71,8 +71,10 @@ class PointSetMonotonicShapeType:
         :param points: a list of PointType
         '''
         assert type(points)==list
-        conv_points = ListConverter().convert(points, gateway._gateway_client)
-        self.java_mf.setPoints(conv_points)
+        java_points_list = gateway.jvm.java.util.ArrayList()
+        for p in points:
+            java_points_list.add(p.java_mf)
+        self.java_mf.setPoints(java_points_list)
 
     def getFi(self,y):
         '''

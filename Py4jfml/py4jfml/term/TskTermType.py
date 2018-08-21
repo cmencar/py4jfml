@@ -39,7 +39,9 @@ class TskTermType(tskt.TskTerm):
         :param listVar: list of variables of the KnowledgeBase
         '''
         assert type(listVar)==list
-        java_listVar = ListConverter().convert(listVar, gateway._gateway_client)
+        java_listVar = gateway.jvm.java.util.ArrayList()
+        for var in listVar:
+            java_listVar.add(var.java_kbv)
         self.java_t.evaluateTskTerm(java_listVar)
 
     def setName(self,value):

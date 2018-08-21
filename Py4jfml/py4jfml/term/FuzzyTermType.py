@@ -51,7 +51,9 @@ class FuzzyTermType(ft.FuzzyTerm):
         #Call of the java constructor of a PointSet term using the name and a list of PointType
         elif name!=None and type_java!=None and circular==None and custom==None and point==None and complement==None and param==None and points!=None:
             assert type(name)==str and type(type_java)==int and type(points)==list
-            java_points_list = ListConverter().convert(points, gateway._gateway_client)
+            java_points_list = gateway.jvm.java.util.ArrayList()
+            for p in points:
+                java_points_list.add(p.java_mf)
             self.java_t = gateway.entry_point.getJFMLTerm_Factory().createFuzzyTermType(str(name), int(type_java), java_points_list)
 
         #Call of the java constructor using the name and an instance of PointSetShapeType

@@ -34,7 +34,10 @@ class TsukamotoTermType:
         #Call of the java constructor of a PointSet term using the name and a list of PointType
         elif name!=None and type_java!=None and paramList==None and pointsList!=None and psm==None:
             assert type(name)==str and type(type_java)==int and type(pointsList)==list
-            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,type_java,pointsList)
+            java_points_list = gateway.jvm.java.util.ArrayList()
+            for p in pointsList:
+                java_points_list.add(p.java_mf)
+            self.java_t = gateway.entry_point.getJFMLTerm_Factory().createTsukamotoTermType(name,type_java,java_points_list)
 
         #Call of the java constructor using the name and an instance of PointSetMonotonicShapeType
         elif name!=None and type_java==None and paramList==None and pointsList==None and psm!=None:
