@@ -10,8 +10,8 @@ class AnYaDataCloudType():
 
     def __init__(self, name=None, terms=None):
         '''
-        :param name:
-        :param terms:
+        :param name: the name
+        :param terms: list of Double
         '''
         if name==None and terms==None:
             self.java_kbv = gateway.entry_point.getJFMLKnowledgebaseVariable_Factory().createAnYaDataCloudType()
@@ -117,7 +117,7 @@ class AnYaDataCloudType():
 
     def setTerms(self, datum):
         '''
-        :param datum:
+        :param datum: list of Double
         '''
         assert type(datum)==list
         javalist_datum = ListConverter().convert(datum, gateway._gateway_client)

@@ -1,4 +1,3 @@
-from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.knowledgebasevariable import AggregatedFuzzyVariableType as afvt
 from py4jfml.knowledgebasevariable import FuzzyVariableType as fvt
@@ -184,11 +183,13 @@ class TskVariableType:
 
     def setInputVariables(self, kbvs):
         '''
-        :param kbvs: a list of Knowledge base variables
+        :param kbvs: a list of KnowledgeBaseVariable
         '''
         assert type(kbvs)==list
-        javalist_kbvs = ListConverter().convert(kbvs, gateway._gateway_client)
-        self.java_kbv.setInputVariables(javalist_kbvs)
+        java_kbvs_list = gateway.jvm.java.util.ArrayList()
+        for k in kbvs:
+            java_kbvs_list.add(k.java_kbv)
+        self.java_kbv.setInputVariables(java_kbvs_list)
 
     def setName(self, value):
         '''

@@ -5,8 +5,8 @@ class DefuzzifierCenterOfGravitySingletons:
 
     def __init__(self, leftDomain, rightDomain):
         '''
-        :param leftDomain:
-        :param rightDomain:
+        :param leftDomain: the left domain
+        :param rightDomain: the right domain
         '''
         assert type(leftDomain)==float and type(rightDomain)==float
         self.java_d = gateway.entry_point.getJFMLDefuzzifier_Factory().createDefuzzifierCenterOfGravitySingletons(leftDomain, rightDomain)
