@@ -17,6 +17,10 @@ import jfml.term.FuzzyTermType;
 import jfml.term.TskTermType;
 import jfml.term.TsukamotoTermType;
 
+/**
+ * This class allows to return class instances of the JFML package 'term'.
+ * 
+ */
 public class JFMLTerm_Factory {
 	
 	public AggregatedFuzzyTermType createAggregatedFuzzyTermType()

@@ -28,6 +28,10 @@ import jfml.operator.OrLogicalType;
 import jfml.parameter.Parameter;
 import jfml.parameter.TwoParamType;
 
+/**
+ * This class allows to return class instances of the JFML package 'membershipfunction'.
+ * 
+ */
 public class JFMLMembershipfunction_Factory {
 
 	public CircularDefinitionType createCircularDefinitionType()

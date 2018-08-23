@@ -2,6 +2,11 @@ package jfml_entrypoint.enumeration;
 
 import jfml.enumeration.StandardAndMethodType;
 
+/**
+ * This class contains enumerated constants of JFML Enum Type 'StandardAndMethodType'.
+ * This middle class is needed to use java enumerated constants through Py4J.
+ *
+ */
 public class JFMLEnumeration_StandardAndMethodType {
 
 	StandardAndMethodType MIN;

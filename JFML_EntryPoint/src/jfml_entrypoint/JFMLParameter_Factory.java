@@ -6,6 +6,10 @@ import jfml.parameter.ParameterType;
 import jfml.parameter.ThreeParamType;
 import jfml.parameter.TwoParamType;
 
+/**
+ * This class allows to return class instances of the JFML package 'parameter'.
+ * 
+ */
 public class JFMLParameter_Factory {
 
 	public FourParamType createFourParamType()

@@ -1,6 +1,11 @@
 package jfml_entrypoint.enumeration;
 import jfml.enumeration.StandardAccumulationType;;
 
+/**
+ * This class contains enumerated constants of JFML Enum Type 'StandardAccumulationType'.
+ * This middle class is needed to use java enumerated constants through Py4J.
+ *
+ */
 public class JFMLEnumeration_StandardAccumulationType {
 	StandardAccumulationType MAX;
 	StandardAccumulationType PROBOR;

@@ -3,6 +3,10 @@ package jfml_entrypoint;
 import jfml.operator.AndLogicalType;
 import jfml.operator.OrLogicalType;
 
+/**
+ * This class allows to return class instances of the JFML package 'operator'.
+ * 
+ */
 public class JFMLOperator_Factory {
 
 	public AndLogicalType createAndLogicalType()

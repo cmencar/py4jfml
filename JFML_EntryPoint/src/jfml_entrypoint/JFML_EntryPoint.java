@@ -2,6 +2,13 @@ package jfml_entrypoint;
 
 import py4j.GatewayServer;
 
+/**
+ * This class allows to start the PY4JFML gateway server. 
+ * It uses Py4J to enable Python programs running in Python interpreter to dynamically access Java objects in a Java virtual machine.
+ * Every getter method returns an instance of a specific factory class that represents a JFML package.
+ * This class implements the Singleton Pattern. 
+ * 
+ */
 public class JFML_EntryPoint {
 	
 	private static JFML_Factory jfml_Factory;

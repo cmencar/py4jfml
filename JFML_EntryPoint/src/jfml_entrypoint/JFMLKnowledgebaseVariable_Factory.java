@@ -9,6 +9,10 @@ import jfml.knowledgebase.variable.TskVariableType;
 import jfml.knowledgebase.variable.TsukamotoVariableType;
 import jfml.knowledgebase.variable.WZ;
 
+/**
+ * This class allows to return class instances of the JFML package 'knowledgebase.variable'.
+ * 
+ */
 public class JFMLKnowledgebaseVariable_Factory 
 {
 	public AggregatedFuzzyVariableType createAggregatedFuzzyVariableType()

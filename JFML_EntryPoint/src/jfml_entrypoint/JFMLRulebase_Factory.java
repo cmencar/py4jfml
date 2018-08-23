@@ -6,6 +6,10 @@ import jfml.rulebase.RuleBaseType;
 import jfml.rulebase.TskRuleBaseType;
 import jfml.rulebase.TsukamotoRuleBaseType;
 
+/**
+ * This class allows to return class instances of the JFML package 'rulebase'.
+ * 
+ */
 public class JFMLRulebase_Factory {
 
 	public AnYaRuleBaseType createAnYaRuleBaseType()

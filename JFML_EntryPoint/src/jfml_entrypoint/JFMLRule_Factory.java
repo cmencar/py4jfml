@@ -14,7 +14,14 @@ import jfml.rule.TskClauseType;
 import jfml.rule.TskConsequentClausesType;
 import jfml.rule.TskConsequentType;
 import jfml.rule.TskFuzzyRuleType;
+import jfml_entrypoint.extended_rule.ExtendedAnYaRuleType;
+import jfml_entrypoint.extended_rule.ExtendedFuzzyRuleType;
+import jfml_entrypoint.extended_rule.ExtendedTskFuzzyRuleType;
 
+/**
+ * This class allows to return class instances of the JFML package 'rule'.
+ * 
+ */
 public class JFMLRule_Factory {
 
 	public AntecedentType createAntecedentType()
