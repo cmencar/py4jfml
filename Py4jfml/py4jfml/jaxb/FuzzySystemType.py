@@ -29,7 +29,9 @@ class FuzzySystemType:
             self.java_fis = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name)
         elif name!=None and knowledgeBase!=None and ruleBase!=None and networkAddress!=None:
             assert type(name)==str and type(knowledgeBase)==kbt.KnowledgeBaseType and type(ruleBase)==list and type(networkAddress)==str
-            javalist_ruleBase = ListConverter().convert(ruleBase, gateway._gateway_client)
+            javalist_ruleBase = gateway.jvm.java.util.ArrayList()
+            for p in ruleBase:
+                javalist_ruleBase.add(p.java_fsrb)
             self.java_fis = gateway.entry_point.getJFMLjaxb_Factory().createFuzzySystemType(name, knowledgeBase.java_kbt, javalist_ruleBase, networkAddress)
 
     def addRuleBase(self,r):
