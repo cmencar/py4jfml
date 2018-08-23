@@ -10,6 +10,10 @@ import jfml.defuzzifier.DefuzzifierMeanMax;
 import jfml.defuzzifier.DefuzzifierRightMostMax;
 import jfml.term.FuzzyTermType;
 
+/**
+ * This class allows to return class instances of the JFML package 'defuzzifier'.
+ *  
+ */
 public class JFMLDefuzzifier_Factory {
 	
 	public DefuzzifierCenterOfArea createDefuzzifierCenterOfArea(float domainleft, float domainright, List<FuzzyTermType> terms)

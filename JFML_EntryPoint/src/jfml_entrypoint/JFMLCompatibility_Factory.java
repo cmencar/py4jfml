@@ -9,6 +9,10 @@ import jfml.compatibility.ImportPMML;
 import jfml.compatibility.SuppCollection;
 import jfml.compatibility.pmmlReader;
 
+/**
+ * This class allows to return class instances of the JFML package 'compatibility'.
+ *  
+ */
 public class JFMLCompatibility_Factory {
 	
 	public ExportFCL createExportFCL()

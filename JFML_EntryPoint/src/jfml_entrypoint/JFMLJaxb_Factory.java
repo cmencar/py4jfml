@@ -6,6 +6,10 @@ import jfml.jaxb.FuzzySystemType;
 import jfml.jaxb.ObjectFactory;
 import jfml.knowledgebase.KnowledgeBaseType;
 
+/**
+ * This class allows to return class instances of the JFML package 'jaxb'.
+ *  
+ */
 public class JFMLJaxb_Factory {
 	
 	public FuzzySystemType createFuzzySystemType()

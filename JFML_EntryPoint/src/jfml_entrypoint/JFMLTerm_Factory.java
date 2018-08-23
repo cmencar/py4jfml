@@ -71,6 +71,7 @@ public class JFMLTerm_Factory {
 	public FuzzyTermType createFuzzyTermType(String name, int type, ArrayList<Object> param)
 	{
 		if(!param.isEmpty() && param.get(0) instanceof Double){
+			//Conversion of a Double list received from Python in a float Array
 			float[] arFloat = new float[param.size()];
 			for (int i = 0; i < param.size(); i++) {
 				Double paramDouble = (Double) param.get(i);
@@ -78,6 +79,7 @@ public class JFMLTerm_Factory {
 			}
 			return new FuzzyTermType(name,type,arFloat);
 		}else if(!param.isEmpty() && param.get(0) instanceof PointType){
+			//casting to PointType type
 			ArrayList<PointType> points = new ArrayList<>();
 			for (int i = 0; i < param.size(); i++) {
 				PointType point = (PointType) param.get(i);
@@ -110,6 +112,7 @@ public class JFMLTerm_Factory {
 	
 	public TskTermType createTskTermType(String name, int order, ArrayList<Double> coeff)
 	{
+		//Conversion of a Double list received from Python in a float Array
 		float[] arFloat = new float[coeff.size()];
 		for (int i = 0; i < coeff.size(); i++) {
 			arFloat[i] = coeff.get(i).floatValue();
@@ -125,6 +128,7 @@ public class JFMLTerm_Factory {
 	public TsukamotoTermType createTsukamotoTermType(String name, int type, ArrayList<Object> param)
 	{
 		if(!param.isEmpty() && param.get(0) instanceof Double){
+			//Conversion of a Double list received from Python in a float Array
 			float[] arFloat = new float[param.size()];
 			for (int i = 0; i < param.size(); i++) {
 				Double paramDouble = (Double) param.get(i);
@@ -134,6 +138,7 @@ public class JFMLTerm_Factory {
 		}else if(!param.isEmpty() && param.get(0) instanceof PointType){
 			ArrayList<PointType> points = new ArrayList<>();
 			for (int i = 0; i < param.size(); i++) {
+				//casting to PointType type
 				PointType point = (PointType) param.get(i);
 				points.add(point);
 			}

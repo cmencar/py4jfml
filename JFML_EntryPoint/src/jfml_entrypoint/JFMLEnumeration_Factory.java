@@ -12,6 +12,10 @@ import jfml_entrypoint.enumeration.JFMLEnumeration_StandardOrMethodType;
 import jfml_entrypoint.enumeration.JFMLEnumeration_StandardTconormType;
 import jfml_entrypoint.enumeration.JFMLEnumeration_StandardTnormType;
 
+/**
+ * This class allows to return class instances of the jfml_entrypoint package 'enumeration'.
+ *  
+ */
 public class JFMLEnumeration_Factory {
 	
 	public JFMLEnumeration_InterpolationMethodType createJFMLEnumeration_InterpolationMethodType(){

@@ -4,6 +4,10 @@ import jfml.aggregated.AndAggregatedType;
 import jfml.aggregated.OrAggregatedType;
 import jfml.rule.ClauseType;
 
+/**
+ * This class allows to return class instances of the JFML package 'aggregated'.
+ *  
+ */
 public class JFMLAggregated_Factory {
 	
 	public AndAggregatedType createAndAggregatedType()

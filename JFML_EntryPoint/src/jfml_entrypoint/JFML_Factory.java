@@ -4,6 +4,10 @@ import jfml.FuzzyInferenceSystem;
 import jfml.JFML;
 import jfml.jaxb.FuzzySystemType;
 
+/**
+ * This class allows to return class instances of the JFML main package.
+ *  
+ */
 public class JFML_Factory {
 	
 	public FuzzyInferenceSystem createFuzzyInferenceSystem() 

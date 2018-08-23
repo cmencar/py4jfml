@@ -2,6 +2,11 @@ package jfml_entrypoint.enumeration;
 
 import jfml.enumeration.StandardDefuzzifierType;
 
+/**
+ * This class contains enumerated constants of JFML Enum Type 'StandardDefuzzifierType'.
+ * This middle class is needed to use Java enumerated constants through Py4J.
+ *
+ */
 public class JFMLEnumeration_StandardDefuzzifierType {
 	
 	StandardDefuzzifierType MOM;
