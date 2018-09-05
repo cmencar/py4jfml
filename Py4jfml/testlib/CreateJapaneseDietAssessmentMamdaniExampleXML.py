@@ -179,3 +179,5 @@ print(japaneseDietAssessment)
 # WRITTING JAPANESE DIET ASSESSMENT EXAMPLE INTO AN XML FILE
 japaneseDietAssessmentXMLFile = "XMLFiles/JapaneseDietAssessmentMamdani.xml"
 Py4jfml.writeFSTtoXML(japaneseDietAssessment, japaneseDietAssessmentXMLFile)
+
+Py4jfml.kill()

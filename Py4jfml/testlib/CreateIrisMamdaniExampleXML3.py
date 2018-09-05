@@ -216,3 +216,5 @@ str_xml = "XMLFiles/IrisMamdani3.xml"
 Py4jfml.writeFSTtoXML(iris, str_xml)
 
 print(iris)
+
+Py4jfml.kill()

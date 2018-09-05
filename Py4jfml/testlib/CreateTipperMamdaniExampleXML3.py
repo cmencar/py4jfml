@@ -177,3 +177,4 @@ Py4jfml.writeFSTtoXML(tipper, tipperXMLFile)
 
 print(tipper)
 
+Py4jfml.kill()
