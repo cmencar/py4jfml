@@ -2,36 +2,48 @@ import click
 import command.Command as cmd
 
 @click.command()
-@click.option('-l', '--load', default="", help=": Load xml file", multiple=True)
-@click.option('-e', '--evaluate', nargs=2, help=": Evaluate", multiple=True)
-@click.option('-o', '--output', default="", help=": Output")
-#@click.option('-e3', '--evaluate3', nargs=3, help=": Evaluate 3", multiple=True)
-#@click.option('-w', '--write', default="", help=": Write xml file")
-#@click.option('-t', '--tipper', default="", help=": Tipper")
-#@click.option('-m', '--mamdani', default="", help=": Mamdani Rule Base")
+@click.option('-l', '--load', default="", help="Load a file xml")
+@click.option('-e', '--evaluate', default="", help="Evaluate using a file csv")
+@click.option('-i', '--evaluates', default="", help="Evaluate using values")
+@click.option('-o', '--output', default="", help="Output a file csv")
 
-def startCLI(load, evaluate, output):
+def startCLI(load, evaluate, evaluates, output):
     '''
-    Start the Command Line Interface.
-    :param load: path of file xml; type allowed is String.
-    :param evaluate: evaluate[0] = first value, evaluate[1] = second value; type allowed is int.
+    Command Line Interface Help\n
     '''
     args = {}
-    if load is not "" and len(evaluate) > 0:
-        #Call Load + Evaluate
+    #Check for Load
+    if load is not "":
         cmdCompO = cmd.CommandComposer()
-        args['load'] = []
-        args['evaluate'] = []
-        for index, elem in enumerate(load):
-            args['load'].append(elem)
-            li = []
-            for a in evaluate[index]:
-                li.append(a)
-            args['evaluate'].append(li)
-        if output is not "":
-            cmdCompO = cmd.CommandComposer()
-            args['output'] = output
-        cmdCompO.compose(args)
+        #Add Load arguments to execute
+        args['load'] = load
+        flag = False
+        #Check for Evaluate using a file csv
+        if evaluate is not "":
+            #Add Evaluate arguments to execute
+            args['evaluate'] = evaluate
+            flag = True
+        #Check for Evaluate using values
+        elif evaluates is not "":
+            #Add Evaluate arguments to execute
+            args['evaluates'] = evaluates
+            flag = True
+        if flag:
+            #Check for Output
+            if output is not "":
+                cmdCompO = cmd.CommandComposer()
+                #Add Output arguments to execute 
+                args['output'] = output
+                #Compose commands
+                cmdCompO.compose(args)
+            else:
+                #Compose commands
+                app = cmdCompO.compose(args)
+                import sys
+                #Print results
+                for index, elem in enumerate(app):
+                    res = str(elem)
+                    sys.stdout.write(res + '\n')
 
 if __name__ == '__main__':
     startCLI()
