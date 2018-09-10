@@ -30,6 +30,7 @@ class Load(Command):
             os.stat(args)
         except os.error:
             print('File xml not found')
+            fml.Py4jfml.kill()
             import sys
             sys.exit()
 
@@ -63,6 +64,7 @@ class Evaluate(Command):
                     raise ValueError()
             except:
                 print('Wrong number of arguments')
+                fml.Py4jfml.kill()
                 import sys
                 sys.exit()
             #Parse fargs[0] into Float
@@ -181,6 +183,7 @@ class CommandComposer():
                                 fargs.append(app)
                     except FileNotFoundError:
                         print('File csv not found')
+                        fml.Py4jfml.kill()
                         import sys
                         sys.exit()
                 #Evaluate using values
