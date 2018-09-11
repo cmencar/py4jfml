@@ -5,9 +5,9 @@ import command.State as st
 class Command:
     '''
     Command class.
-    :param _state: Create State object (Singleton).
+    :param state: Create State object (Singleton).
     '''
-    _state = st.State()
+    state = st.State()
     def execute(self, args):
         '''
         Demands the execute of commands to the child commands.
@@ -25,23 +25,23 @@ class Load(Command):
         :param args: path of file xml; type allowed is String.
         '''
         assert type(args) == str
+        import os.path
+        try:
+            os.stat(args)
+        except os.error:
+            print('File xml not found')
+            fml.Py4jfml.kill()
+            import sys
+            sys.exit()
+
         #Load file xml and get FIS
         fis = fml.Py4jfml.load(args)
         #Save the name of file xml
         from pathlib import Path
         filename = Path(args).name
-        self._state.fields['filename'] = filename
+        self.state.fields['filename'] = filename
         #Save FIS file
-        self._state.fields['fis'] = fis
-
-#To do
-class Write(Command):
-    '''
-    Write class.
-    '''
-    def execute(self, args):
-        assert type(args) == list
-        pass
+        self.state.fields['fis'] = fis
 
 class Evaluate(Command):
     '''
@@ -50,37 +50,40 @@ class Evaluate(Command):
     def execute(self, args):
         '''
         Execute the command Evaluate.
-        :param args: args[0] = first value, args[1] = second value; type allowed is List.
+        :param args: values; type allowed is List.
         '''
         assert type(args) == list
         #Get fis in state fields
-        fis = self._state.fields['fis']
+        fis = self.state.fields['fis']
         food = fis.getVariable('food')
         service = fis.getVariable('service')
-        #Parse args[0] into Float
-        farg0 = float(args[0])
-        food.setValue(farg0)
-        #Parse args[1] into Float
-        farg1 = float(args[1])
-        service.setValue(farg1)
-        #Call method evaluate()
-        fis.evaluate()
-        #Create tipper
-        tip = fis.getVariable('tip')
-        #Get tipper name
-        name = tip.getName()
-        #Get tipper value
-        value = tip.getValue()
-        #Save name
-        if 'names' in self._state.fields:
-            self._state.fields['names'].append(name)
-        else:
-            self._state.fields['names'] = [name]
-        #Save results
-        if 'results' in self._state.fields:
-            self._state.fields['results'].append(value)
-        else:
-            self._state.fields['results'] = [value]
+
+        for elem in args:
+            try:
+                if len(elem) is not 2:
+                    raise ValueError()
+            except:
+                print('Wrong number of arguments')
+                fml.Py4jfml.kill()
+                import sys
+                sys.exit()
+            #Parse fargs[0] into Float
+            argFood = float(elem[0])
+            food.setValue(argFood)
+            #Parse fargs[1] into Float
+            argService = float(elem[1])
+            service.setValue(argService)
+            #Call method evaluate()
+            fis.evaluate()
+            #Create tipper
+            tip = fis.getVariable('tip')
+            #Get tipper value
+            value = tip.getValue()
+            #Save results
+            if 'results' in self.state.fields:
+                self.state.fields['results'].append(value)
+            else:
+                self.state.fields['results'] = [value]
 
 class Output(Command):
     '''
@@ -92,13 +95,15 @@ class Output(Command):
         :param args: path of file csv; type allowed is String.
         '''
         assert type(args) == str
+        #Write file csv
         import csv
         with open(args, 'w') as csvfile:
-            writer = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            for e in self._state.fields['results']:
+            writer = csv.writer(csvfile)
+            ad = []
+            for e in self.state.fields['results']:
                 s = str(e)
-                writer.writerow(s)
-
+                ad.append(s)
+            writer.writerow(ad)
 
 #Composite
 class MacroCommand(Command):
@@ -107,26 +112,26 @@ class MacroCommand(Command):
     Define behavior for components having children.
     Store child components.
     Implement child-related operations in the Command class.
-    :param _children: Initialize child commands.
+    :param children: Initialize child commands.
     '''
-    _children = []
+    children = []
 
     def add(self, component):
         '''
-        Add a command to the self._children.
+        Add a command to the self.children.
         :param component: constructor of command; types allowed are children of Command class.
         '''
         assert type(component) == Load or type(component) == Evaluate or type(component) == Output
-        #Append component in child list
-        self._children.append(component)
+        #Add component in child list
+        self.children.append(component)
 
     def execute(self, args):
         '''
-        Execute a command by self._children.
+        Execute a command by self.children.
         :param args: args[0] = name of command, args[1] = arguments; type allowed is List.
         '''
         assert type(args) == list
-        for index, child in enumerate(self._children):
+        for index, child in enumerate(self.children):
             child.execute(args[index])
 
 class CommandComposer():
@@ -149,25 +154,54 @@ class CommandComposer():
         for op in args:
             ops[op] = True;
         #Check if there is Load
-        if ops['load']:
-            for index, elem in enumerate(args['load']):
-                #Create Load object
-                loadObj = Load()
-                #Add Load command 
-                cmdo.add(loadObj)
-                #Add arguments of command Load
-                lis.append(elem)
-                #Check if there is Evaluate after Load
-                if ops['evaluate']:
-                    #Create Evaluate object
-                    evalObj = Evaluate()
-                    #Add Evaluate command
-                    cmdo.add(evalObj)
-                    #Add arguments of command Evaluate
-                    lis.append(args['evaluate'][index])
-                    if ops['output']:
-                        outObj = Output()
-                        cmdo.add(outObj)
-                        lis.append(args['output'])
+        if 'load' in ops:
+            #Create Load object
+            loadObj = Load()
+            #Add Load command 
+            cmdo.add(loadObj)
+            #Add arguments of command Load
+            lis.append(args['load'])
+            #Check if there is Evaluate after Load
+            if 'evaluate' in ops or 'evaluates' in ops:
+                #Create Evaluate object
+                evalObj = Evaluate()
+                #Add Evaluate command
+                cmdo.add(evalObj)
+                #Add arguments of command Evaluate
+                fargs = []
+                #Evaluate using a file csv
+                if 'evaluate' in ops:
+                    import csv
+                    try:
+                        #Read file csv
+                        with open(args['evaluate'], 'r') as csvfile:
+                            reader = csv.reader(csvfile)
+                            for index, row in enumerate(reader):
+                                app = []
+                                for elem in row:
+                                    app.append(elem)
+                                fargs.append(app)
+                    except FileNotFoundError:
+                        print('File csv not found')
+                        fml.Py4jfml.kill()
+                        import sys
+                        sys.exit()
+                #Evaluate using values
+                else:
+                    fargs.append(args['evaluates'].split(','))
+                #Add arguments of command Evaluate
+                lis.append(fargs)
+                #Check if there is Output after Evaluate
+                if 'output' in ops:
+                    #Create Output object
+                    outObj = Output()
+                    #Add Output command
+                    cmdo.add(outObj)
+                    #Add arguments of command Output
+                    lis.append(args['output'])
             #Execute commands
             cmdo.execute(lis)
+            #If no command output, return the results
+            if 'output' not in ops:
+                #Return results
+                return cmdo.children[0].state.fields['results']
