@@ -77,7 +77,7 @@ class DefuzzifierMeanMax:
         :return: possible object is float
         '''
         assert type(x)==float
-        return self.java_d.getValueY()
+        return self.java_d.getValueY(x)
 
     def isDiscrete(self):
         '''

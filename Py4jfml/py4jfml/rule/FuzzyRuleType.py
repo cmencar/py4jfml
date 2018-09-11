@@ -211,7 +211,7 @@ class FuzzyRuleType:
         :param value: allowed object is String
         '''
         assert type(value)==str
-        self.java_r.	setConnector(value)
+        self.java_r.setConnector(value)
 
     def setConsequent(self, value):
         '''

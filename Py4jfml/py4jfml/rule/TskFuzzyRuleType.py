@@ -215,7 +215,7 @@ class TskFuzzyRuleType:
         :param value: allowed object is String
         '''
         assert type(value)==str
-        self.java_r.	setConnector(value)
+        self.java_r.setConnector(value)
 
     def setName(self, value):
         '''

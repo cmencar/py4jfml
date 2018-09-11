@@ -47,7 +47,7 @@ class KnowledgeBaseType:
         :return: the KnowledgeBaseVariable or null if the param name no match
         '''
         assert type(name)==str
-        return self.java_kbt.getVariable()
+        return self.java_kbt.getVariable(name)
 
     def getVariables(self):
         '''

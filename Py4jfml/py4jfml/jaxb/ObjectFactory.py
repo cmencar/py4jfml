@@ -391,7 +391,7 @@ class ObjectFactory:
         :param value: allowed object is CircularTermType
         :return: an instance of JAXBElement<CircularTermType >
         '''
-        assert type(value)==CircularTermType
+        assert type(value)==ctt.CircularTermType
         return self.java_of.createOrLogicalTypeTermName(value.java_t)
 
     def createParameterType(self):

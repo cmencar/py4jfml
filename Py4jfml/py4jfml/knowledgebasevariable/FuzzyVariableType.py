@@ -61,7 +61,7 @@ class FuzzyVariableType:
         :return: the accumulation as a float
         '''
         assert type(x)==float and type(y)==float
-        return self.java_kbv.accumulation()
+        return self.java_kbv.accumulation(x,y)
 
     def addFuzzyTerm(self, ft=None, name=None, fuzzyTermType=None, param=None):
         '''
