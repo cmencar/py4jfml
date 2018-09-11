@@ -1,3 +1,9 @@
+'''
+This class creates an XML file with the definition of a Mamdani-type FLS for the Iris classification problem:
+ *   1) 1 input variable (PetalWidth) with 12 different membership functions
+ *   2) 12 rules (4 per output class, 1 per membership function in the input variable)
+'''
+
 from py4j.java_gateway import JavaGateway
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 from py4jfml.Py4Jfml import Py4jfml

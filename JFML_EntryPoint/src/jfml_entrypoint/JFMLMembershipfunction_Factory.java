@@ -199,6 +199,11 @@ public class JFMLMembershipfunction_Factory {
 		return new PointType(x,y);
 	}
 	
+	public RectangularMembershipFunction createRectangularMembershipFunction()
+	{
+		return new RectangularMembershipFunction();
+	}
+	
 	public RectangularMembershipFunction createRectangularMembershipFunction(Parameter p)
 	{
 		return new RectangularMembershipFunction(p);
