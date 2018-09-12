@@ -32,14 +32,14 @@ class TwoParamType:
         Gets the value of the attribute param1
         :return: the value of the attribute param1
         '''
-        self.java_p.getParam1()
+        return self.java_p.getParam1()
 
     def getParam2(self):
         '''
         Gets the value of the attribute param2
         :return: the value of the attribute param2
         '''
-        self.java_p.getParam2()
+        return self.java_p.getParam2()
 
     def getParameterLength(self):
         '''
