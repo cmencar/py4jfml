@@ -20,7 +20,23 @@
                 <rightGaussianShape param1="10.0" param2="2.0"/>
             </fuzzyTerm>
         </fuzzyVariable>
-        <tsukamotoVariable name="tip" scale="" domainleft="0.0" domainright="20.0" type="output" combination="WA" defaultValue="0.0"/>
+        <tsukamotoVariable name="tip" scale="" domainleft="0.0" domainright="20.0" type="output" combination="WA" defaultValue="0.0">
+            <tsukamotoTerm name="cheap">
+                <pointSetMonotonicShape interpolationMethod="cubic">
+                    <point x="0.0" y="1.0"/>
+                    <point x="1.0" y="1.0"/>
+                    <point x="2.0" y="0.6"/>
+                    <point x="3.0" y="0.4"/>
+                    <point x="4.0" y="0.0"/>
+                </pointSetMonotonicShape>
+            </tsukamotoTerm>
+            <tsukamotoTerm name="average" complement="false">
+                <zShape param1="5.0" param2="15.0"/>
+            </tsukamotoTerm>
+            <tsukamotoTerm name="generous" complement="false">
+                <rightGaussianShape param1="20.0" param2="10.0"/>
+            </tsukamotoTerm>
+        </tsukamotoVariable>
     </knowledgeBase>
     <tsukamotoRuleBase name="rulebase1" activationMethod="MIN" andMethod="MIN" orMethod="MAX">
         <rule name="rule1" orMethod="MAX" connector="or" weight="1.0">

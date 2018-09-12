@@ -67,15 +67,15 @@ points1 = [PointType(0.0, 1.0),PointType(1.0, 1.0),PointType(2.0, 0.6),PointType
 psm = PointSetMonotonicShapeType(points=points1)
 psm.setInterpolationMethod(MonotonicInterpolationMethodType.CUBIC)
 cheap = TsukamotoTermType(name="cheap", psm=psm)
-tip.addTsukamotoTerm(cheap)
+tip.addTsukamotoTerm(t=cheap)
 
 #TSUKAMOTO TERM average
 average = TsukamotoTermType(name="average", type_java=FuzzyTermType.TYPE_zShape, paramList=[5.0, 15.0])
-tip.addTsukamotoTerm(average)
+tip.addTsukamotoTerm(t=average)
 
 #TSUKAMOTO TERM generous
 generous = TsukamotoTermType(name="generous", type_java=FuzzyTermType.TYPE_rightGaussianShape, paramList=[20.0, 10.0])
-tip.addTsukamotoTerm(generous)
+tip.addTsukamotoTerm(t=generous)
 
 kb.addVariable(tip)
 

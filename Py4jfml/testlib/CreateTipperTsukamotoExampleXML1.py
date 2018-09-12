@@ -61,15 +61,15 @@ tip.setType("output")
 
 # TSUKAMOTO TERM cheap
 cheap = TsukamotoTermType("cheap", FuzzyTermType.TYPE_leftLinearShape,[0., 10.])
-tip.addTsukamotoTerm(cheap)
+tip.addTsukamotoTerm(t=cheap)
 
 # TSUKAMOTO TERM average
 average = TsukamotoTermType("average", FuzzyTermType.TYPE_zShape,[5., 15.])
-tip.addTsukamotoTerm(average)
+tip.addTsukamotoTerm(t=average)
 
 # TSUKAMOTO TERM generous
 generous = TsukamotoTermType("generous", FuzzyTermType.TYPE_rightGaussianShape,[20., 10.])
-tip.addTsukamotoTerm(generous)
+tip.addTsukamotoTerm(t=generous)
 
 kb.addVariable(tip)
 
