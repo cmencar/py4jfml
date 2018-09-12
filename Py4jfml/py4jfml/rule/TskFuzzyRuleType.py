@@ -1,3 +1,4 @@
+from py4j.java_collections import ListConverter
 from py4j.java_gateway import JavaGateway
 from py4jfml.rule import AntecedentType as at
 from py4jfml.rule import TskConsequentType as tskct
@@ -57,14 +58,12 @@ class TskFuzzyRuleType:
         :return: if andMethod is None returns the and algorithm by default: MIN
         '''
         assert type(degrees)==list
-        javaarray_degrees = gateway.new_array(gateway.jvm.float, len(degrees))
-        for d in degrees:
-            javaarray_degrees[degrees.index(d)] = d
+        java_degrees_list = ListConverter().convert(degrees, gateway._gateway_client)
         if andMethod==None:
-            return self.java_r.andFunction(javaarray_degrees)
+            return self.java_r.andFunction(java_degrees_list)
         else:
             assert type(andMethod)==str
-            return self.java_r.andFunction(andMethod, javaarray_degrees)
+            return self.java_r.andFunction(andMethod, java_degrees_list)
 
     def getEvaluation(self):
         '''
@@ -88,14 +87,12 @@ class TskFuzzyRuleType:
         :return: if orMethod is None, returns the or algorithm by default: MAX
         '''
         assert type(degrees)==list
-        javaarray_degrees = gateway.new_array(gateway.jvm.float, len(degrees))
-        for d in degrees:
-            javaarray_degrees[degrees.index(d)] = d
+        java_degrees_list = ListConverter().convert(degrees, gateway._gateway_client)
         if orMethod == None:
-            return self.java_r.orFunction(javaarray_degrees)
+            return self.java_r.orFunction(java_degrees_list)
         else:
             assert type(orMethod) == str
-            return self.java_r.orFunction(orMethod, javaarray_degrees)
+            return self.java_r.orFunction(orMethod, java_degrees_list)
 
     def reset(self):
         '''
