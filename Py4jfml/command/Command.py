@@ -25,15 +25,6 @@ class Load(Command):
         :param args: path of file xml; type allowed is String.
         '''
         assert type(args) == str
-        import os.path
-        try:
-            os.stat(args)
-        except os.error:
-            print('File xml not found')
-            fml.Py4jfml.kill()
-            import sys
-            sys.exit()
-
         #Load file xml and get FIS
         fis = fml.Py4jfml.load(args)
         #Save the name of file xml
@@ -63,10 +54,8 @@ class Evaluate(Command):
                 if len(elem) is not 2:
                     raise ValueError()
             except:
-                print('Wrong number of arguments')
-                fml.Py4jfml.kill()
                 import sys
-                sys.exit()
+                sys.exit('Number of arguments is not 2 in Evaluate')
             #Parse fargs[0] into Float
             argFood = float(elem[0])
             food.setValue(argFood)
@@ -155,6 +144,18 @@ class CommandComposer():
             ops[op] = True;
         #Check if there is Load
         if 'load' in ops:
+            #Check file extension
+            ext = args['load'][-4:]
+            if ext != '.xml':
+                import sys
+                sys.exit('File must have the xml extension in Load')
+            #Check if file exist
+            import os.path
+            try:
+                os.stat(args['load'])
+            except os.error:
+                import sys
+                sys.exit('File xml not found for Load')
             #Create Load object
             loadObj = Load()
             #Add Load command 
@@ -171,21 +172,36 @@ class CommandComposer():
                 fargs = []
                 #Evaluate using a file csv
                 if 'evaluate' in ops:
-                    import csv
-                    try:
-                        #Read file csv
-                        with open(args['evaluate'], 'r') as csvfile:
-                            reader = csv.reader(csvfile)
-                            for index, row in enumerate(reader):
-                                app = []
-                                for elem in row:
-                                    app.append(elem)
-                                fargs.append(app)
-                    except FileNotFoundError:
-                        print('File csv not found')
-                        fml.Py4jfml.kill()
+                    #Check file extension
+                    ext = args['evaluate'][-4:]
+                    if ext != '.csv':
                         import sys
-                        sys.exit()
+                        sys.exit('File must have the csv extension in Evaluate')
+                    #Check if file exist
+                    import os.path
+                    try:
+                        os.stat(args['evaluate'])
+                    except os.error:
+                        import sys
+                        sys.exit('File xml not found for Evaluate')
+                    #Check if file is empty
+                    import os
+                    if os.stat(args['evaluate']).st_size == 0:
+                        import sys
+                        sys.exit('File csv is empty in Evaluate')
+                    #Read file csv
+                    import csv
+                    with open(args['evaluate'], 'r') as csvfile:
+                        reader = csv.reader(csvfile)
+                        for index, row in enumerate(reader):
+                            app = []
+                            #Check if row haven't 2 column
+                            if len(row) is not 2:
+                                import sys
+                                sys.exit('File csv with wrong number of column in Evaluate')
+                            for elem in row:
+                                app.append(elem)
+                            fargs.append(app)
                 #Evaluate using values
                 else:
                     fargs.append(args['evaluates'].split(','))
@@ -193,6 +209,11 @@ class CommandComposer():
                 lis.append(fargs)
                 #Check if there is Output after Evaluate
                 if 'output' in ops:
+                    #Check file extension
+                    ext = args['output'][-4:]
+                    if ext != '.csv':
+                        import sys
+                        sys.exit('File must have the csv extension in Output')
                     #Create Output object
                     outObj = Output()
                     #Add Output command
@@ -202,6 +223,6 @@ class CommandComposer():
             #Execute commands
             cmdo.execute(lis)
             #If no command output, return the results
-            if 'output' not in ops:
+            if ('evaluate' in ops or 'evaluates' in ops) and 'output' not in ops:
                 #Return results
                 return cmdo.children[0].state.fields['results']
