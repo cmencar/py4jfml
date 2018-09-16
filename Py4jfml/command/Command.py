@@ -156,6 +156,11 @@ class CommandComposer():
             except os.error:
                 import sys
                 sys.exit('File xml not found for Load')
+            #Check if file is empty
+            import os
+            if os.stat(args['load']).st_size == 0:
+                import sys
+                sys.exit('File xml is empty in Load')
             #Create Load object
             loadObj = Load()
             #Add Load command 
