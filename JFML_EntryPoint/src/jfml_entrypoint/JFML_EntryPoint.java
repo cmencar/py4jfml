@@ -145,7 +145,7 @@ public class JFML_EntryPoint {
 			JFML_EntryPoint jf = new JFML_EntryPoint();
 			GatewayServer gatewayServer = new GatewayServer(jf);
 			gatewayServer.start();
-			System.out.println("Gateway PY4JFML Server Started!");			
+			//System.out.println("Gateway PY4JFML Server Started!");			
 		}catch (py4j.Py4JNetworkException e) {
 			
 		}		
