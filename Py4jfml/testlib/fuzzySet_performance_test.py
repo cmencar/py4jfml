@@ -21,7 +21,7 @@ import py4jfml.membershipfunction.TriangularMembershipFunction as trimf
 import py4jfml.membershipfunction.ZShapeMembershipFunction as zsmf
 import py4jfml.operator.AndLogicalType as alt
 import py4jfml.operator.OrLogicalType as olt
-import py4jfml.parameter.ParameterType as pt
+import py4jfml.parameter.ParameterType as pty
 import py4jfml.parameter.OneParamType as opt
 import py4jfml.parameter.TwoParamType as tpt
 import py4jfml.parameter.ThreeParamType as trpt
