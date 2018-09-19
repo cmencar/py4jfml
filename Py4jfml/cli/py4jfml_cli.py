@@ -17,33 +17,37 @@ def startCLI(load, evaluate, evaluates, output):
         cmdCompO = cmd.CommandComposer()
         #Add Load arguments to execute
         args['load'] = load
-        flag = False
         #Check for Evaluate using a file csv
         if evaluate is not "":
+            #Load + Evaluate
             #Add Evaluate arguments to execute
             args['evaluate'] = evaluate
-            flag = True
         #Check for Evaluate using values
         elif evaluates is not "":
+            #Load + Evaluates
             #Add Evaluate arguments to execute
             args['evaluates'] = evaluates
-            flag = True
-        if flag:
             #Check for Output
-            if output is not "":
-                cmdCompO = cmd.CommandComposer()
+        if output is not "":
+            #Load + (Evaluate OR Evaluates) + Output
+            cmdCompO = cmd.CommandComposer()
                 #Add Output arguments to execute 
-                args['output'] = output
+            args['output'] = output
                 #Compose commands
-                cmdCompO.compose(args)
-            else:
-                #Compose commands
-                app = cmdCompO.compose(args)
-                import sys
+            cmdCompO.compose(args)
+        elif evaluate is not "" or evaluates is not "":
+            #Load + (Evaluate OR Evaluates)
+            #Compose commands
+            app = cmdCompO.compose(args)
+            import sys
                 #Print results
-                for index, elem in enumerate(app):
-                    res = str(elem)
-                    sys.stdout.write(res + '\n')
+            for index, elem in enumerate(app):
+                res = str(elem)
+                sys.stdout.write(res + '\n')
+        else:
+            #Load
+            #Compose commands
+            cmdCompO.compose(args)
 
 if __name__ == '__main__':
     startCLI()
