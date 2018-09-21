@@ -1,5 +1,4 @@
 import py4jfml.Py4Jfml as fml
-from py4jfml.FuzzyInferenceSystem import *
 import command.State as st
 
 class Command:
@@ -46,28 +45,45 @@ class Evaluate(Command):
         assert type(args) == list
         #Get fis in state fields
         fis = self.state.fields['fis']
-        food = fis.getVariable('food')
-        service = fis.getVariable('service')
+
+        #Get names of input variables
+        names = []
+        for e in fis.getVariables():
+            name = e.getName()
+            names.append(name)
+        #Save name of result variable
+        resultName = names[-1]
+        #Pop last element because is not an input variable
+        names.pop()
+
+        vars = []
+
+        #Get variables 
+        for i,e in enumerate(names):
+            #Convert the name into String
+            nameStr=str(e)
+            app = fis.getVariable(nameStr)
+            vars.append(app)
 
         for elem in args:
             try:
-                if len(elem) is not 2:
+                if len(names) is not len(elem):
                     raise ValueError()
             except:
                 import sys
-                sys.exit('Number of arguments is not 2 in Evaluate')
-            #Parse fargs[0] into Float
-            argFood = float(elem[0])
-            food.setValue(argFood)
-            #Parse fargs[1] into Float
-            argService = float(elem[1])
-            service.setValue(argService)
+                sys.exit('Number of arguments is not '+str(len(names))+' in Evaluate')
+
+            for i,e in enumerate(vars):
+                #Convert input into Float
+                elemFloat = float(elem[i])
+                e.setValue(elemFloat)
+
             #Call method evaluate()
             fis.evaluate()
-            #Create tipper
-            tip = fis.getVariable('tip')
-            #Get tipper value
-            value = tip.getValue()
+            #Create result
+            result = fis.getVariable(resultName)
+            #Get result
+            value = result.getValue()
             #Save results
             if 'results' in self.state.fields:
                 self.state.fields['results'].append(value)
