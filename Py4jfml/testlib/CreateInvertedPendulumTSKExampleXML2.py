@@ -350,5 +350,3 @@ print(invertedPendulum)
 #WRITTING INVERTED PENDULUM EXAMPLE INTO AN XML FILE
 invertedPendulumXMLFile = "XMLFiles/InvertedPendulumTSK2.xml"
 Py4jfml.writeFSTtoXML(invertedPendulum, invertedPendulumXMLFile)
-
-Py4jfml.kill()

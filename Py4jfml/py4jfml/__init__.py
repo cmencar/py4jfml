@@ -15,9 +15,9 @@ class Java_EntryPointThread(Thread):
     def run(self):
         upperDir = os.path.dirname(os.getcwd())
         if(platform.system()=='Linux'):
-            subprocess.call(['java', '-jar', upperDir + '/jar_files/JFML_EntryPoint.jar'])
+            subprocess.Popen(['java', '-jar', upperDir + '/jar_files/JFML_EntryPoint.jar'])
         if(platform.system()=='Windows'):
-            subprocess.call(['java', '-jar', upperDir + '\jar_files\JFML_EntryPoint.jar'])
+            subprocess.Popen(['java', '-jar', upperDir + '\jar_files\JFML_EntryPoint.jar'])
 
 entryPointThread = Java_EntryPointThread()
 entryPointThread.start()

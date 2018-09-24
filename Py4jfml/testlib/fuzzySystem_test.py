@@ -356,7 +356,3 @@ if fis.getAllRuleBase()[1].getRuleBaseSystemTypeName()=="tsk":
     print("FuzzySystemType test case passed.")
 else:
     print("FuzzySystemType test case failed.")
-
-
-Py4jfml.kill()
-

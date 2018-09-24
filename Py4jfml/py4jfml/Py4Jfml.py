@@ -37,10 +37,11 @@ class Py4jfml:
         xmlOutput = gateway.jvm.java.io.File(str(str_output))
         JFML.writeFSTtoXML(fst.java_fis, xmlOutput)
 
-
+'''
     @staticmethod
     def kill():
         """
         Static method to kill every thread of Py4JFML
         """
         os._exit(0)
+'''

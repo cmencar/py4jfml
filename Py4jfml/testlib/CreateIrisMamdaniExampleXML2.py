@@ -172,5 +172,3 @@ print(iris)
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
 irisXMLFile = "XMLFiles/IrisMamdani2.xml"
 Py4jfml.writeFSTtoXML(iris, irisXMLFile)
-
-Py4jfml.kill()

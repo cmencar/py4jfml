@@ -124,5 +124,3 @@ str_xml = "XMLFiles/TipperMamdani2.xml"
 Py4jfml.writeFSTtoXML(tipper, str_xml)
 
 print(tipper)
-
-Py4jfml.kill()

@@ -379,5 +379,3 @@ try:
     print("Testing of package membershipfunction: SUCCESSFUL")
 except AssertionError:
     print("Testing of package membershipfunction: FAILED")
-
-Py4jfml.kill()

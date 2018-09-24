@@ -104,5 +104,3 @@ irisXMLFile = "XMLFiles/IrisMamdani1.xml"
 Py4jfml.writeFSTtoXML(iris, irisXMLFile)
 
 print(iris)
-
-Py4jfml.kill()

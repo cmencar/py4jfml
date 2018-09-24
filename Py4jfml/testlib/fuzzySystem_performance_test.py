@@ -73,6 +73,3 @@ cProfile.run("f=RuleBaseType()")
 cProfile.run("f=TskRuleBaseType()")
 
 cProfile.run("f=TsukamotoRuleBaseType()")
-
-
-Py4jfml.kill()
