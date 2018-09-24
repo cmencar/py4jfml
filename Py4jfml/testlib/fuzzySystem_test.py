@@ -51,7 +51,7 @@ force_neg =  FuzzyTermType("negative", FuzzyTermType.TYPE_triangularShape,[ 48.0
 force_neu =  FuzzyTermType("zero", FuzzyTermType.TYPE_triangularShape,[ 88.0, 128.0, 168.0])
 
 
-print()
+
 
 defuzzCoA = DefuzzifierCenterOfArea(2., 4., [force_vneg])
 defuzzCoA.setValue(5., 15.)
@@ -81,7 +81,7 @@ if defuzzCoGS.getDiscreteValue(5.)==15.:
 else:
     print("DefuzzifierCenterOfGravitySingletons test case 1 (discrete value) failed.")
 
-print()
+
 
 name = "quality"
 output = "output"
@@ -200,7 +200,7 @@ if kb.getVariable("tip").getCombination()=="WA":
 else:
     print("KnowledgeBaseType test case failed.")
 
-print()
+
 
 # FUZZY VARIABLE
 ang = FuzzyVariableType("Angle", 0.0, 255.0)
@@ -300,7 +300,7 @@ if r1.getTskConsequent().getTskThen().getTskClause()[0].getTerm().getName()==nam
 else:
     print("TskFuzzyRuleType, TskConsequentType, TskConsequentClausesType, TskClauseType test case failed.")
 
-print()
+
 
 rb = AnYaRuleBaseType("rulebase1")
 rb.addAnYaRule(anyarule)
@@ -346,7 +346,7 @@ if rb.getRules()[0].getConsequent().getThen().getClause()[0].getVariable().getDe
 else:
     print("TsukamotoRuleBaseType, ConsequentType, ConsequentClausesType, FuzzyRuleType, FuzzyVariableType, Defuzzifier test case failed.")
 
-print()
+
 
 fis = FuzzySystemType()
 fis.addRuleBase(rb)
