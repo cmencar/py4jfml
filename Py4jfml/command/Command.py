@@ -10,7 +10,7 @@ class Command:
     def execute(self, args):
         '''
         Demands the execute of commands to the child commands.
-        :param args: argumnets; typr allowed is List.
+        :param args: arguments.
         '''
         pass
 
@@ -66,6 +66,15 @@ class Evaluate(Command):
             vars.append(app)
 
         for elem in args:
+            #Check if values are Integer
+            for i,e in enumerate(elem):
+                try:
+                    if e.isdigit() == False:
+                        raise ValueError()
+                except:
+                    import sys
+                    sys.exit('Values must be Integer')
+            #Check if numbers of value is different from input needed
             try:
                 if len(names) is not len(elem):
                     raise ValueError()
@@ -171,7 +180,7 @@ class CommandComposer():
                 os.stat(args['load'])
             except os.error:
                 import sys
-                sys.exit('File xml not found for Load')
+                sys.exit('File xml not found in Load')
             #Check if file is empty
             import os
             if os.stat(args['load']).st_size == 0:
@@ -204,7 +213,7 @@ class CommandComposer():
                         os.stat(args['evaluate'])
                     except os.error:
                         import sys
-                        sys.exit('File xml not found for Evaluate')
+                        sys.exit('File csv not found in Evaluate')
                     #Check if file is empty
                     import os
                     if os.stat(args['evaluate']).st_size == 0:
@@ -216,10 +225,6 @@ class CommandComposer():
                         reader = csv.reader(csvfile)
                         for index, row in enumerate(reader):
                             app = []
-                            #Check if row haven't 2 column
-                            if len(row) is not 2:
-                                import sys
-                                sys.exit('File csv with wrong number of column in Evaluate')
                             for elem in row:
                                 app.append(elem)
                             fargs.append(app)

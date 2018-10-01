@@ -2,18 +2,21 @@ import click
 import command.Command as cmd
 
 @click.command()
-@click.option('-l', '--load', default="", help="Load a file xml")
-@click.option('-e', '--evaluate', default="", help="Evaluate using a file csv")
-@click.option('-i', '--evaluates', default="", help="Evaluate using values")
-@click.option('-o', '--output', default="", help="Output a file csv")
+@click.option('-l', '--load', default='', help='Load a file xml.')
+@click.option('-e', '--evaluate', default='', help='Evaluate using a file csv.')
+@click.option('-i', '--evaluates', default='', help='Evaluate using values.')
+@click.option('-o', '--output', default='', help='Output a file csv.')
 
 def startCLI(load, evaluate, evaluates, output):
     '''
     Command Line Interface Help\n
     '''
     args = {}
+    if load is not "" and evaluate is "" and evaluates is "":
+        import sys
+        sys.exit('Can\'t be executed only Load')
     #Check for Load
-    if load is not "":
+    elif load is not "":
         cmdCompO = cmd.CommandComposer()
         #Add Load arguments to execute
         args['load'] = load
@@ -52,9 +55,6 @@ def startCLI(load, evaluate, evaluates, output):
                 for index, elem in enumerate(app):
                     res = str(elem)
                     sys.stdout.write(res + '\n')
-        else:
-            import sys
-            sys.exit('Can\'t be executed only Load')
     else:
         import sys
         sys.exit('Wrong or missing option')
