@@ -113,3 +113,5 @@ tipperXMLFile = "XMLFiles/TipperMamdani1.xml"
 Py4jfml.writeFSTtoXML(tipper, tipperXMLFile)
 
 print(tipper)
+
+Py4jfml.kill()

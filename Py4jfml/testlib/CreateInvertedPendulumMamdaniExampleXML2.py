@@ -351,3 +351,5 @@ print(invertedPendulum)
 
 invertedPendulumXMLFile = "XMLFiles/InvertedPendulumMamdani2.xml"
 Py4jfml.writeFSTtoXML(invertedPendulum, invertedPendulumXMLFile)
+
+Py4jfml.kill()

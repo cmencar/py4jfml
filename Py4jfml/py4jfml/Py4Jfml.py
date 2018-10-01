@@ -1,5 +1,8 @@
 import os
 from py4j.java_gateway import JavaGateway
+from py4jfml import entryPointThread
+
+from py4jfml import Java_EntryPointThread
 from py4jfml.FuzzyInferenceSystem import FuzzyInferenceSystem
 
 gateway = JavaGateway()
@@ -37,11 +40,9 @@ class Py4jfml:
         xmlOutput = gateway.jvm.java.io.File(str(str_output))
         JFML.writeFSTtoXML(fst.java_fis, xmlOutput)
 
-'''
     @staticmethod
     def kill():
         """
         Static method to kill every thread of Py4JFML
         """
-        os._exit(0)
-'''
+        entryPointThread.terminate_process()
