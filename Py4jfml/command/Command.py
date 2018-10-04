@@ -1,5 +1,8 @@
+import os as path
+import csv
 import py4jfml.Py4Jfml as fml
 import command.State as st
+from pathlib import Path
 
 class Command:
     '''
@@ -27,7 +30,6 @@ class Load(Command):
         #Load file xml and get FIS
         fis = fml.Py4jfml.load(args)
         #Save the name of file xml
-        from pathlib import Path
         filename = Path(args).name
         self.state.fields['filename'] = filename
         #Save FIS file
@@ -40,7 +42,7 @@ class Evaluate(Command):
     def execute(self, args):
         '''
         Execute the command Evaluate.
-        :param args: values; type allowed is List.
+        :param args: values to evaluate; type allowed is List.
         '''
         assert type(args) == list
         #Get fis in state fields
@@ -59,34 +61,22 @@ class Evaluate(Command):
         vars = []
 
         #Get variables 
-        for i,e in enumerate(names):
+        for i, e in enumerate(names):
             #Convert the name into String
             nameStr=str(e)
             app = fis.getVariable(nameStr)
             vars.append(app)
 
         for elem in args:
-            #Check if values are Integer
-            for i,e in enumerate(elem):
-                try:
-                    if e.isdigit() == False:
-                        raise ValueError()
-                except:
-                    import sys
-                    sys.exit('Values must be Integer')
-            #Check if numbers of value is different from input needed
-            try:
-                if len(names) is not len(elem):
-                    raise ValueError()
-            except:
-                import sys
-                sys.exit('Number of arguments is not '+str(len(names))+' in Evaluate')
-
             for i,e in enumerate(vars):
-                #Convert input into Float
-                elemFloat = float(elem[i])
+                #Remove whitespace
+                nospace = elem[i].replace(' ','')
+                #Parse nospace into Float if it is int or float otherwise raise exception
+                elemFloat = float(nospace)
                 e.setValue(elemFloat)
-
+            #Check if numbers of value is different from input needed
+            if len(names) is not len(elem):
+                raise IndexError()
             #Call method evaluate()
             fis.evaluate()
             #Create result
@@ -110,7 +100,6 @@ class Output(Command):
         '''
         assert type(args) == str
         #Write file csv
-        import csv
         with open(args, 'w') as csvfile:
             writer = csv.writer(csvfile)
             ad = []
@@ -156,7 +145,7 @@ class CommandComposer():
     def compose(self, args):
         '''
         Create and execute command using MacroCommand class.
-        :param args: args[0] = name of command, args[1] = arguments; type allowed is Dictionary.
+        :param args: args['name of command'] = arguments; type allowed is Dictionary.
         '''
         assert type(args) == dict
         #Create MacroCommand object
@@ -172,20 +161,12 @@ class CommandComposer():
             #Check file extension
             ext = args['load'][-4:]
             if ext != '.xml':
-                import sys
-                sys.exit('File must have the xml extension in Load')
+                raise NameError()
             #Check if file exist
-            import os.path
-            try:
-                os.stat(args['load'])
-            except os.error:
-                import sys
-                sys.exit('File xml not found in Load')
+            path.stat(args['load'])
             #Check if file is empty
-            import os
-            if os.stat(args['load']).st_size == 0:
-                import sys
-                sys.exit('File xml is empty in Load')
+            if path.stat(args['load']).st_size == 0:
+                raise IOError()
             #Create Load object
             loadObj = Load()
             #Add Load command 
@@ -205,22 +186,13 @@ class CommandComposer():
                     #Check file extension
                     ext = args['evaluate'][-4:]
                     if ext != '.csv':
-                        import sys
-                        sys.exit('File must have the csv extension in Evaluate')
+                        raise NameError()
                     #Check if file exist
-                    import os.path
-                    try:
-                        os.stat(args['evaluate'])
-                    except os.error:
-                        import sys
-                        sys.exit('File csv not found in Evaluate')
+                    path.stat(args['evaluate'])
                     #Check if file is empty
-                    import os
-                    if os.stat(args['evaluate']).st_size == 0:
-                        import sys
-                        sys.exit('File csv is empty in Evaluate')
+                    if path.stat(args['evaluate']).st_size == 0:
+                        raise IOError()
                     #Read file csv
-                    import csv
                     with open(args['evaluate'], 'r') as csvfile:
                         reader = csv.reader(csvfile)
                         for index, row in enumerate(reader):
@@ -238,8 +210,7 @@ class CommandComposer():
                     #Check file extension
                     ext = args['output'][-4:]
                     if ext != '.csv':
-                        import sys
-                        sys.exit('File must have the csv extension in Output')
+                        raise NameError()
                     #Create Output object
                     outObj = Output()
                     #Add Output command
