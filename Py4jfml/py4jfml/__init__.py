@@ -18,7 +18,7 @@ class Java_EntryPointThread:
             self.process = subprocess.Popen(['java', '-jar', upperDir + '\jar_files\JFML_EntryPoint.jar'])
 
     def terminate_process(self):
-        self.process.kill()
+        self.process.terminate()
 
 entryPointThread = Java_EntryPointThread()
 time.sleep(1)
