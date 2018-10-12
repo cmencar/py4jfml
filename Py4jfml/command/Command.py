@@ -131,7 +131,7 @@ class MacroCommand(Command):
     def execute(self, args):
         '''
         Execute a command by self.children.
-        :param args: args[0] = name of command, args[1] = arguments; type allowed is List.
+        :param args: arguments of commands; type allowed is List.
         '''
         assert type(args) == list
         for index, child in enumerate(self.children):
