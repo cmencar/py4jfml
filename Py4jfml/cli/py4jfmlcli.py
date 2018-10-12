@@ -2,6 +2,7 @@ import sys as s
 import click
 import command.Command as cmd
 import cli.Messages as msg
+from py4jfml.Py4Jfml import Py4jfml
 
 @click.command()
 @click.option('-l', '--load', default='', help='Load a file xml.')
@@ -10,12 +11,10 @@ import cli.Messages as msg
 @click.option('-o', '--output', default='', help='Output a file csv.')
 
 def startCLI(load, evaluate, evaluates, output):
-    '''
-    Command Line Interface Help\n
-    '''
     args = {}
     try:
         if load is not '' and evaluate is '' and evaluates is '':
+            Py4jfml.kill()
             s.exit(msg.getMsg('OnlyLoad'))
         #Check for Load
         elif load is not '':
@@ -57,17 +56,24 @@ def startCLI(load, evaluate, evaluates, output):
                     for index, elem in enumerate(app):
                         res = str(elem)
                         s.stdout.write(res + '\n')
+            Py4jfml.kill()
         else:
+            Py4jfml.kill()
             s.exit(msg.getMsg('NoOption'))
     except IndexError:
+        Py4jfml.kill()
         s.exit(msg.getMsg('IndexError'))
     except ValueError:
+        Py4jfml.kill()
         s.exit(msg.getMsg('ValueError'))
     except FileNotFoundError:
+        Py4jfml.kill()
         s.exit(msg.getMsg('FileNotFoundError'))
     except IOError:
+        Py4jfml.kill()
         s.exit(msg.getMsg('IOError'))
     except NameError:
+        Py4jfml.kill()
         s.exit(msg.getMsg('NameError'))
 
 if __name__ == '__main__':
