@@ -1,4 +1,4 @@
-# py4jfml
+# Py4JFML
 A python library for using JFML
 
 To use this library you need to download Py4J at link: https://github.com/bartdag/py4j
