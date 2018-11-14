@@ -1,12 +1,20 @@
 # Py4JFML
-A python library for using JFML
+*A python library for using JFML
 
-To use this library you need to download Py4J at link: https://github.com/bartdag/py4j
 
-Then you need to set on your machine the environmental variable PYTHONPATH with the paths of the directories of Py4JFML and Py4J.
-
-Paths:
-
-/.../py4jfml-master/Py4jfml
-
-/.../py4j-master/py4j-python/src/py4j
+To use this library in UNIX-based systems you need to follow this steps.
+  
+  1. If you don't have setuptools installed on your machine, you must run:
+  **$ sudo apt-get install python3-setuptools
+  
+  2. Then, after downloading Py4jfml, you need to install the library locally. 
+  Navigate to the directory '../py4jfml-master/Py4jfml' and run:
+  **$ pip install .
+  
+  3. Finally, you need to run setup.py to update PYTHONPATHs and dependencies in python3:
+  **$ sudo python3 setup.py develop
+  
+  You should run the last command every time you edit file setup.py.
+  
+  
+Now you are ready to use Py4jfml library.
