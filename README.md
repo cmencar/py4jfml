@@ -5,7 +5,7 @@ A python library for using JFML
 To use this library in UNIX-based systems you need to follow this steps.
   
   
-  1. If you don't have setuptools installed on your machine, you must run:
+  1. If you don't have setuptools installed on your machine, you have to run:
   
     $ sudo apt-get install python3-setuptools
   
