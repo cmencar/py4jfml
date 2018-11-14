@@ -16,12 +16,11 @@ To use this library in UNIX-based systems you need to follow this steps.
   	$ pip install .
   
   
-  3. Finally, you need to run setup.py to update PYTHONPATHs and dependencies in python3:
+  3. Finally, you need to run setup.py to update PYTHONPATHs and dependencies in python3.
+  You should do this every time you edit file setup.py:
   
   	$ sudo python3 setup.py develop
   
-  
-     You should run the last command every time you edit file setup.py.
   
   
   
