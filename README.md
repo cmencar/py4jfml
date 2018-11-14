@@ -1,5 +1,5 @@
 # Py4JFML
-*A python library for using JFML
+A python library for using JFML
 
 
 To use this library in UNIX-based systems you need to follow this steps.
@@ -7,7 +7,7 @@ To use this library in UNIX-based systems you need to follow this steps.
   
   1. If you don't have setuptools installed on your machine, you must run:
   
-  	$ sudo apt-get install python3-setuptools
+    $ sudo apt-get install python3-setuptools
   
   
   2. Then, after downloading Py4jfml, you need to install the library locally. 
@@ -23,5 +23,6 @@ To use this library in UNIX-based systems you need to follow this steps.
   
   
   
-  
+
+
 Now you are ready to use Py4jfml library.
