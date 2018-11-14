@@ -21,7 +21,7 @@ To use this library in UNIX-based systems you need to follow this steps.
   	$ sudo python3 setup.py develop
   
   
-  You should run the last command every time you edit file setup.py.
+     You should run the last command every time you edit file setup.py.
   
   
   
