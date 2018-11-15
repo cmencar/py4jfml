@@ -23,3 +23,8 @@ To use this library in UNIX-based systems you need to follow this steps.
   
 
 Now you are ready to use Py4jfml library.
+
+
+  If you want to try the library, you can run one of the test files in testlib directory:
+    
+    $ python3 testfilename.py
