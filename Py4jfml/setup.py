@@ -20,6 +20,7 @@ setuptools.setup(
         # And include any *.msg files found in the 'hello' package, too:
         'jar_files': ['*.jar']
     },
+    install_requires="py4j",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",

@@ -8,6 +8,7 @@ py4jfml/__init__.py
 py4jfml.egg-info/PKG-INFO
 py4jfml.egg-info/SOURCES.txt
 py4jfml.egg-info/dependency_links.txt
+py4jfml.egg-info/requires.txt
 py4jfml.egg-info/top_level.txt
 py4jfml/aggregated/AndAggregatedType.py
 py4jfml/aggregated/OrAggregatedType.py
