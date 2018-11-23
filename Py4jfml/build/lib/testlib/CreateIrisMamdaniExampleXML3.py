@@ -218,7 +218,7 @@ rb.addRule(r12)
 iris.addRuleBase(rb)
 
 # WRITTING IRIS EXAMPLE INTO AN XML FILE
-str_xml = "XMLFiles/IrisMamdani3.xml"
+str_xml = "IrisMamdani3.xml"
 Py4jfml.writeFSTtoXML(iris, str_xml)
 
 print(iris)

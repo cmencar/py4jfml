@@ -4,7 +4,7 @@ from py4jfml.Py4Jfml import Py4jfml
 gateway = JavaGateway()
 
 #percorso del file xml da valutare
-str_xml = "XMLFiles/IrisMamdani1.xml"
+str_xml = os.path.dirname(os.getcwd())+"/"+"IrisMamdani1.xml"
 
 #creazione sistema fuzzy
 fs1 = Py4jfml.load(str_xml)
