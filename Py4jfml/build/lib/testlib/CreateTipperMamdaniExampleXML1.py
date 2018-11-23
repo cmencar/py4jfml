@@ -109,7 +109,7 @@ rb.addRule(rule3)
 
 tipper.addRuleBase(rb)
 
-tipperXMLFile = "XMLFiles/TipperMamdani1.xml"
+tipperXMLFile = "TipperMamdani1.xml"
 Py4jfml.writeFSTtoXML(tipper, tipperXMLFile)
 
 print(tipper)

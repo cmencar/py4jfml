@@ -120,7 +120,7 @@ rb.addRule(rule3)
 tipper.addRuleBase(rb)
 
 #WRITTING TIPPER EXAMPLE INTO AN XML FILE
-str_xml = "XMLFiles/TipperMamdani2.xml"
+str_xml = "TipperMamdani2.xml"
 Py4jfml.writeFSTtoXML(tipper, str_xml)
 
 print(tipper)
