@@ -115,7 +115,7 @@ fr.addTskRule(rule3)
 tipper.addRuleBase(fr)
 
 #WRITTING TIPPER EXAMPLE INTO AN XML FILE
-str_xml = "XMLFiles/TipperTSK.xml"
+str_xml = "TipperTSK.xml"
 Py4jfml.writeFSTtoXML(tipper, str_xml)
 
 print(tipper)
