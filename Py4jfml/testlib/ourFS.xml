@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fuzzySystem xmlns="http://www.ieee1855.org" name="tipper">
+    <knowledgeBase>
+        <fuzzyVariable name="tip" scale="" domainleft="0.0" domainright="10.0" type="input">
+            <fuzzyTerm name="cheap" complement="false">
+                <triangularShape param1="1.0" param2="2.0" param3="3.0"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+        <fuzzyVariable name="service" scale="" domainleft="0.0" domainright="10.0" type="input">
+            <fuzzyTerm name="poor" complement="false">
+                <triangularShape param1="1.0" param2="2.0" param3="3.0"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+        <fuzzyVariable name="food" scale="" domainleft="0.0" domainright="10.0" type="input">
+            <fuzzyTerm name="rancid" complement="false">
+                <triangularShape param1="0.0" param2="2.0" param3="4.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="rancid" complement="false">
+                <leftLinearShape param1="0.0" param2="4.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="delicious" complement="false">
+                <rightLinearShape param1="4.0" param2="10.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="rancid" complement="false">
+                <trapezoidShape param1="0.0" param2="1.0" param3="3.0" param4="4.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="good" complement="false">
+                <rectangularShape param1="4.0" param2="7.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="good" complement="false">
+                <gaussianShape param1="5.0" param2="1.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="good" complement="false">
+                <gaussianShape param1="5.0" param2="1.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="rancid" complement="false">
+                <leftGaussianShape param1="2.0" param2="1.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="delicious" complement="false">
+                <rightGaussianShape param1="8.0" param2="1.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="good" complement="false"/>
+            <fuzzyTerm name="rancid" complement="false">
+                <zShape param1="2.0" param2="4.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="delicious" complement="false">
+                <rightGaussianShape param1="6.0" param2="8.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="good" complement="false">
+                <singletonShape param1="5.0"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+    </knowledgeBase>
+    <mamdaniRuleBase name="MamdaniRB1" activationMethod="MIN" andMethod="MIN" orMethod="MAX">
+        <rule name="rule1" orMethod="MAX" connector="or" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>food</variable>
+                    <term>rancid</term>
+                </clause>
+                <clause modifier="very">
+                    <variable>service</variable>
+                    <term>poor</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>tip</variable>
+                        <term>cheap</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+    </mamdaniRuleBase>
+</fuzzySystem>
