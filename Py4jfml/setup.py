@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='py4jfml',
-    version="0.1",
+    version="0.1.1",
       author='Corrado Mencar',
       author_email='corrado.mencar@uniba.it',
       description='A Python wrapper for JFML',
