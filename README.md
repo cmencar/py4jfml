@@ -7,7 +7,7 @@ Py4JFML can be used in the same way of JFML (see [JFML documentation](http://www
 1. Download the file `py4jfml-0.1.tar.gz`
 2. run 
 	
-	`$ pip install py4jfml-0.1.tar.gz`
+	`$ pip3 install py4jfml-0.1.tar.gz`
 
 If you want to test the library, you can extract the `testlib` folder from the archive and execute one of the contained scripts. For example:
 
