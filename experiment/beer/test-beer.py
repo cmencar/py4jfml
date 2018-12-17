@@ -182,5 +182,5 @@ def plot_confusion_matrix(cm, classes,
 
 model_type = fis_grand
 index = 1
-plot_confusion_matrix(model_type[index], [str(i+1) for i in range(8)],)
-
+plot_confusion_matrix(model_type[index], [str(i+1) for i in range(8)],
+                      normalize=True)
