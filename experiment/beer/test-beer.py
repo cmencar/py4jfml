@@ -181,6 +181,7 @@ def plot_confusion_matrix(cm, classes,
 
 
 model_type = fis_grand
-index = 1
+index = 0
 plot_confusion_matrix(model_type[index], [str(i+1) for i in range(8)],
-                      normalize=True)
+                      normalize=True,
+                      title="FIS (3 fuzzy sets per feature)")
