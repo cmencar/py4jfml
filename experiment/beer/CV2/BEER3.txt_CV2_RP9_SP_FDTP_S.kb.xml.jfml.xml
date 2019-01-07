@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fuzzySystem xmlns="http://www.ieee1855.org" name="BEER3 - MAMDANI">
+    <knowledgeBase>
+        <fuzzyVariable name="Color" scale="" domainleft="0.0" domainright="45.0" type="input">
+            <fuzzyTerm name="ultra low" complement="false">
+                <trapezoidShape param1="0.0" param2="0.0" param3="3.026" param4="6.75"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="very low" complement="false">
+                <triangularShape param1="3.026" param2="6.75" param3="10.812"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="low" complement="false">
+                <triangularShape param1="6.75" param2="10.812" param3="16.026"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average low" complement="false">
+                <triangularShape param1="10.812" param2="16.026" param3="22.407"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average" complement="false">
+                <triangularShape param1="16.026" param2="22.407" param3="28.3"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average high" complement="false">
+                <triangularShape param1="22.407" param2="28.3" param3="34.286"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="high OR very high OR ultra high" complement="false">
+                <trapezoidShape param1="28.3" param2="34.286" param3="45.0" param4="45.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="(low) OR (average low)" complement="false">
+                <trapezoidShape param1="6.75" param2="10.812" param3="16.026" param4="22.407"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+        <fuzzyVariable name="Bitterness" scale="" domainleft="8.0" domainright="250.0" type="input">
+            <fuzzyTerm name="ultra low" complement="false">
+                <trapezoidShape param1="8.0" param2="8.0" param3="20.896" param4="35.066"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="very low OR low" complement="false">
+                <trapezoidShape param1="20.896" param2="35.066" param3="67.692" param4="90.719"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average low OR average" complement="false">
+                <trapezoidShape param1="67.692" param2="90.719" param3="111.133" param4="153.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average high" complement="false">
+                <triangularShape param1="111.133" param2="153.0" param3="189.5"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="more or less (high)" complement="false">
+                <trapezoidShape param1="153.0" param2="189.5" param3="250.0" param4="250.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="(average low OR average) OR (average high)" complement="false">
+                <trapezoidShape param1="67.692" param2="90.719" param3="153.0" param4="189.5"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+        <fuzzyVariable name="Strength" scale="" domainleft="0.039" domainright="0.136" type="input">
+            <fuzzyTerm name="ultra low OR very low" complement="false">
+                <trapezoidShape param1="0.039" param2="0.039" param3="0.053" param4="0.062"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="low OR average low" complement="false">
+                <trapezoidShape param1="0.053" param2="0.062" param3="0.077" param4="0.088"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average" complement="false">
+                <triangularShape param1="0.077" param2="0.088" param3="0.098"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="average high OR high OR very high OR ultra high" complement="false">
+                <trapezoidShape param1="0.088" param2="0.098" param3="0.136" param4="0.136"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="(low OR average low) OR (average)" complement="false">
+                <trapezoidShape param1="0.053" param2="0.062" param3="0.088" param4="0.098"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="(average) OR (average high OR high OR very high OR ultra high)" complement="false">
+                <trapezoidShape param1="0.077" param2="0.088" param3="0.136" param4="0.136"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+        <fuzzyVariable name="Class" scale="" domainleft="1.0" domainright="8.0" type="output" accumulation="MAX" defuzzifier="MOM" defaultValue="1.0">
+            <fuzzyTerm name="1.0" complement="false">
+                <singletonShape param1="1.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="2.0" complement="false">
+                <singletonShape param1="2.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="3.0" complement="false">
+                <singletonShape param1="3.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="4.0" complement="false">
+                <singletonShape param1="4.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="5.0" complement="false">
+                <singletonShape param1="5.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="6.0" complement="false">
+                <singletonShape param1="6.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="7.0" complement="false">
+                <singletonShape param1="7.0"/>
+            </fuzzyTerm>
+            <fuzzyTerm name="8.0" complement="false">
+                <singletonShape param1="8.0"/>
+            </fuzzyTerm>
+        </fuzzyVariable>
+    </knowledgeBase>
+    <mamdaniRuleBase name="rulebase-BEER3" activationMethod="MIN" andMethod="MIN" orMethod="MAX">
+        <rule name="rule1" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>ultra low</term>
+                </clause>
+                <clause>
+                    <variable>Bitterness</variable>
+                    <term>ultra low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>1.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule2" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>ultra low</term>
+                </clause>
+                <clause>
+                    <variable>Bitterness</variable>
+                    <term>very low OR low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>3.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule3" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>very low</term>
+                </clause>
+                <clause>
+                    <variable>Bitterness</variable>
+                    <term>ultra low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>2.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule4" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>low</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>ultra low OR very low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>2.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule5" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>very low</term>
+                </clause>
+                <clause>
+                    <variable>Bitterness</variable>
+                    <term>(average low OR average) OR (average high)</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>4.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule6" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>low</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>(low OR average low) OR (average)</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>4.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule7" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>average low</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>low OR average low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>4.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule8" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>(low) OR (average low)</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>average high OR high OR very high OR ultra high</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>6.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule9" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>average low</term>
+                </clause>
+                <clause>
+                    <variable>Bitterness</variable>
+                    <term>average low OR average</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>average</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>6.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule10" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>average</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>7.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule11" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>average high</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>ultra low OR very low</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>7.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule12" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>high OR very high OR ultra high</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>5.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+        <rule name="rule13" andMethod="min" connector="and" weight="1.0">
+            <antecedent>
+                <clause>
+                    <variable>Color</variable>
+                    <term>average high</term>
+                </clause>
+                <clause>
+                    <variable>Strength</variable>
+                    <term>(average) OR (average high OR high OR very high OR ultra high)</term>
+                </clause>
+            </antecedent>
+            <consequent>
+                <then>
+                    <clause>
+                        <variable>Class</variable>
+                        <term>8.0</term>
+                    </clause>
+                </then>
+            </consequent>
+        </rule>
+    </mamdaniRuleBase>
+</fuzzySystem>
