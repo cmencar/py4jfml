@@ -1,4 +1,4 @@
-# Py4JFML 0.1
+# Py4JFML 0.1.1
 A Python wrapper for [JFML](http://www.uco.es/JFML).
 
 Py4JFML can be used in the same way of JFML (see [JFML documentation](http://www.uco.es/JFML/documentation)). To see how to use Py4JFML, have a look at the example files in the `testlib` folder.
@@ -7,7 +7,7 @@ Py4JFML can be used in the same way of JFML (see [JFML documentation](http://www
 1. Download the file `py4jfml-0.1.tar.gz`
 2. run 
 	
-	`$ pip install py4jfml-0.1.tar.gz`
+	`$ pip3 install py4jfml-0.1.tar.gz`
 
 If you want to test the library, you can extract the `testlib` folder from the archive and execute one of the contained scripts. For example:
 
@@ -53,3 +53,5 @@ Py4JFML is released under GPLv3 licence.
 ## Changelog
 ### 0.1 
 First release
+### 0.1.1
+Installation documentation fix (pip)
