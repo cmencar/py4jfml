@@ -9,11 +9,15 @@ Py4JFML can be used in the same way of JFML (see [JFML documentation](http://www
 	
 	`$ pip3 install py4jfml-1.0.tar.gz`
 
-If you want to test the library, you can extract the `testlib` folder from the archive and execute one of the contained scripts. For example:
+If you want to test the library, you can extract the `testlib` folder from the archive and execute one of the contained scripts. You should start JFML by running
+
+    java -cp "lib/*" jfml_entrypoint.JFML_EntryPoint
+
+assuming that the four jar files are in the local folder. Then, you could run some examples:
 
 `$ python3 CreateInvertedPendulumMamdaniExampleXML1.py` 
 	
-should carry out the follwing text (trunked):
+This should carry out the follwing text (trunked):
 
 ```
 FUZZY SYSTEM: invertedPendulum - MAMDANI
